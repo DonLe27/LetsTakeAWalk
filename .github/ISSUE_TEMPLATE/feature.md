@@ -1,7 +1,7 @@
 ---
 name: feature
 about: Adding a new feature
-title: 'feature: [summary]'
+title: "\U0001F4BB feature: [summary]"
 labels: ''
 assignees: ''
 
