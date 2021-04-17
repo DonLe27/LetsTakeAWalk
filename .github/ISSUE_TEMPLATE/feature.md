@@ -7,6 +7,6 @@ assignees: ''
 
 ---
 
-## Use Case
+### Use Case
 
-## Resources and Proposed Solution
+### Resources and Proposed Solution
