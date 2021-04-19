@@ -237,6 +237,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &1138837733 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 3316929321602507836, guid: 34518fa55c0ecaf42a6346957d55291b, type: 3}
+  m_PrefabInstance: {fileID: 1710389602}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1687089846
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,6 +391,10 @@ PrefabInstance:
       propertyPath: speed
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 1207813682022383803, guid: 34518fa55c0ecaf42a6346957d55291b, type: 3}
+      propertyPath: collider
+      value: 
+      objectReference: {fileID: 1138837733}
     - target: {fileID: 1207813682022383803, guid: 34518fa55c0ecaf42a6346957d55291b, type: 3}
       propertyPath: jumpPower
       value: 6
