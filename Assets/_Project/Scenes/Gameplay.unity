@@ -216,6 +216,55 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &329464689
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 329464691}
+  - component: {fileID: 329464690}
+  m_Layer: 0
+  m_Name: DataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &329464690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329464689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7db81579ae28c146ab75ea95028bbe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  file: player.txt
+  playerData:
+    player_name: 
+    journal:
+      entries: []
+    elements: []
+--- !u!4 &329464691
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329464689}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1500, y: 2.54, z: 1492.3301}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1138837730 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 544358100492358944, guid: 34518fa55c0ecaf42a6346957d55291b, type: 3}
@@ -237,6 +286,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &1138837733 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 3316929321602507836, guid: 34518fa55c0ecaf42a6346957d55291b, type: 3}
+  m_PrefabInstance: {fileID: 1710389602}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1687089846
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,7 +417,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1687089846}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b26fb592e010254e935ba9e8dbcdbc4, type: 3}
+  m_Script: {fileID: 11500000, guid: ff085f63927052849b5d21cea2c8c211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mouseLook: {x: 0, y: 0}
@@ -387,6 +441,10 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1207813682022383803, guid: 34518fa55c0ecaf42a6346957d55291b, type: 3}
+      propertyPath: collider
+      value: 
+      objectReference: {fileID: 1138837733}
+    - target: {fileID: 1207813682022383803, guid: 34518fa55c0ecaf42a6346957d55291b, type: 3}
       propertyPath: jumpPower
       value: 6
       objectReference: {fileID: 0}
@@ -397,6 +455,10 @@ PrefabInstance:
     - target: {fileID: 3308548108778516012, guid: 34518fa55c0ecaf42a6346957d55291b, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031250155169702509, guid: 34518fa55c0ecaf42a6346957d55291b, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9034059143852873623, guid: 34518fa55c0ecaf42a6346957d55291b, type: 3}
       propertyPath: m_RootOrder
@@ -450,6 +512,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3308548108778516012, guid: 34518fa55c0ecaf42a6346957d55291b, type: 3}
   m_PrefabInstance: {fileID: 1710389602}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1927109986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927109985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 567b96975179ced468628d49108b1ba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataManager: {fileID: 0}
+  playerData:
+    player_name: 
+    journal:
+      entries: []
+    elements: []
 --- !u!4 &1927109987 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9034059143852873623, guid: 34518fa55c0ecaf42a6346957d55291b, type: 3}
