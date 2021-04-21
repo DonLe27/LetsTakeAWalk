@@ -21,6 +21,4 @@ If you ever need help with a feature or bug fix, no worries! Feel free to mark t
 ## License
 
 [MIT](LICENSE.md)
-hello
-hello 2
-hello
+1
