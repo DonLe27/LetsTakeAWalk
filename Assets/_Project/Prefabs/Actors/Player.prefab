@@ -53,6 +53,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -108,6 +109,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50ca0548e7914ba4d806279f1d9e1f78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  speed: 10
+  jumpPower: 4
+  collider: {fileID: 0}
 --- !u!1 &3308548108778516012
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,3 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50ca0548e7914ba4d806279f1d9e1f78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  speed: 10
+  jumpPower: 4
+  collider: {fileID: 0}

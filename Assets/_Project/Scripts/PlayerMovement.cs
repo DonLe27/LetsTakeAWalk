@@ -11,10 +11,11 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 playerVelocity;
     private float gravityValue = -9.81f;
     private float distToGround;
+    public Collider collider;
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        distToGround = GetComponent<Collider>().bounds.extents.y;
+        distToGround = collider.bounds.extents.y;
     }
 
     void Update()
