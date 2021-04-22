@@ -19,7 +19,7 @@ public class Element
 
 public class Journal
 {
-    public Entry[] entries;
+    public List<Entry> entries;
 
 }
 [System.Serializable]
@@ -27,6 +27,11 @@ public class Entry
 {
     public string title;
     public string content;
+    public Entry(string t, string c = "")
+    {
+        title = t;
+        content = c;
+    }
 }
 
 

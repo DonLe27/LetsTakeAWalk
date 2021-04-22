@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6674210705069819119, guid: 62c170dbf9e65de46b64b5d93f3d4682, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6674210705069819122, guid: 62c170dbf9e65de46b64b5d93f3d4682, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -188,6 +192,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62c170dbf9e65de46b64b5d93f3d4682, type: 3}
+--- !u!1 &1870710729 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6674210705069819117, guid: 0bf940354904e394ba0ce3d9ab8e5e62, type: 3}
+  m_PrefabInstance: {fileID: 6674210704304808352}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1870710737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870710729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c88fb1a2950ade544bf5df4e37e05a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRetriggerable: 0
+--- !u!1 &2013661344 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6674210705069819117, guid: 62c170dbf9e65de46b64b5d93f3d4682, type: 3}
+  m_PrefabInstance: {fileID: 1554358682}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2013661352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013661344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c88fb1a2950ade544bf5df4e37e05a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRetriggerable: 0
 --- !u!1001 &1939566494100234597
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -252,6 +292,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6674210705069819119, guid: 0bf940354904e394ba0ce3d9ab8e5e62, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674210705069819122, guid: 0bf940354904e394ba0ce3d9ab8e5e62, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674210705069819122, guid: 0bf940354904e394ba0ce3d9ab8e5e62, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674210705069819122, guid: 0bf940354904e394ba0ce3d9ab8e5e62, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.07
+      objectReference: {fileID: 0}
     - target: {fileID: 6674210705162122331, guid: 0bf940354904e394ba0ce3d9ab8e5e62, type: 3}
       propertyPath: m_Name
       value: TreeSpirit

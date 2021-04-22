@@ -5,7 +5,7 @@ public class CamMouseLook : MonoBehaviour
 {
     public Vector2 mouseLook; // Current mouse spherical coordinate
     public Vector2 smoothV;
-    public float sensitivity;
+    public float sensitivity = 1;
     public float smoothing;
 
     public GameObject character;
@@ -17,7 +17,7 @@ public class CamMouseLook : MonoBehaviour
 
     void Update()
     {
-        Vector2 vct2 = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")); //The delta or change in coordinates
+        Vector2 vct2 = new Vector2(Input.GetAxis("Mouse X") * sensitivity, Input.GetAxis("Mouse Y") * sensitivity); //The delta or change in coordinates
         smoothV.x = Mathf.Lerp(smoothV.x, vct2.x, 1 / smoothing); // Interpolate 
         smoothV.y = Mathf.Lerp(smoothV.y, vct2.y, 1 / smoothing);
         mouseLook += smoothV;

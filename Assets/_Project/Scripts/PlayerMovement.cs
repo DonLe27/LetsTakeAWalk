@@ -12,14 +12,17 @@ public class PlayerMovement : MonoBehaviour
     private float gravityValue = -9.81f;
     private float distToGround;
     public Collider collider;
+    public bool freezeRotation = true;
     private void Start()
     {
+        rb.freezeRotation = freezeRotation;
         Cursor.lockState = CursorLockMode.Locked;
         distToGround = collider.bounds.extents.y;
     }
 
     void Update()
     {
+
         float translation = Input.GetAxis("Vertical") * speed;
         float straffe = Input.GetAxis("Horizontal") * speed;
         translation *= Time.deltaTime;
