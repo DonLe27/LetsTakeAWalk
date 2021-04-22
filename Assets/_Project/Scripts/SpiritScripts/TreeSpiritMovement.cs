@@ -14,6 +14,6 @@ public class TreeSpiritMovement : SpiritMovement
     }
     override protected void Move()
     {
-        Spiral();
+        //Spiral(); 
     }
 }

@@ -20,4 +20,15 @@ public class ManagePlayerData : MonoBehaviour
         dataManager.Save();
     }
 
+    public void ReceivePrompt(string prompt)
+    {
+        // Check if prompt has been received
+        foreach (Entry entry in playerData.journal.entries)
+        {
+            if (prompt == entry.title) return;
+        }
+        playerData.journal.entries.Add(new Entry(prompt));
+
+    }
+
 }
