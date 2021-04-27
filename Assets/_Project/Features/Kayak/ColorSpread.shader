@@ -6,6 +6,9 @@ Shader "Color Spread"
         _CSY("CS Center", Float) = 0.0
         _CSZ("CS Center", Float) = 0.0
         _CSDistance("CS Distance", Float) = 10.0
+        _CSStartTime("CS Start Time", Float) = 0.0
+        _CSGrowthSpeed("CS Growth Speed", Float) = 0.5
+        _CSNoiseScale("CS Noise Scale", Float) = 50
         // Specular vs Metallic workflow
         [HideInInspector] _WorkflowMode("WorkflowMode", Float) = 1.0
 
@@ -295,6 +298,10 @@ float _CSX;
 float _CSY;
 float _CSZ;
 float _CSDistance;
+float _CSStartTime;
+float _CSGrowthSpeed;
+float _CSNoiseScale;
+float _CSNoiseSize;
 // Used in Standard (Physically Based) shader
 half4 LitPassFragment(Varyings input) : SV_Target
 {
@@ -320,12 +327,22 @@ half4 LitPassFragment(Varyings input) : SV_Target
     
     color.rgb = MixFog(color.rgb, inputData.fogCoord);
     color.a = OutputAlpha(color.a, _Surface);
+    
+    // Get greyscale
     half luminance = dot(color, half3(0.2126729, 0.7151522, 0.0721750));
     half3 greyscale = luminance.xxx;
     half3 worldPos = input.positionWS;
     half3 center = half3(_CSX, _CSY, _CSZ);
     half dist = distance(center, worldPos);
-    half blend = dist <= _CSDistance ? 0 : 1;
+
+    // Grow based on elapsed time
+    half elapsedTime = (_Time.y - 0);
+    half effectRadius = min(elapsedTime * _CSGrowthSpeed, _CSDistance);
+    effectRadius = clamp(effectRadius, 0, _CSDistance);
+    
+    // Add noise and blend
+    effectRadius -= color.r * _CSNoiseScale;
+    half blend = dist <= effectRadius ? 0 : 1;
     half3 resColor = (1-blend)*color + blend*greyscale;
     return half4(resColor, 1.0);
 }

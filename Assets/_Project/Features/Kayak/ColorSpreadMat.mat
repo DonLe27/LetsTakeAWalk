@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material
+  m_Name: ColorSpreadMat
   m_Shader: {fileID: 4800000, guid: 996d441e557716446a30960e2652b326, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -81,10 +81,13 @@ Material:
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
-    - _CSDistance: 23.9
-    - _CSX: 440
+    - _CSDistance: 200
+    - _CSGrowthSpeed: 10
+    - _CSNoiseScale: 300
+    - _CSStartTime: 0
+    - _CSX: 200
     - _CSY: 0
-    - _CSZ: 12
+    - _CSZ: 200
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -110,7 +113,6 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _CSCenter: {r: 0.2627451, g: 0.43137255, b: 0.48235294, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
