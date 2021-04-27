@@ -1,4 +1,4 @@
-Shader "Color Spread"
+Shader "Water Color Spread"
 {
     Properties
     {
@@ -373,7 +373,7 @@ half4 LitPassFragment(Varyings input) : SV_Target
     float3 worldPos = input.positionWS;
     float3 center = float3(_CSX, _CSY, _CSZ);
     float3 dist = distance(center, worldPos);
-
+    
     // Grow based on elapsed time
     float elapsedTime = (_Time.y - _CSStartTime);
     float effectRadius = min(elapsedTime * _CSGrowthSpeed, _CSDistance);
@@ -383,7 +383,9 @@ half4 LitPassFragment(Varyings input) : SV_Target
     effectRadius -=  color.r * _CSNoiseScale;
     float blend = dist <= effectRadius ? 0 : 1;
     float3 resColor = (1-blend)*saturatedColor + blend*color;
+    
     return half4(resColor, color.a);
+    
 }
 
 #endif

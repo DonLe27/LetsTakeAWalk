@@ -5,7 +5,7 @@ using UnityEngine;
 public class ColorSpread : MonoBehaviour
 {
     private Renderer rend;
-    private Vector3 center = new Vector3(100, 0, 100);
+    private Vector3 center = new Vector3(200, 0, 200);
     private float distance = 30;
     private GameObject[] players;
     private bool wasTriggered = false;
