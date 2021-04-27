@@ -97,11 +97,13 @@ Material:
     - _BumpScale: 1
     - _CSDistance: 290
     - _CSGrowthSpeed: 4.62
+    - _CSHighSaturation: 1
+    - _CSLowSaturation: 0.5
     - _CSNoiseScale: 50
     - _CSSaturation: 2.12
     - _CSStartSpread: 0
     - _CSStartTime: 0
-    - _CSX: 200
+    - _CSX: 600
     - _CSY: 0
     - _CSZ: 200
     - _ClearCoatMask: 0

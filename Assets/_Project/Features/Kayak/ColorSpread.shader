@@ -9,7 +9,8 @@ Shader "Color Spread"
         _CSStartTime("CS Start Time", Float) = 0.0
         _CSGrowthSpeed("CS Growth Speed", Float) = 0.5
         _CSNoiseScale("CS Noise Scale", Float) = 50
-        _CSSaturation("CS Saturation", Float) = 20
+        _CSLowSaturation("CS Low Saturation", Float) = 0.5
+        _CSHighSaturation("CS High Saturation", Float) = 1
         _CSStartSpread("CS Start Spread", Float) = 0
         // Specular vs Metallic workflow
         [HideInInspector] _WorkflowMode("WorkflowMode", Float) = 1.0
@@ -331,7 +332,8 @@ float _CSStartTime;
 float _CSGrowthSpeed;
 float _CSNoiseScale;
 float _CSNoiseSize;
-float _CSSaturation;
+float _CSHighSaturation;
+float _CSLowSaturation;
 float _CSStartSpread;
 // Used in Standard (Physically Based) shader
 half4 LitPassFragment(Varyings input) : SV_Target
@@ -358,18 +360,18 @@ half4 LitPassFragment(Varyings input) : SV_Target
     
     color.rgb = MixFog(color.rgb, inputData.fogCoord);
     color.a = OutputAlpha(color.a, _Surface);
-    
+    // Get low and high saturated color
+    float3 lowSaturated = GetSaturatedColor(color.rgb, _CSLowSaturation);
+    float3 highSaturated = GetSaturatedColor(color.rgb, _CSHighSaturation);
     // Return color if color spread not started
     if (_CSStartSpread < 0.5){
-        return color;
-        
+        return half4(lowSaturated, color.a);
     }
     // Get greyscale
     //half luminance = dot(color, half3(0.2126729, 0.7151522, 0.0721750));
     //half3 greyscale = luminance.xxx;
    
-    // Get saturated color
-    float3 saturatedColor = GetSaturatedColor(color.rgb, _CSSaturation);
+    // Get distance from center
     float3 worldPos = input.positionWS;
     float3 center = float3(_CSX, _CSY, _CSZ);
     float3 dist = distance(center, worldPos);
@@ -382,7 +384,7 @@ half4 LitPassFragment(Varyings input) : SV_Target
     // Add noise and blend
     effectRadius -=  color.r * _CSNoiseScale;
     float blend = dist <= effectRadius ? 0 : 1;
-    float3 resColor = (1-blend)*saturatedColor + blend*color;
+    float3 resColor = (1-blend)*highSaturated + blend*lowSaturated;
     return half4(resColor, color.a);
 }
 
