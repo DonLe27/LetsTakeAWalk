@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ColorSpreadWater
-  m_Shader: {fileID: 4800000, guid: cc48762d1abc087448abc01ad0522ad8, type: 3}
+  m_Shader: {fileID: 4800000, guid: 996d441e557716446a30960e2652b326, type: 3}
   m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _SPECULAR_SETUP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
