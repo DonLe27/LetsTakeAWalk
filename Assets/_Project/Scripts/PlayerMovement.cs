@@ -11,13 +11,13 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 playerVelocity;
     private float gravityValue = -9.81f;
     private float distToGround;
-    public Collider collider;
     public bool freezeRotation = true;
     private void Start()
     {
         rb.freezeRotation = freezeRotation;
         Cursor.lockState = CursorLockMode.Locked;
-        distToGround = collider.bounds.extents.y;
+        GameObject child = transform.GetChild(0).gameObject; //First child is body
+        distToGround = child.GetComponent<Collider>().bounds.extents.y;
     }
 
     void Update()
