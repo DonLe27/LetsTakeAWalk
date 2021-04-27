@@ -5,8 +5,8 @@ using UnityEngine;
 public class ColorSpread : MonoBehaviour
 {
     private Renderer rend;
-    private Vector3 center = new Vector3(200, 0, 200);
-    private float distance = 30;
+    private Vector3 center = new Vector3(600, 0, 200);
+    private float distance = 15;
     private GameObject[] players;
     private bool wasTriggered = false;
     // Start is called before the first frame update
