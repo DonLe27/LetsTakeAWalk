@@ -9,6 +9,8 @@ Shader "Color Spread"
         _CSStartTime("CS Start Time", Float) = 0.0
         _CSGrowthSpeed("CS Growth Speed", Float) = 0.5
         _CSNoiseScale("CS Noise Scale", Float) = 50
+        _CSSaturation("CS Saturation", Float) = 20
+        _CSStartSpread("CS Start Spread", Float) = 0
         // Specular vs Metallic workflow
         [HideInInspector] _WorkflowMode("WorkflowMode", Float) = 1.0
 
@@ -293,6 +295,33 @@ Varyings LitPassVertex(Attributes input)
 
     return output;
 }
+
+// Saturate colors https://beesbuzz.biz/code/16-hsv-color-transforms
+float3 GetSaturatedColor(float3 rgb, float s){
+    // Covert to YIQ
+    float3x3 rgb2yiq = {
+        0.299, 0.587, 0.114,
+        0.596, -0.274, -0.321,
+        0.211, -0.523, 0.311
+    };
+    float3 YIQ = mul(rgb2yiq, rgb);
+    
+    // Saturation transform
+    float3x3 saturateT = {
+        1.0, 0.0, 0.0,
+        0.0, s, 0.0,
+        0.0, 0.0, s
+    };
+    float3 saturatedYIQ = mul(saturateT, YIQ);
+    
+    // Convert back to rgb
+    float3x3 yiq2rgb = {
+        1.0, 0.956, 0.621,
+        1.0, -0.272, -0.647,
+        1.0, -1.107, 1.705
+    };
+    return mul(yiq2rgb, saturatedYIQ);
+}
 // Declare variables from properties
 float _CSX;
 float _CSY;
@@ -302,6 +331,8 @@ float _CSStartTime;
 float _CSGrowthSpeed;
 float _CSNoiseScale;
 float _CSNoiseSize;
+float _CSSaturation;
+float _CSStartSpread;
 // Used in Standard (Physically Based) shader
 half4 LitPassFragment(Varyings input) : SV_Target
 {
@@ -328,22 +359,29 @@ half4 LitPassFragment(Varyings input) : SV_Target
     color.rgb = MixFog(color.rgb, inputData.fogCoord);
     color.a = OutputAlpha(color.a, _Surface);
     
+    // Return color if color spread not started
+    if (_CSStartSpread < 0.5){
+        return color;
+    }
     // Get greyscale
-    half luminance = dot(color, half3(0.2126729, 0.7151522, 0.0721750));
-    half3 greyscale = luminance.xxx;
-    half3 worldPos = input.positionWS;
-    half3 center = half3(_CSX, _CSY, _CSZ);
-    half dist = distance(center, worldPos);
+    //half luminance = dot(color, half3(0.2126729, 0.7151522, 0.0721750));
+    //half3 greyscale = luminance.xxx;
+   
+    // Get saturated color
+    float3 saturatedColor = GetSaturatedColor(color.rgb, _CSSaturation);
+    float3 worldPos = input.positionWS;
+    float3 center = float3(_CSX, _CSY, _CSZ);
+    float3 dist = distance(center, worldPos);
 
     // Grow based on elapsed time
-    half elapsedTime = (_Time.y - 0);
-    half effectRadius = min(elapsedTime * _CSGrowthSpeed, _CSDistance);
+    float elapsedTime = (_Time.y - _CSStartTime);
+    float effectRadius = min(elapsedTime * _CSGrowthSpeed, _CSDistance);
     effectRadius = clamp(effectRadius, 0, _CSDistance);
     
     // Add noise and blend
     effectRadius -= color.r * _CSNoiseScale;
-    half blend = dist <= effectRadius ? 0 : 1;
-    half3 resColor = (1-blend)*color + blend*greyscale;
+    float blend = dist <= effectRadius ? 0 : 1;
+    float3 resColor = (1-blend)*saturatedColor + blend*color;
     return half4(resColor, 1.0);
 }
 

@@ -81,13 +81,15 @@ Material:
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
-    - _CSDistance: 200
-    - _CSGrowthSpeed: 10
-    - _CSNoiseScale: 300
+    - _CSDistance: 500
+    - _CSGrowthSpeed: 2.39
+    - _CSNoiseScale: 50
+    - _CSSaturation: 2.12
+    - _CSStartSpread: 0
     - _CSStartTime: 0
-    - _CSX: 200
+    - _CSX: 100
     - _CSY: 0
-    - _CSZ: 200
+    - _CSZ: 100
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
