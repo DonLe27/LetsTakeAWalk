@@ -16,15 +16,15 @@ MonoBehaviour:
   - gameObject: {fileID: 919132149155446097, guid: 412bbaca67187974a914bf9449c7caa2, type: 3}
     settings:
       m_Strength: 50
-      m_RotationRangeMin: {x: 0, y: 0, z: 0}
-      m_RotationRangeMax: {x: 0, y: 0, z: 0}
-      m_ScaleRangeMin: {x: 1, y: 1, z: 1}
-      m_ScaleRangeMax: {x: 1, y: 1, z: 1}
+      m_RotationRangeMin: {x: 110.30303, y: 77.57576, z: 50.909092}
+      m_RotationRangeMax: {x: 144.24243, y: 123.636375, z: 104.242424}
+      m_ScaleRangeMin: {x: 0.23569024, y: 0, z: 0}
+      m_ScaleRangeMax: {x: 2.8956227, y: 2.3232322, z: 1.2794611}
       m_UniformScale: {x: 1, y: 1}
       m_UniformBool: 0
       m_XRotationBool: 0
-      m_YRotationBool: 0
-      m_ZRotationBool: 0
+      m_YRotationBool: 1
+      m_ZRotationBool: 1
       m_XScaleBool: 0
       m_YScaleBool: 0
       m_ZScaleBool: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
       m_RotationRangeMin: {x: 0, y: 0, z: 0}
       m_RotationRangeMax: {x: 0, y: 0, z: 0}
       m_ScaleRangeMin: {x: 1, y: 1, z: 1}
-      m_ScaleRangeMax: {x: 1, y: 1, z: 1}
+      m_ScaleRangeMax: {x: 2.2457912, y: 1.7407408, z: 1.942761}
       m_UniformScale: {x: 1, y: 1}
       m_UniformBool: 0
       m_XRotationBool: 0
