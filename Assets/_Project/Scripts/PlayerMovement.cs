@@ -1,7 +1,7 @@
 // Referenced: https://docs.unity3d.com/ScriptReference/CharacterController.Move.html
 using UnityEngine;
-
-public class PlayerMovement : MonoBehaviour
+using Mirror;
+public class PlayerMovement : NetworkBehaviour
 {
 
 
@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public bool freezeRotation = true;
     private void Start()
     {
+        if (!isLocalPlayer) return;
         rb.freezeRotation = freezeRotation;
         Cursor.lockState = CursorLockMode.Locked;
         GameObject child = transform.GetChild(0).gameObject; //First child is body
@@ -22,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-
+        if (!isLocalPlayer) return;
         float translation = Input.GetAxis("Vertical") * speed;
         float straffe = Input.GetAxis("Horizontal") * speed;
         translation *= Time.deltaTime;
@@ -41,10 +42,11 @@ public class PlayerMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (Input.GetButtonDown("Jump") && isGrounded())
-        {
-            rb.AddForce(new Vector3(0, jumpPower, 0), ForceMode.Impulse);
-        }
+        if (!isLocalPlayer) return;
+        /* if (Input.GetButtonDown("Jump") && isGrounded())
+         {
+             rb.AddForce(new Vector3(0, jumpPower, 0), ForceMode.Impulse);
+         }*/
         rb.AddForce(new Vector3(0, gravityValue, 0), ForceMode.Acceleration);
     }
 }

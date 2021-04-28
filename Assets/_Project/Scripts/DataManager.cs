@@ -1,26 +1,26 @@
 using UnityEngine;
 using System.IO;
-public class DataManager : MonoBehaviour
+public static class DataManager
 {
-    public string file = "player.txt";
-    public PlayerData playerData;
+    private static string file = "player.txt";
 
-    public void Start()
+    public static void Start()
     {
         Load();
     }
-    public void Save()
+    public static void Save(PlayerData playerData)
     {
         string json = JsonUtility.ToJson(playerData);
         WriteToFile(file, json);
     }
-    public void Load()
+    public static PlayerData Load()
     {
-        playerData = new PlayerData();
+        PlayerData playerData = new PlayerData();
         string json = ReadFromFile(file);
         JsonUtility.FromJsonOverwrite(json, playerData);
+        return playerData;
     }
-    private void WriteToFile(string fileName, string json)
+    private static void WriteToFile(string fileName, string json)
     {
         string path = GetFilePath(fileName);
         FileStream fileStream = new FileStream(path, FileMode.Create);
@@ -31,7 +31,7 @@ public class DataManager : MonoBehaviour
 
     }
 
-    private string ReadFromFile(string fileName)
+    private static string ReadFromFile(string fileName)
     {
         string path = GetFilePath(fileName);
         if (File.Exists(path))
@@ -45,7 +45,7 @@ public class DataManager : MonoBehaviour
         else
             return "";
     }
-    private string GetFilePath(string fileName)
+    private static string GetFilePath(string fileName)
     {
         return Application.persistentDataPath + "/" + fileName;
     }

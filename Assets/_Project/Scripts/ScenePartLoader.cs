@@ -7,9 +7,10 @@ public enum CheckMethod
     Distance,
     Trigger
 }
+// TODO: Readd scene part loader if loading becomes a problem
 public class ScenePartLoader : MonoBehaviour
 {
-
+    /*
     public Transform player;
     public CheckMethod checkMethod;
     public float loadRange;
@@ -109,5 +110,5 @@ public class ScenePartLoader : MonoBehaviour
     }
 
 
-
+*/
 }
