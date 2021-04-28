@@ -15,7 +15,7 @@ MonoBehaviour:
   prefabs:
   - gameObject: {fileID: 919132149155446097, guid: 412bbaca67187974a914bf9449c7caa2, type: 3}
     settings:
-      m_Strength: 50
+      m_Strength: 85.71991
       m_RotationRangeMin: {x: 110.30303, y: 77.57576, z: 50.909092}
       m_RotationRangeMax: {x: 144.24243, y: 123.636375, z: 104.242424}
       m_ScaleRangeMin: {x: 0.23569024, y: 0, z: 0}
@@ -31,7 +31,7 @@ MonoBehaviour:
     name: Grass_1
   - gameObject: {fileID: 919132149155446097, guid: 4b33c61722481a6498650b6229f10087, type: 3}
     settings:
-      m_Strength: 63.735294
+      m_Strength: 24.24515
       m_RotationRangeMin: {x: 0, y: 0, z: 0}
       m_RotationRangeMax: {x: 0, y: 0, z: 0}
       m_ScaleRangeMin: {x: 1, y: 1, z: 1}
@@ -47,7 +47,7 @@ MonoBehaviour:
     name: Tree_Bark_white_1
   - gameObject: {fileID: 919132149155446097, guid: 0378df58ced5af145aee7c12a5da95c0, type: 3}
     settings:
-      m_Strength: 21.382353
+      m_Strength: 51.14036
       m_RotationRangeMin: {x: 0, y: 0, z: 0}
       m_RotationRangeMax: {x: 0, y: 0, z: 0}
       m_ScaleRangeMin: {x: 1, y: 1, z: 1}
