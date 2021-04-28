@@ -43,10 +43,10 @@ public class PlayerMovement : NetworkBehaviour
     void FixedUpdate()
     {
         if (!isLocalPlayer) return;
-        if (Input.GetButtonDown("Jump") && isGrounded())
-        {
-            rb.AddForce(new Vector3(0, jumpPower, 0), ForceMode.Impulse);
-        }
+        /* if (Input.GetButtonDown("Jump") && isGrounded())
+         {
+             rb.AddForce(new Vector3(0, jumpPower, 0), ForceMode.Impulse);
+         }*/
         rb.AddForce(new Vector3(0, gravityValue, 0), ForceMode.Acceleration);
     }
 }

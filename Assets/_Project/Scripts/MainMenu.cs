@@ -12,6 +12,10 @@ public class MainMenu : MonoBehaviour
         // TODO: Add loading bar based of tutorial
         HideMenu();
         SceneManager.LoadSceneAsync("Gameplay");
+        SceneManager.LoadSceneAsync("Part01");
+        SceneManager.LoadSceneAsync("Part04");
+        SceneManager.LoadSceneAsync("Part02");
+        SceneManager.LoadSceneAsync("Part05");
 
     }
 
