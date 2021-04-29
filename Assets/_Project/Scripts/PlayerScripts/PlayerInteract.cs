@@ -9,8 +9,10 @@ public class PlayerInteract : NetworkBehaviour
     public LayerMask mask;
     public Vector3 collision;
     public float rayDistance = 10;
-    void Start()
+
+    public override void OnStartLocalPlayer()
     {
+        base.OnStartLocalPlayer();
         GameObject cameraObj = GameObject.FindGameObjectWithTag("MainCamera");
         cam = cameraObj.GetComponent<Camera>();
         // Set camera to follow player
@@ -20,25 +22,31 @@ public class PlayerInteract : NetworkBehaviour
         // Add CamMouseLook to camera and set player variable
         cameraObj.AddComponent<CamMouseLook>();
         cameraObj.GetComponent<CamMouseLook>().character = gameObject;
-
     }
 
-    // Update is called once per frame
+    [Client]
     void Update()
     {
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-
         if (!isLocalPlayer) return;
+        if (!Utilities.MouseInsideScreen()) return;
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         if (Input.GetButton("Fire1"))
         {
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, rayDistance, mask))
             {
-                hit.transform.gameObject.SendMessage("RespondToInteraction", gameObject);
-
+                GameObject target = hit.transform.gameObject;
+                CmdInteract(target);
             }
         }
+    }
+
+    // This function is run by the server's player object
+    [Command]
+    private void CmdInteract(GameObject target)
+    {
+        target.SendMessage("RespondToInteraction", gameObject);
     }
 
 

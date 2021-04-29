@@ -16,7 +16,7 @@ public class PlayerMovement : NetworkBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         GameObject child = transform.GetChild(0).gameObject; //First child is body
     }
-
+    [Client]
     void Update()
     {
         if (!isLocalPlayer) return;

@@ -6,6 +6,15 @@ public class CustomNetworkManager : NetworkManager
 {
     public GameObject cameraPrefab;
     // Start is called before the first frame update
+
+    public override void OnStartServer()
+    {
+        base.OnStartServer();
+
+        // Spawn Canoe
+        GameObject canoe = Instantiate(spawnPrefabs.Find(prefab => prefab.name == "Canoe"));
+        NetworkServer.Spawn(canoe);
+    }
     public override void OnServerAddPlayer(NetworkConnection conn)
     {
 
@@ -21,11 +30,10 @@ public class CustomNetworkManager : NetworkManager
         player.name = $"{playerPrefab.name} [connId={conn.connectionId}]";
         NetworkServer.AddPlayerForConnection(conn, player);
 
-        // Spawn Canoe
-        GameObject canoe = Instantiate(spawnPrefabs.Find(prefab => prefab.name == "Canoe"));
-        NetworkServer.Spawn(canoe);
+
 
     }
+
 
     public override void OnClientConnect(NetworkConnection conn)
     {
