@@ -20,6 +20,11 @@ public class CustomNetworkManager : NetworkManager
         // => appending the connectionId is WAY more useful for debugging!
         player.name = $"{playerPrefab.name} [connId={conn.connectionId}]";
         NetworkServer.AddPlayerForConnection(conn, player);
+
+        // Spawn Canoe
+        GameObject canoe = Instantiate(spawnPrefabs.Find(prefab => prefab.name == "Canoe"));
+        NetworkServer.Spawn(canoe);
+
     }
 
     public override void OnClientConnect(NetworkConnection conn)
