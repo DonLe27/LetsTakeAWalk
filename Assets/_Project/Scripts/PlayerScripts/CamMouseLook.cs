@@ -12,11 +12,15 @@ public class CamMouseLook : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        character = transform.parent.gameObject;
     }
 
     void Update()
     {
+        // Wait until player instantiates camera and sets character
+        if (character == null) return;
+
+        // Don't interact if mouse is not inside screen
+        if (!Utilities.MouseInsideScreen()) return;
         Vector2 vct2 = new Vector2(Input.GetAxis("Mouse X") * sensitivity, Input.GetAxis("Mouse Y") * sensitivity); //The delta or change in coordinates
         smoothV.x = Mathf.Lerp(smoothV.x, vct2.x, 1 / smoothing); // Interpolate 
         smoothV.y = Mathf.Lerp(smoothV.y, vct2.y, 1 / smoothing);
@@ -25,4 +29,7 @@ public class CamMouseLook : MonoBehaviour
         transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right); // TODO: Have the heads rotate
         character.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, character.transform.up); // Rotate the character
     }
+
+    // Returns true if outside screen
+
 }
