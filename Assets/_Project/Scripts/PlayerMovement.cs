@@ -1,7 +1,7 @@
 // Referenced: https://docs.unity3d.com/ScriptReference/CharacterController.Move.html
 using UnityEngine;
-
-public class PlayerMovement : MonoBehaviour
+using Mirror;
+public class PlayerMovement : NetworkBehaviour
 {
 
 
@@ -11,18 +11,19 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 playerVelocity;
     private float gravityValue = -9.81f;
     private float distToGround;
-    public Collider collider;
     public bool freezeRotation = true;
     private void Start()
     {
+        if (!isLocalPlayer) return;
         rb.freezeRotation = freezeRotation;
         Cursor.lockState = CursorLockMode.Locked;
-        distToGround = collider.bounds.extents.y;
+        GameObject child = transform.GetChild(0).gameObject; //First child is body
+        distToGround = child.GetComponent<Collider>().bounds.extents.y;
     }
 
     void Update()
     {
-
+        if (!isLocalPlayer) return;
         float translation = Input.GetAxis("Vertical") * speed;
         float straffe = Input.GetAxis("Horizontal") * speed;
         translation *= Time.deltaTime;
@@ -41,10 +42,11 @@ public class PlayerMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (Input.GetButtonDown("Jump") && isGrounded())
-        {
-            rb.AddForce(new Vector3(0, jumpPower, 0), ForceMode.Impulse);
-        }
+        if (!isLocalPlayer) return;
+        /* if (Input.GetButtonDown("Jump") && isGrounded())
+         {
+             rb.AddForce(new Vector3(0, jumpPower, 0), ForceMode.Impulse);
+         }*/
         rb.AddForce(new Vector3(0, gravityValue, 0), ForceMode.Acceleration);
     }
 }

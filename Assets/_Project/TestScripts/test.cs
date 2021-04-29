@@ -1,21 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class test : MonoBehaviour
+using Mirror;
+public class test : NetworkBehaviour
 {
-    public DataManager dm;
+    public ManagePlayerData managePlayerData;
+
     void Update()
     {
         if (Input.GetKeyDown("t"))
         {
-            dm.Load();
+            managePlayerData.ReceivePrompt(Random.Range(0, 10).ToString());
         }
-        if (Input.GetKeyDown("c"))
-        {
-            dm.playerData.player_name = "beef";
-            dm.Save();
 
-        }
     }
 }
