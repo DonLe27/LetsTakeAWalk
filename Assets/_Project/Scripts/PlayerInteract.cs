@@ -11,7 +11,16 @@ public class PlayerInteract : NetworkBehaviour
     public float rayDistance = 10;
     void Start()
     {
-        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        GameObject cameraObj = GameObject.FindGameObjectWithTag("MainCamera");
+        cam = cameraObj.GetComponent<Camera>();
+        // Set camera to follow player
+        cameraObj.transform.SetPositionAndRotation(gameObject.transform.position, gameObject.transform.rotation);
+        cameraObj.transform.SetParent(gameObject.transform);
+
+        // Add CamMouseLook to camera and set player variable
+        cameraObj.AddComponent<CamMouseLook>();
+        cameraObj.GetComponent<CamMouseLook>().character = gameObject;
+
     }
 
     // Update is called once per frame
@@ -27,6 +36,7 @@ public class PlayerInteract : NetworkBehaviour
             if (Physics.Raycast(ray, out hit, rayDistance, mask))
             {
                 hit.transform.gameObject.SendMessage("RespondToInteraction", gameObject);
+
             }
         }
     }

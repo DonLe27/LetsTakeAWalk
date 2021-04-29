@@ -25,13 +25,5 @@ public class CustomNetworkManager : NetworkManager
     public override void OnClientConnect(NetworkConnection conn)
     {
         base.OnClientConnect(conn);
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        GameObject cameraObj = GameObject.FindGameObjectWithTag("MainCamera");
-        Debug.Log(cameraObj);
-        // Set camera to follow player and 
-        cameraObj.transform.SetPositionAndRotation(player.transform.position, player.transform.rotation);
-        cameraObj.transform.SetParent(player.transform);
-
-        cameraObj.AddComponent<CamMouseLook>();
     }
 }

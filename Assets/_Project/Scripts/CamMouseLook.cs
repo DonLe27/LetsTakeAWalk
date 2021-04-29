@@ -9,12 +9,9 @@ public class CamMouseLook : MonoBehaviour
     public float smoothing;
 
     public GameObject character;
-
-    // Needs to have a parent when starting
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        character = gameObject.transform.parent.gameObject;
     }
 
     void Update()
