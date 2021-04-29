@@ -9,14 +9,18 @@ public class CamMouseLook : MonoBehaviour
     public float smoothing;
 
     public GameObject character;
+
+    // Needs to have a parent when starting
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        character = transform.parent.gameObject;
+        character = gameObject.transform.parent.gameObject;
     }
 
     void Update()
     {
+        // Wait until player instantiates camera and sets character
+        if (character == null) return;
         Vector2 vct2 = new Vector2(Input.GetAxis("Mouse X") * sensitivity, Input.GetAxis("Mouse Y") * sensitivity); //The delta or change in coordinates
         smoothV.x = Mathf.Lerp(smoothV.x, vct2.x, 1 / smoothing); // Interpolate 
         smoothV.y = Mathf.Lerp(smoothV.y, vct2.y, 1 / smoothing);

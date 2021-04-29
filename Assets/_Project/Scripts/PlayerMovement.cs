@@ -7,10 +7,7 @@ public class PlayerMovement : NetworkBehaviour
 
     public Rigidbody rb;
     public float speed = 10.0f;
-    public float jumpPower = 4.0f;
     private Vector3 playerVelocity;
-    private float gravityValue = -9.81f;
-    private float distToGround;
     public bool freezeRotation = true;
     private void Start()
     {
@@ -18,7 +15,6 @@ public class PlayerMovement : NetworkBehaviour
         rb.freezeRotation = freezeRotation;
         Cursor.lockState = CursorLockMode.Locked;
         GameObject child = transform.GetChild(0).gameObject; //First child is body
-        distToGround = child.GetComponent<Collider>().bounds.extents.y;
     }
 
     void Update()
@@ -36,17 +32,6 @@ public class PlayerMovement : NetworkBehaviour
         }
 
     }
-    bool isGrounded()
-    {
-        return Physics.Raycast(transform.position, -Vector3.up, distToGround + 1f);
-    }
-    void FixedUpdate()
-    {
-        if (!isLocalPlayer) return;
-        /* if (Input.GetButtonDown("Jump") && isGrounded())
-         {
-             rb.AddForce(new Vector3(0, jumpPower, 0), ForceMode.Impulse);
-         }*/
-        rb.AddForce(new Vector3(0, gravityValue, 0), ForceMode.Acceleration);
-    }
+
+
 }
