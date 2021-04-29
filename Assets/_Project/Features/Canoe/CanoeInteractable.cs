@@ -8,13 +8,24 @@ public class CanoeInteractable : NetworkInteractable
     [Server]
     public override void RespondToInteraction(GameObject player)
     {
-        RpcRespond(player);
+        Respond(player);
     }
 
-    [ClientRpc]
+    // Use NetworkTransform component to sync
+    private void Respond(GameObject player)
+    {
+        Vector3 velocity = gameObject.transform.position - player.transform.position;
+        GetComponent<Rigidbody>().AddForce(velocity.normalized, ForceMode.Impulse);
+    }
+
+    // Can also use ClientRpc to broadcast changes to clients
+    /*
+           [ClientRpc]
     private void RpcRespond(GameObject player)
     {
         Vector3 velocity = gameObject.transform.position - player.transform.position;
         GetComponent<Rigidbody>().AddForce(velocity.normalized, ForceMode.Impulse);
     }
+
+    */
 }
