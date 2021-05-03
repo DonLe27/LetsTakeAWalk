@@ -27,20 +27,23 @@ public class DayCycleController : MonoBehaviour
     // References
     [SerializeField] private Light DirectionalLight;
     [SerializeField] private ParticleSystem StarSystem;
-    [SerializeField] private DayCyclePreset Preset; 
+    [SerializeField] private DayCyclePreset Preset;
+    [SerializeField] private bool FreezeTime = false;
 
     // Variables
-    [SerializeField, Range(0,24)] private float TimeOfDay;  // Time of Day 0 to 24
+    [SerializeField, Range(0, 24)] private float TimeOfDay;  // Time of Day 0 to 24
 
     private void Update()
     {
-        if (Preset == null || PeriodOfDay == 0) {
+        if (Preset == null || PeriodOfDay == 0)
+        {
             return;
         }
 
         if (Application.isPlaying)
         {
-            TimeOfDay += (Time.deltaTime * 24f / PeriodOfDay);
+            if (!FreezeTime)
+                TimeOfDay += (Time.deltaTime * 24f / PeriodOfDay);
             TimeOfDay %= 24;
             UpdateLighting(TimeOfDay / 24f);
         }
@@ -59,7 +62,7 @@ public class DayCycleController : MonoBehaviour
         StarSystem.startColor = new Color(StarSystem.startColor.r, StarSystem.startColor.g, StarSystem.startColor.b, Preset.StarAlpha.Evaluate(time));
     }
 
-    public float GetTimeOfDay()     { return TimeOfDay; }
-    public float GetCurrentHour()   { return (int)TimeOfDay; }
+    public float GetTimeOfDay() { return TimeOfDay; }
+    public float GetCurrentHour() { return (int)TimeOfDay; }
     public float GetCurrentMinute() { return TimeOfDay % 1 * 60; }
 }
