@@ -14,7 +14,6 @@ public class PlayerMovement : NetworkBehaviour
         if (!isLocalPlayer) return;
         rb.freezeRotation = freezeRotation;
         Cursor.lockState = CursorLockMode.Locked;
-        GameObject child = transform.GetChild(0).gameObject; //First child is body
     }
     [Client]
     void Update()
