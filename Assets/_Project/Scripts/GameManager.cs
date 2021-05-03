@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Part01", LoadSceneMode.Additive);
         SceneManager.LoadScene("Part04", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Part02", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Part05", LoadSceneMode.Additive);
     }
 
     // Update is called once per frame
