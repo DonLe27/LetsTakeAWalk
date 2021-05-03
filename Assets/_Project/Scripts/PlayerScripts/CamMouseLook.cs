@@ -5,7 +5,7 @@ public class CamMouseLook : MonoBehaviour
 {
     public Vector2 mouseLook; // Current mouse spherical coordinate
     public Vector2 smoothV;
-    public float sensitivity = 1;
+    public float sensitivity = 2;
     public float smoothing;
 
     public GameObject character;
