@@ -32,12 +32,18 @@ public class PlayerInteract : NetworkBehaviour
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         if (Input.GetButton("Fire1"))
         {
+            //Debug.Log("Fired Ray");
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, rayDistance, mask))
             {
                 GameObject target = hit.transform.gameObject;
+                //Debug.Log("hit target:" +target.name);
                 CmdInteract(target);
+                if (target.tag == "Ingredient")
+                {
+                    TakeIngredient(target);
+                }
             }
         }
     }
@@ -47,6 +53,15 @@ public class PlayerInteract : NetworkBehaviour
     private void CmdInteract(GameObject target)
     {
         target.SendMessage("RespondToInteraction", gameObject);
+    }
+
+    //Player picks up an ingredient and adds it to inventory
+    private void TakeIngredient(GameObject target)
+    {
+        IngredientID id = target.GetComponent<IngredientInfo>().id;
+        //Debug.Log("picked up ingredient of type: " + id);
+        ManagePlayerData managePlayerData = gameObject.GetComponent<ManagePlayerData>();
+        managePlayerData.updateIngredients(id, true);
     }
 
 

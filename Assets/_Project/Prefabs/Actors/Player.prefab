@@ -131,6 +131,7 @@ MonoBehaviour:
     journal:
       entries: []
     elements: []
+    ingredients: 0000000000000000000000000000000000000000
 --- !u!1 &3852648137654513568
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,7 +145,7 @@ GameObject:
   - component: {fileID: 693229676385208524}
   - component: {fileID: 4802797015135527040}
   - component: {fileID: 6535096450989026626}
-  - component: {fileID: 6304169927237436604}
+  - component: {fileID: 1126790360672291427}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -242,7 +243,7 @@ MonoBehaviour:
     m_Bits: 768
   collision: {x: 0, y: 0, z: 0}
   rayDistance: 10
---- !u!114 &6304169927237436604
+--- !u!114 &1126790360672291427
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -259,3 +260,4 @@ MonoBehaviour:
     journal:
       entries: []
     elements: []
+    ingredients: 0000000000000000000000000000000000000000
