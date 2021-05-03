@@ -131,6 +131,7 @@ MonoBehaviour:
     journal:
       entries: []
     elements: []
+    ingredients: 0000000000000000000000000000000000000000
 --- !u!1 &3852648137654513568
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,6 +145,7 @@ GameObject:
   - component: {fileID: 693229676385208524}
   - component: {fileID: 4802797015135527040}
   - component: {fileID: 6535096450989026626}
+  - component: {fileID: 1126790360672291427}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -241,3 +243,21 @@ MonoBehaviour:
     m_Bits: 768
   collision: {x: 0, y: 0, z: 0}
   rayDistance: 10
+--- !u!114 &1126790360672291427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3852648137654513568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 567b96975179ced468628d49108b1ba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData:
+    player_name: 
+    journal:
+      entries: []
+    elements: []
+    ingredients: 0000000000000000000000000000000000000000

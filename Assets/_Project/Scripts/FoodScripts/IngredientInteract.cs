@@ -19,7 +19,7 @@ public class IngredientInteract: NetworkInteractable
         // Vector3 velocity = gameObject.transform.position - player.transform.position;
         // GetComponent<Rigidbody>().AddForce(velocity.normalized, ForceMode.Impulse);
         transform.Translate(Vector3.up * 2, Space.World);
-        Debug.Log("Picked up Ingredient");
+        //Debug.Log("Picked up Ingredient");
     }
 
     // Can also use ClientRpc to broadcast changes to clients

@@ -40,6 +40,10 @@ public class PlayerInteract : NetworkBehaviour
                 GameObject target = hit.transform.gameObject;
                 //Debug.Log("hit target:" +target.name);
                 CmdInteract(target);
+                if (target.tag == "Ingredient")
+                {
+                    TakeIngredient(target);
+                }
             }
         }
     }
@@ -49,13 +53,11 @@ public class PlayerInteract : NetworkBehaviour
     private void CmdInteract(GameObject target)
     {
         target.SendMessage("RespondToInteraction", gameObject);
-        if(target.tag=="Ingredient"){
-            TakeIngredient(target);
-        }
     }
 
-    [Command]
-    private void TakeIngredient(GameObject target){
+    //Player picks up an ingredient and adds it to inventory
+    private void TakeIngredient(GameObject target)
+    {
         IngredientID id = target.GetComponent<IngredientInfo>().id;
         //Debug.Log("picked up ingredient of type: " + id);
         ManagePlayerData managePlayerData = gameObject.GetComponent<ManagePlayerData>();
