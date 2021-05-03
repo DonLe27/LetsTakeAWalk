@@ -8,6 +8,12 @@ public class PlayerData
     public Journal journal;
     public Element[] elements;
 
+    //Int array that represents the ingredients of each type that the player currently has
+    //Ingredients By Index: (not finalized just an example)
+    //0 : Mushrooms,    1 : Fish,   2 : Lettuce, 
+    //3 : Potatoes,     4 : Carrots 
+    public int[] ingredients = { 0, 0, 0, 0, 0 };
+
 }
 [System.Serializable]
 

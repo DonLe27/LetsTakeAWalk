@@ -27,4 +27,12 @@ public class ManagePlayerData : MonoBehaviour
 
     }
 
+    //function for updating the players ingredient inventory given the id of 
+    //the ingredient to be updated
+    //isAdding is a bool to tell if the item is being added to players inventory
+    //if !isAdded item is being removed from players inventory
+    public void updateIngredients(IngredientID id, bool isAdding){
+        playerData.ingredients[(int)id]+=1;
+    }
+
 }
