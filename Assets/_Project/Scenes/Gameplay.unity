@@ -5444,12 +5444,11 @@ MonoBehaviour:
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 3852648137654513568, guid: bded00d1490b4f447900f35469ec52c4, type: 3}
+  playerPrefab: {fileID: 4236300209440405150, guid: 990bf979d07092d42b905aebcb69115d, type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 1
   spawnPrefabs:
   - {fileID: 140914797661223896, guid: f521b9a0eef524b478fa373d72252807, type: 3}
-  cameraPrefab: {fileID: 3474498585603651122, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
 --- !u!114 &2123753355
 MonoBehaviour:
   m_ObjectHideFlags: 0

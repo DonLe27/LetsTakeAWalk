@@ -9,13 +9,15 @@ public class PlayerInteract : NetworkBehaviour
     public LayerMask mask;
     public Vector3 collision;
     public float rayDistance = 10;
-
+    private Transform body;
     public override void OnStartLocalPlayer()
+
     {
         base.OnStartLocalPlayer();
         GameObject cameraObj = GameObject.FindGameObjectWithTag("MainCamera");
         cam = cameraObj.GetComponent<Camera>();
         // Set camera to follow player
+
         cameraObj.transform.SetPositionAndRotation(gameObject.transform.position, gameObject.transform.rotation);
         cameraObj.transform.SetParent(gameObject.transform);
 
