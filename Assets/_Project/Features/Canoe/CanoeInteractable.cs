@@ -14,6 +14,7 @@ public class CanoeInteractable : NetworkInteractable
     // Use NetworkTransform component to sync
     private void Respond(GameObject player)
     {
+        Debug.Log("lazered!");
         Vector3 velocity = gameObject.transform.position - player.transform.position;
         GetComponent<Rigidbody>().AddForce(velocity.normalized, ForceMode.Impulse);
     }
