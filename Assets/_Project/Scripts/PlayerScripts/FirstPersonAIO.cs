@@ -277,6 +277,7 @@ public class FirstPersonAIO : NetworkBehaviour
 
     public override void OnStartLocalPlayer()
     {
+        if (!isLocalPlayer) return;
         #region Look Settings - Start
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         head = gameObject.transform;
@@ -349,7 +350,7 @@ public class FirstPersonAIO : NetworkBehaviour
 
     private void Update()
     {
-
+        if (!isLocalPlayer) return;
         #region Look Settings - Update
 
         if (enableCameraMovement && !controllerPauseState)
@@ -409,7 +410,7 @@ public class FirstPersonAIO : NetworkBehaviour
 
     private void FixedUpdate()
     {
-
+        if (!isLocalPlayer) return;
         #region Look Settings - FixedUpdate
 
         #endregion
