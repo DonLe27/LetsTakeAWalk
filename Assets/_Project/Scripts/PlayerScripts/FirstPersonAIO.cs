@@ -266,6 +266,7 @@ public class FirstPersonAIO : NetworkBehaviour
         fps_Rigidbody = GetComponent<Rigidbody>();
         fps_Rigidbody.interpolation = RigidbodyInterpolation.Extrapolate;
         fps_Rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
+        // Turn off physic simulations of rotations on all clients
         fps_Rigidbody.freezeRotation = true;
         _crouchModifiers.colliderHeight = capsule.height;
         #endregion
@@ -798,7 +799,7 @@ public class FirstPersonAIO : NetworkBehaviour
     }
 
 
-
+    [Client]
     public IEnumerator CameraShake(float Duration, float Magnitude)
     {
         float elapsed = 0;
@@ -811,14 +812,14 @@ public class FirstPersonAIO : NetworkBehaviour
         }
         playerCamera.transform.localPosition = cameraStartingPosition;
     }
-
+    [Client]
     public void RotateCamera(Vector2 Rotation, bool Snap)
     {
         enableCameraMovement = !enableCameraMovement;
         if (Snap) { followAngles = Rotation; targetAngles = Rotation; } else { targetAngles = Rotation; }
         enableCameraMovement = !enableCameraMovement;
     }
-
+    [Client]
     public void ControllerPause()
     {
         controllerPauseState = !controllerPauseState;
@@ -1645,12 +1646,12 @@ public class FPAIO_Editor : Editor
         #endregion
 
         /*   
-        #region FunctionSnipets
+#region FunctionSnipets
             GUILayout.Label("Audio/SFX Setup",new GUIStyle(GUI.skin.label){alignment = TextAnchor.MiddleCenter,fontStyle = FontStyle.Bold, fontSize = 13},GUILayout.ExpandWidth(true));
             EditorGUILayout.Space();
             EditorGUILayout.Space();
 
-        #endregion 
+#endregion
         
         */
 
