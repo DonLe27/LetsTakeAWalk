@@ -266,6 +266,7 @@ public class FirstPersonAIO : NetworkBehaviour
         fps_Rigidbody = GetComponent<Rigidbody>();
         fps_Rigidbody.interpolation = RigidbodyInterpolation.Extrapolate;
         fps_Rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
+        fps_Rigidbody.freezeRotation = true;
         _crouchModifiers.colliderHeight = capsule.height;
         #endregion
 
@@ -280,7 +281,6 @@ public class FirstPersonAIO : NetworkBehaviour
         #region Look Settings - Start
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         head = gameObject.transform;
-        fps_Rigidbody = gameObject.GetComponent<Rigidbody>();
         playerCamera.transform.SetPositionAndRotation(gameObject.transform.position, gameObject.transform.rotation);
         playerCamera.transform.SetParent(gameObject.transform);
         if (autoCrosshair || drawStaminaMeter)
