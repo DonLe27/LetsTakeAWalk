@@ -16,14 +16,6 @@ public class PlayerInteract : NetworkBehaviour
         base.OnStartLocalPlayer();
         GameObject cameraObj = GameObject.FindGameObjectWithTag("MainCamera");
         cam = cameraObj.GetComponent<Camera>();
-        // Set camera to follow player
-
-        cameraObj.transform.SetPositionAndRotation(gameObject.transform.position, gameObject.transform.rotation);
-        cameraObj.transform.SetParent(gameObject.transform);
-
-        // Add CamMouseLook to camera and set player variable
-        cameraObj.AddComponent<CamMouseLook>();
-        cameraObj.GetComponent<CamMouseLook>().character = gameObject;
     }
 
     [Client]

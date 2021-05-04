@@ -15,10 +15,10 @@ GameObject:
   - component: {fileID: 4415689647103709752}
   - component: {fileID: 4415689647103709748}
   - component: {fileID: 7897750360113720725}
-  - component: {fileID: 6177138848628968637}
-  - component: {fileID: 1922462219447417891}
-  - component: {fileID: 9030552886706224291}
   - component: {fileID: 7024813937654870080}
+  - component: {fileID: 1287373021025632822}
+  - component: {fileID: -3287954977109727240}
+  - component: {fileID: 2196027400555651284}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -34,7 +34,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4236300209440405150}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -118,7 +118,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &4415689647103709748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,61 +154,6 @@ MonoBehaviour:
   visible: 0
   m_AssetId: 
   hasSpawned: 0
---- !u!114 &6177138848628968637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4236300209440405150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50ca0548e7914ba4d806279f1d9e1f78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  rb: {fileID: 4415689647103709752}
-  speed: 50
-  freezeRotation: 1
---- !u!114 &1922462219447417891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4236300209440405150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5108dee4d57dc3d4b8dc22b35009951e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  cam: {fileID: 0}
-  mask:
-    serializedVersion: 2
-    m_Bits: 768
-  collision: {x: 0, y: 0, z: 0}
-  rayDistance: 10
---- !u!114 &9030552886706224291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4236300209440405150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 567b96975179ced468628d49108b1ba3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerData:
-    player_name: 
-    journal:
-      entries: []
-    elements: []
-    ingredients: 0000000000000000000000000000000000000000
 --- !u!114 &7024813937654870080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,3 +175,139 @@ MonoBehaviour:
   compressRotation: 0
   interpolateScale: 1
   syncScale: 1
+--- !u!136 &1287373021025632822
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4236300209440405150}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-3287954977109727240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4236300209440405150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf1a5ad4f9ffb154ca7813fdad11017a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  controllerPauseState: 0
+  enableCameraMovement: 1
+  mouseInputInversion: 0
+  cameraInputMethod: 0
+  verticalRotationRange: 170
+  mouseSensitivity: 10
+  fOVToMouseSensitivity: 1
+  cameraSmoothing: 5
+  lockAndHideCursor: 0
+  playerCamera: {fileID: 0}
+  enableCameraShake: 0
+  autoCrosshair: 0
+  drawStaminaMeter: 1
+  Crosshair: {fileID: 0}
+  targetAngles: {x: 0, y: 0, z: 0}
+  playerCanMove: 1
+  walkByDefault: 1
+  walkSpeed: 10
+  sprintKey: 304
+  sprintSpeed: 8
+  jumpPower: 5
+  canJump: 1
+  canHoldJump: 0
+  useStamina: 0
+  staminaDepletionSpeed: 5
+  staminaLevel: 50
+  speed: 0
+  staminaInternal: 0
+  _crouchModifiers:
+    useCrouch: 0
+    toggleCrouch: 0
+    crouchKey: 306
+    crouchWalkSpeedMultiplier: 0.5
+    crouchJumpPowerMultiplier: 0
+    crouchOverride: 0
+  advanced:
+    gravityMultiplier: 1
+    zeroFrictionMaterial: {fileID: 0}
+    highFrictionMaterial: {fileID: 0}
+    maxSlopeAngle: 55
+    maxWallShear: 89
+    maxStepHeight: 0.2
+    curntGroundNormal: {x: 0, y: 0, z: 0}
+    moveDirRef: {x: 0, y: 0}
+    lastKnownSlopeAngle: 0
+    FOVKickAmount: 2.5
+    changeTime: 0.75
+    fovRef: 0
+  isCrouching: 0
+  fps_Rigidbody: {fileID: 0}
+  useHeadbob: 0
+  head: {fileID: 8443768292572229512}
+  snapHeadjointToCapsul: 1
+  headbobFrequency: 1.5
+  headbobSwayAngle: 5
+  headbobHeight: 3
+  headbobSideMovement: 5
+  jumpLandIntensity: 3
+  enableAudioSFX: 1
+  Volume: 5
+  jumpSound: {fileID: 0}
+  landSound: {fileID: 0}
+  footStepSounds: []
+  fsmode: 0
+  dynamicFootstep:
+    materialMode: 0
+    woodPhysMat: []
+    metalAndGlassPhysMat: []
+    grassPhysMat: []
+    dirtAndGravelPhysMat: []
+    rockAndConcretePhysMat: []
+    mudPhysMat: []
+    customPhysMat: []
+    woodMat: []
+    metalAndGlassMat: []
+    grassMat: []
+    dirtAndGravelMat: []
+    rockAndConcreteMat: []
+    mudMat: []
+    customMat: []
+    currentClipSet: []
+    woodClipSet: []
+    metalAndGlassClipSet: []
+    grassClipSet: []
+    dirtAndGravelClipSet: []
+    rockAndConcreteClipSet: []
+    mudClipSet: []
+    customClipSet: []
+--- !u!114 &2196027400555651284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4236300209440405150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5108dee4d57dc3d4b8dc22b35009951e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  cam: {fileID: 0}
+  mask:
+    serializedVersion: 2
+    m_Bits: 768
+  collision: {x: 0, y: 0, z: 0}
+  rayDistance: 10
