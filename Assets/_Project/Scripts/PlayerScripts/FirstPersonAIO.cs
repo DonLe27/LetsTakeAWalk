@@ -248,7 +248,7 @@ public class FirstPersonAIO : NetworkBehaviour
     #endregion
 
     #endregion
-
+    [Client]
     private void Awake()
     {
         #region Look Settings - Awake
@@ -274,10 +274,9 @@ public class FirstPersonAIO : NetworkBehaviour
         #endregion
 
     }
-
-    public override void OnStartLocalPlayer()
+    [Client]
+    public override void OnStartAuthority()
     {
-        if (!isLocalPlayer) return;
         #region Look Settings - Start
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         head = gameObject.transform;
@@ -347,7 +346,7 @@ public class FirstPersonAIO : NetworkBehaviour
         audioSource = GetComponent<AudioSource>();
         #endregion
     }
-
+    [Client]
     private void Update()
     {
         if (!isLocalPlayer) return;
@@ -407,7 +406,7 @@ public class FirstPersonAIO : NetworkBehaviour
         #endregion
 
     }
-
+    [Client]
     private void FixedUpdate()
     {
         if (!isLocalPlayer) return;
