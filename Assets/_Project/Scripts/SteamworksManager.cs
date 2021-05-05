@@ -16,6 +16,10 @@ public class SteamworksManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        if (!GetComponent<ChooseNetworkHandler>().usingSteamworks)
+        {
+            return;
+        }
         networkManager = GetComponent<CustomNetworkManager>();
         if (!SteamManager.Initialized) { return; }
         lobbyCreated = Callback<LobbyCreated_t>.Create(OnLobbyCreated);
