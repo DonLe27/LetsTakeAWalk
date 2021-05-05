@@ -97,3 +97,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 0, z: 1}
   speed: 3
+  boundaryX: -10
+  boundaryZ: 2100

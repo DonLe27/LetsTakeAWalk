@@ -3217,8 +3217,9 @@ GameObject:
   - component: {fileID: 875638080}
   - component: {fileID: 875638079}
   - component: {fileID: 875638078}
+  - component: {fileID: 875638082}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: CloudSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3295,12 +3296,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 875638077}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 392.81, y: 25.21, z: -17.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 515, y: 93.6, z: -132}
+  m_LocalScale: {x: 1009.9579, y: 32.584667, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 94
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &875638082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875638077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f1157c93d98ab34f8a994397702d6b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cloud1: {fileID: 159362, guid: 248f8272187dcc448a9d3c979531398f, type: 3}
+  cloud2: {fileID: 115772, guid: 98c20755924aa5d499600058295661ee, type: 3}
+  cloud3: {fileID: 160454, guid: 8ec774c4def159e4dba49882bd591326, type: 3}
+  cloud4: {fileID: 115846, guid: bef19769e972d0741aec3902288fcc2e, type: 3}
+  cloudPerSec: 0.25
 --- !u!1001 &876438753
 PrefabInstance:
   m_ObjectHideFlags: 0
