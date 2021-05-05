@@ -5407,9 +5407,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2123753357}
-  - component: {fileID: 2123753355}
   - component: {fileID: 2123753354}
   - component: {fileID: 2123753356}
+  - component: {fileID: 2123753355}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -5458,19 +5458,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2123753353}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b0fecffa3f624585964b0d0eb21b18e, type: 3}
+  m_Script: {fileID: 11500000, guid: ea368fb6f27ec2f40a40e20977992b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Port: 7777
-  NoDelay: 1
-  Interval: 10
-  FastResend: 2
-  CongestionWindow: 0
-  SendWindowSize: 4096
-  ReceiveWindowSize: 4096
-  debugLog: 0
-  statisticsGUI: 0
-  statisticsLog: 0
+  Channels: 0200000001000000
+  Timeout: 25
+  SteamAppID: 480
+  AllowSteamRelay: 1
+  UseNextGenSteamNetworking: 1
+  SteamUserID: 0
 --- !u!114 &2123753356
 MonoBehaviour:
   m_ObjectHideFlags: 0
