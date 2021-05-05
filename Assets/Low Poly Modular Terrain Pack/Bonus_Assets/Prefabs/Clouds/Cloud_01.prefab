@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 406422}
   - component: {fileID: 3348406}
   - component: {fileID: 2394270}
+  - component: {fileID: 3531698673129729965}
   m_Layer: 0
   m_Name: Cloud_01
   m_TagString: Untagged
@@ -82,3 +83,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3531698673129729965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9efd053ce43ce84a960bf323a633c7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: {x: -1, y: 0, z: 1}
+  speed: 3
+  boundaryX: -10
+  boundaryZ: 2100

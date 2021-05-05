@@ -24,6 +24,21 @@ public class PlayerInteract : NetworkBehaviour
         if (!isLocalPlayer) return;
         if (!Utilities.MouseInsideScreen()) return;
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+
+        // Get button for unmounting
+        // Unparent the canoe
+
+        /*
+        if (player has mounted the canoe){
+            if (keyboard for row was pressed){
+                // Try other find functions for the name, etc
+                // OR you can do gameObject.parent ??
+                GameObject canoe = GameObject.FindObjectOfType<CanoeInteractable>(); 
+                CmdRow(canoe);
+            }   
+        }
+
+        */
         if (Input.GetButton("Fire1"))
         {
             //Debug.Log("Fired Ray");
@@ -47,6 +62,12 @@ public class PlayerInteract : NetworkBehaviour
     private void CmdInteract(GameObject target)
     {
         target.SendMessage("RespondToInteraction", gameObject);
+    }
+
+    [Command]
+    private void CmdRow(GameObject target)
+    {
+        target.SendMessage("Row", gameObject);
     }
 
     //Player picks up an ingredient and adds it to inventory
