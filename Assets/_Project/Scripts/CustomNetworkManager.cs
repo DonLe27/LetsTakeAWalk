@@ -7,6 +7,7 @@ public class CustomNetworkManager : NetworkManager
     [SerializeField] private bool usingSteamworks = false;
     public override void Start()
     {
+
         if (usingSteamworks)
         {
             Destroy(GetComponent<kcp2k.KcpTransport>());
@@ -14,6 +15,7 @@ public class CustomNetworkManager : NetworkManager
             GetComponent<SteamworksManager>().enabled = true;
             GetComponent<Mirror.FizzySteam.FizzySteamworks>().enabled = true;
             transform.Find("ConnectionUI").gameObject.SetActive(true);
+            transport = GetComponent<Mirror.FizzySteam.FizzySteamworks>();
         }
         else
         {
