@@ -4,29 +4,8 @@ using UnityEngine;
 using Mirror;
 public class CustomNetworkManager : NetworkManager
 {
-    [SerializeField] private bool usingSteamworks = false;
-    public override void Start()
-    {
+    // Start is called before the first frame update
 
-        /* if (usingSteamworks)
-         {
-             Destroy(GetComponent<kcp2k.KcpTransport>());
-             Destroy(GetComponent<NetworkManagerHUD>());
-             GetComponent<SteamworksManager>().enabled = true;
-             GetComponent<Mirror.FizzySteam.FizzySteamworks>().enabled = true;
-             transform.Find("ConnectionUI").gameObject.SetActive(true);
-             transport = GetComponent<Mirror.FizzySteam.FizzySteamworks>();
-         }
-         else
-         {
-             GetComponent<kcp2k.KcpTransport>().enabled = true;
-             GetComponent<NetworkManagerHUD>().enabled = true;
-             Destroy(GetComponent<SteamworksManager>());
-             Destroy(GetComponent<Mirror.FizzySteam.FizzySteamworks>());
-             Destroy(transform.Find("ConnectionUI").gameObject);
-         }*/
-        base.Start();
-    }
     public override void OnStartServer()
     {
         base.OnStartServer();
@@ -54,8 +33,4 @@ public class CustomNetworkManager : NetworkManager
     {
         base.OnClientConnect(conn);
     }
-
-
-
-
 }

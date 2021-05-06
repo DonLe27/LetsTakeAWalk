@@ -28,6 +28,8 @@ public class CloudSpawner : MonoBehaviour
     // Update is called once per frame
     void SpawnCloud()
     {
+
+        Debug.Log("spawned cloud");
         Vector3 location = new Vector3(Random.Range(min.x, max.x), Random.Range(min.y, max.y), Random.Range(min.z, max.z));
         Quaternion rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
         GameObject temp = clouds[Random.Range(0, 4)];
