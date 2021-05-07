@@ -10,16 +10,54 @@ public class PlayerInteract : NetworkBehaviour
     public Vector3 collision;
     public float rayDistance = 10;
     private Transform body;
+    public GameObject txt;
     private int colorSwitch = -1;
+    private string team;
+    private Color firstColor;
+    private bool startGame = false;
 
-    [SyncVar]
-    private Color myColor = Color.white;
+    [Client]
     public override void OnStartLocalPlayer()
 
     {
+        team = Random.Range(0, 2) > 0 ? "red" : "white";
+        firstColor = Random.Range(0, 2) > 0 ? Color.red : Color.white;
+        txt = GameObject.Find("AnnounceText");
         base.OnStartLocalPlayer();
         GameObject cameraObj = GameObject.FindGameObjectWithTag("MainCamera");
         cam = cameraObj.GetComponent<Camera>();
+        gameObject.GetComponent<Renderer>().material.color = firstColor;
+        CmdChangeObjectColor(gameObject, firstColor == Color.red ? 1 : -1);
+
+    }
+    [Client]
+    private void UpdateAnnounce()
+    {
+        int white = 0;
+        int red = 0;
+        foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            if (player.GetComponent<Renderer>().material.color == Color.red)
+            {
+                red += 1;
+            }
+            else
+            {
+                white += 1;
+            }
+            string winner = "";
+            if (white == 0 && startGame)
+            {
+                Debug.Log("red wins");
+                winner = "Red wins!";
+            }
+            if (red == 0 && startGame)
+            {
+                Debug.Log("white wins");
+                winner = "White wins!";
+            }
+            txt.GetComponent<TMPro.TextMeshProUGUI>().text = "Your team: " + team + "\n" + winner;
+        }
     }
 
     [Client]
@@ -28,25 +66,15 @@ public class PlayerInteract : NetworkBehaviour
         if (!isLocalPlayer) return;
         if (!Utilities.MouseInsideScreen()) return;
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-
-        // Get button for unmounting
-        // Unparent the canoe
-
-        /*
-        if (player has mounted the canoe){
-            if (keyboard for row was pressed){
-                // Try other find functions for the name, etc
-                // OR you can do gameObject.parent ??
-                GameObject canoe = GameObject.FindObjectOfType<CanoeInteractable>(); 
-                CmdRow(canoe);
-            }   
+        UpdateAnnounce();
+        if (Input.GetKeyDown("p"))
+        {
+            CmdStartGame();
         }
-
-        */
         if (Input.GetKeyDown("c"))
         {
-            CmdChangeOwnColor(gameObject, colorSwitch);
-            gameObject.GetComponent<Renderer>().material.color = colorSwitch == 1 ? Color.red : Color.white;
+            CmdChangeObjectColor(gameObject, colorSwitch);
+            gameObject.GetComponent<Renderer>().material.color = gameObject.GetComponent<Renderer>().material.color == Color.white ? Color.red : Color.white;
             colorSwitch = colorSwitch * -1;
         }
         if (Input.GetButton("Fire1") || Input.GetKeyDown("e"))
@@ -54,55 +82,36 @@ public class PlayerInteract : NetworkBehaviour
             //Debug.Log("Fired Ray");
             RaycastHit hit;
 
+
             if (Physics.Raycast(ray, out hit, rayDistance, mask))
             {
                 GameObject target = hit.transform.gameObject;
-                //Debug.Log("hit target:" +target.name);
-                CmdInteract(target);
-                /*if (target.tag == "Player")
+                if (target.tag == "Player")
                 {
-                    CmdTag(target, gameObject);
-                }*/
-                if (target.tag == "Ingredient")
-                {
-
-                    TakeIngredient(target);
+                    CmdChangeObjectColor(target, target.GetComponent<Renderer>().material.color == Color.red ? -1 : 1);
                 }
+
             }
         }
     }
 
-    // This function is run by the server's player object
     [Command]
-    private void CmdInteract(GameObject target)
+    void CmdStartGame()
     {
-        target.SendMessage("RespondToInteraction", gameObject);
+        Debug.Log("cmd start");
+        RpcStartGame();
     }
 
-    [Command]
-    private void CmdRow(GameObject target)
+    [ClientRpc]
+    void RpcStartGame()
     {
-        target.SendMessage("Row", gameObject);
+        Debug.Log("rpc start");
+        startGame = true;
     }
 
-    //Player picks up an ingredient and adds it to inventory
-    private void TakeIngredient(GameObject target)
-    {
-        IngredientID id = target.GetComponent<IngredientInfo>().id;
-        //Debug.Log("picked up ingredient of type: " + id);
-        ManagePlayerData managePlayerData = gameObject.GetComponent<ManagePlayerData>();
-        managePlayerData.updateIngredients(id, true);
-    }
 
     [Command]
-    private void CmdTag(GameObject tagged, GameObject tagger)
-    {
-        int colorInt = tagged.GetComponent<Renderer>().material.color == Color.red ? -1 : 1;
-        //(tagged, colorInt);
-    }
-
-    [Command]
-    private void CmdChangeOwnColor(GameObject target, int color)
+    private void CmdChangeObjectColor(GameObject target, int color)
     {
         ChangeColorOnClients(target, color);
     }
@@ -111,13 +120,6 @@ public class PlayerInteract : NetworkBehaviour
     private void ChangeColorOnClients(GameObject target, int color)
     {
         target.GetComponent<Renderer>().material.color = color == 1 ? Color.red : Color.white;
-    }
-
-    private void RespondToInteraction(GameObject target)
-    {
-        int colorInt = gameObject.GetComponent<Renderer>().material.color == Color.red ? -1 : 1;
-        CmdChangeOwnColor(gameObject, colorInt);
-
     }
 
 

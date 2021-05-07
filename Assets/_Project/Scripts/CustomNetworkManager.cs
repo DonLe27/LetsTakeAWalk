@@ -4,6 +4,7 @@ using UnityEngine;
 using Mirror;
 public class CustomNetworkManager : NetworkManager
 {
+    private int colorSwitch = -1;
     [SerializeField] private bool usingSteamworks = false;
     public override void Start()
     {
