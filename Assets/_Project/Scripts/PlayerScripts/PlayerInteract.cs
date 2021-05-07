@@ -10,6 +10,10 @@ public class PlayerInteract : NetworkBehaviour
     public Vector3 collision;
     public float rayDistance = 10;
     private Transform body;
+    private int colorSwitch = -1;
+
+    [SyncVar]
+    private Color myColor = Color.white;
     public override void OnStartLocalPlayer()
 
     {
@@ -39,7 +43,13 @@ public class PlayerInteract : NetworkBehaviour
         }
 
         */
-        if (Input.GetButton("Fire1"))
+        if (Input.GetKeyDown("c"))
+        {
+            CmdChangeOwnColor(gameObject, colorSwitch);
+            gameObject.GetComponent<Renderer>().material.color = colorSwitch == 1 ? Color.red : Color.white;
+            colorSwitch = colorSwitch * -1;
+        }
+        if (Input.GetButton("Fire1") || Input.GetKeyDown("e"))
         {
             //Debug.Log("Fired Ray");
             RaycastHit hit;
@@ -49,8 +59,13 @@ public class PlayerInteract : NetworkBehaviour
                 GameObject target = hit.transform.gameObject;
                 //Debug.Log("hit target:" +target.name);
                 CmdInteract(target);
+                /*if (target.tag == "Player")
+                {
+                    CmdTag(target, gameObject);
+                }*/
                 if (target.tag == "Ingredient")
                 {
+
                     TakeIngredient(target);
                 }
             }
@@ -77,6 +92,32 @@ public class PlayerInteract : NetworkBehaviour
         //Debug.Log("picked up ingredient of type: " + id);
         ManagePlayerData managePlayerData = gameObject.GetComponent<ManagePlayerData>();
         managePlayerData.updateIngredients(id, true);
+    }
+
+    [Command]
+    private void CmdTag(GameObject tagged, GameObject tagger)
+    {
+        int colorInt = tagged.GetComponent<Renderer>().material.color == Color.red ? -1 : 1;
+        //(tagged, colorInt);
+    }
+
+    [Command]
+    private void CmdChangeOwnColor(GameObject target, int color)
+    {
+        ChangeColorOnClients(target, color);
+    }
+
+    [ClientRpc]
+    private void ChangeColorOnClients(GameObject target, int color)
+    {
+        target.GetComponent<Renderer>().material.color = color == 1 ? Color.red : Color.white;
+    }
+
+    private void RespondToInteraction(GameObject target)
+    {
+        int colorInt = gameObject.GetComponent<Renderer>().material.color == Color.red ? -1 : 1;
+        CmdChangeOwnColor(gameObject, colorInt);
+
     }
 
 

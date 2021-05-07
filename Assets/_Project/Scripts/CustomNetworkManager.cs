@@ -7,24 +7,6 @@ public class CustomNetworkManager : NetworkManager
     [SerializeField] private bool usingSteamworks = false;
     public override void Start()
     {
-
-        /* if (usingSteamworks)
-         {
-             Destroy(GetComponent<kcp2k.KcpTransport>());
-             Destroy(GetComponent<NetworkManagerHUD>());
-             GetComponent<SteamworksManager>().enabled = true;
-             GetComponent<Mirror.FizzySteam.FizzySteamworks>().enabled = true;
-             transform.Find("ConnectionUI").gameObject.SetActive(true);
-             transport = GetComponent<Mirror.FizzySteam.FizzySteamworks>();
-         }
-         else
-         {
-             GetComponent<kcp2k.KcpTransport>().enabled = true;
-             GetComponent<NetworkManagerHUD>().enabled = true;
-             Destroy(GetComponent<SteamworksManager>());
-             Destroy(GetComponent<Mirror.FizzySteam.FizzySteamworks>());
-             Destroy(transform.Find("ConnectionUI").gameObject);
-         }*/
         base.Start();
     }
     public override void OnStartServer()
@@ -39,8 +21,9 @@ public class CustomNetworkManager : NetworkManager
     {
         // Add player at spawn position
         Transform startPos = GetStartPosition();
+        Vector3 offset = new Vector3(Random.Range(0f, 15f), 0, Random.Range(0f, 15f));
         GameObject player = startPos != null
-            ? Instantiate(playerPrefab, startPos.position, startPos.rotation)
+            ? Instantiate(playerPrefab, startPos.position + offset, startPos.rotation)
             : Instantiate(playerPrefab);
 
         // instantiating a "Player" prefab gives it the name "Player(clone)"

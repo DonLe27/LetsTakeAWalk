@@ -310,4 +310,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 768
   collision: {x: 0, y: 0, z: 0}
-  rayDistance: 10
+  rayDistance: 4
