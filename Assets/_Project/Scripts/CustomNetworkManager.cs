@@ -34,6 +34,11 @@ public class CustomNetworkManager : NetworkManager
         // Spawn Canoe
         GameObject canoe = Instantiate(spawnPrefabs.Find(prefab => prefab.name == "Canoe"));
         NetworkServer.Spawn(canoe);
+
+        //Spawn ingredient
+        GameObject ingredient = Instantiate(spawnPrefabs.Find(prefab => prefab.name == "Ingredient"));
+        ingredient.transform.position = new Vector3(320,10,200);
+        NetworkServer.Spawn(ingredient);
     }
     public override void OnServerAddPlayer(NetworkConnection conn)
     {
