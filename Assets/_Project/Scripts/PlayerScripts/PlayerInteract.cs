@@ -10,6 +10,8 @@ public class PlayerInteract : NetworkBehaviour
     public Vector3 collision;
     public float rayDistance = 10;
     private Transform body;
+    private GameObject ingredientToBePickedUp=null; //ingredient to be picked up
+
     public override void OnStartLocalPlayer()
 
     {
@@ -55,6 +57,11 @@ public class PlayerInteract : NetworkBehaviour
                 }
             }
         }
+
+        //check for pickup
+        if(Input.GetKey("p") && ingredientToBePickedUp!=null){
+            TakeIngredient(ingredientToBePickedUp);
+        }
     }
 
     // This function is run by the server's player object
@@ -71,6 +78,7 @@ public class PlayerInteract : NetworkBehaviour
     }
 
     //Player picks up an ingredient and adds it to inventory
+    [Client]
     private void TakeIngredient(GameObject target)
     {
         IngredientID id = target.GetComponent<IngredientInfo>().id;
@@ -79,6 +87,21 @@ public class PlayerInteract : NetworkBehaviour
         managePlayerData.updateIngredients(id, true);
         Destroy(target);
     }
+
+    //sets item that player collided with to be picked up
+    [Client]
+    private void SetToPickUp(GameObject target){
+            ingredientToBePickedUp = target;
+    }
+
+    [Client]
+    private void ResetToPickUp(GameObject target){
+        if (ingredientToBePickedUp==target)
+        {
+            ingredientToBePickedUp = null;
+        }
+    }
+
 
 
 }
