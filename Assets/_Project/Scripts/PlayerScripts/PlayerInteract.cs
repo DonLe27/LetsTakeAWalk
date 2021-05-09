@@ -77,6 +77,7 @@ public class PlayerInteract : NetworkBehaviour
         //Debug.Log("picked up ingredient of type: " + id);
         ManagePlayerData managePlayerData = gameObject.GetComponent<ManagePlayerData>();
         managePlayerData.updateIngredients(id, true);
+        Destroy(target);
     }
 
 
