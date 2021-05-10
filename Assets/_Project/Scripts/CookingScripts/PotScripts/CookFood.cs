@@ -5,6 +5,8 @@ using UnityEngine;
 public enum MealID{
     DefaultItem=0, MushroomSoup=1 
 }
+
+
 public class CookFood : MonoBehaviour
 {
     //Int array that represents the ingredients of each type that the pot currently has
@@ -35,6 +37,11 @@ public class CookFood : MonoBehaviour
     public void AddIngredient(IngredientID id){
         ingredients[(int)id]+=1;
         numItems+=1;
+    }
+
+    public void RemoveIngredient(IngredientID id){
+        ingredients[(int)id]-=1;
+        numItems-=1;
     }
 
     public void cook(){

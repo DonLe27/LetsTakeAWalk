@@ -118,6 +118,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   id: 0
+  canvas: {fileID: 8526779169057369469, guid: 38d4259b38c99e742b9d560059610396, type: 3}
 --- !u!54 &6663204171934979891
 Rigidbody:
   m_ObjectHideFlags: 0

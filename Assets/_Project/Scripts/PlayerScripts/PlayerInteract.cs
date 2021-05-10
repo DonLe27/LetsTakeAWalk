@@ -55,6 +55,9 @@ public class PlayerInteract : NetworkBehaviour
                 {
                     TakeIngredient(target);
                 }
+                else if(target.tag == "CookingPot"){
+                    target.SendMessage("CreateMenu", gameObject); //if click on pot, pot creates cooking menu
+                }
             }
         }
 
@@ -101,6 +104,7 @@ public class PlayerInteract : NetworkBehaviour
             ingredientToBePickedUp = null;
         }
     }
+
 
 
 
