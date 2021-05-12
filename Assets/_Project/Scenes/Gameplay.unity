@@ -5520,6 +5520,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1792564443}
   - component: {fileID: 1792564442}
+  - component: {fileID: 1792564444}
   m_Layer: 0
   m_Name: SpiritManager
   m_TagString: Untagged
@@ -5543,13 +5544,13 @@ MonoBehaviour:
   - {fileID: 7741165688307316805, guid: 333ff99de5bb109419fdfbc5512c8fdb, type: 3}
   - {fileID: 1522375440053901438, guid: 6576580b148400c4f9b48d1695135b57, type: 3}
   - {fileID: 6674210705162122331, guid: 0bf940354904e394ba0ce3d9ab8e5e62, type: 3}
-  min: {x: 340, y: 0, z: 220}
-  max: {x: 360, y: 10, z: 250}
   maxSpirits: 7
-  spawnDelay: {x: 5, y: 10}
+  spawnDelay: {x: 3, y: 5}
   heightOffset: {x: 0, y: 0}
-  spiritCount: 0
+  spawnRadius: {x: 2, y: 5}
+  despawnRadius: 10
   spawnTimer: 0
+  liveSpirits: []
 --- !u!4 &1792564443
 Transform:
   m_ObjectHideFlags: 0
@@ -5564,3 +5565,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1792564444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792564441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 738337731
+  serverOnly: 0
+  visible: 0
+  m_AssetId: 
+  hasSpawned: 0
