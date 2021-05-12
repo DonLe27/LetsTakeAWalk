@@ -5510,3 +5510,57 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1792564441
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1792564443}
+  - component: {fileID: 1792564442}
+  m_Layer: 0
+  m_Name: SpiritManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1792564442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792564441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b4eaad2c920a784db5d2323e37f1285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spirits:
+  - {fileID: 7741165688307316805, guid: 333ff99de5bb109419fdfbc5512c8fdb, type: 3}
+  - {fileID: 1522375440053901438, guid: 6576580b148400c4f9b48d1695135b57, type: 3}
+  - {fileID: 6674210705162122331, guid: 0bf940354904e394ba0ce3d9ab8e5e62, type: 3}
+  min: {x: 340, y: 0, z: 220}
+  max: {x: 360, y: 10, z: 250}
+  maxSpirits: 7
+  spawnDelay: {x: 5, y: 10}
+  heightOffset: {x: 0, y: 0}
+  spiritCount: 0
+  spawnTimer: 0
+--- !u!4 &1792564443
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792564441}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 344.01, y: 4.9990973, z: 226.89}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
