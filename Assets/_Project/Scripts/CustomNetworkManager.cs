@@ -37,7 +37,7 @@ public class CustomNetworkManager : NetworkManager
 
         //Spawn ingredient
         GameObject ingredient = Instantiate(spawnPrefabs.Find(prefab => prefab.name == "Ingredient"));
-        ingredient.transform.position = new Vector3(320,10,200);
+        ingredient.transform.position = new Vector3(320, 10, 200);
         NetworkServer.Spawn(ingredient);
     }
     public override void OnServerAddPlayer(NetworkConnection conn)

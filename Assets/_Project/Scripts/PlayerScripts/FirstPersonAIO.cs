@@ -71,7 +71,9 @@ public class FirstPersonAIO : NetworkBehaviour
 
 
     #region Variables
-
+    // Custom variables
+    private Animator animator;
+    public Vector3 cameraOffset;
     #region Input Settings
     public bool controllerPauseState = false;
     #endregion
@@ -279,11 +281,15 @@ public class FirstPersonAIO : NetworkBehaviour
     [Client]
     public override void OnStartAuthority()
     {
+        // Custom variables
+        animator = GetComponent<Animator>();
+        cameraOffset = new Vector3(-8, 5, 0);
         #region Look Settings - Start
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         head = gameObject.transform;
         playerCamera.transform.SetPositionAndRotation(gameObject.transform.position, gameObject.transform.rotation);
         playerCamera.transform.SetParent(gameObject.transform);
+        playerCamera.transform.position += cameraOffset;
         if (autoCrosshair || drawStaminaMeter)
         {
             Canvas canvas = new GameObject("AutoCrosshair").AddComponent<Canvas>();
@@ -416,7 +422,7 @@ public class FirstPersonAIO : NetworkBehaviour
         #endregion
 
         #region Movement Settings - FixedUpdate
-
+        // Set animation
         if (useStamina)
         {
             isSprinting = Input.GetKey(sprintKey) && !isCrouching && staminaInternal > 0 && (Mathf.Abs(fps_Rigidbody.velocity.x) > 0.01f || Mathf.Abs(fps_Rigidbody.velocity.z) > 0.01f);
@@ -456,7 +462,7 @@ public class FirstPersonAIO : NetworkBehaviour
             if (advanced.isTouchingUpright && advanced.isTouchingWalkable)
             {
 
-                MoveDirection = (transform.forward * inputXY.y * speed + transform.right * inputXY.x * walkSpeedInternal);
+                inputXY = (transform.forward * inputXY.y * speed + transform.right * inputXY.x * walkSpeedInternal);
                 if (!didJump) { fps_Rigidbody.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation; }
             }
             else if (advanced.isTouchingUpright && !advanced.isTouchingWalkable)
@@ -796,6 +802,15 @@ public class FirstPersonAIO : NetworkBehaviour
             advanced.isTouchingFlat = false;
         }
         #endregion
+        if (fps_Rigidbody.velocity != Vector3.zero)
+        {
+            Debug.Log("Walking");
+            animator.SetBool("walking", true);
+        }
+        else
+        {
+            animator.SetBool("walking", false);
+        }
     }
 
 
