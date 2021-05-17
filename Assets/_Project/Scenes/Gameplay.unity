@@ -365,9 +365,8 @@ GameObject:
   m_Component:
   - component: {fileID: 192535268}
   - component: {fileID: 192535271}
-  - component: {fileID: 192535270}
   - component: {fileID: 192535269}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: PaperCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,14 +424,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!81 &192535270
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 192535267}
-  m_Enabled: 1
 --- !u!20 &192535271
 Camera:
   m_ObjectHideFlags: 0
@@ -5762,7 +5753,7 @@ GameObject:
   - component: {fileID: 3359488831407298479}
   - component: {fileID: 70126483163677779}
   - component: {fileID: 1007501616576284029}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5796,9 +5787,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2710279023897069218}
   - component: {fileID: 2710279023897069220}
-  m_Layer: 0
+  - component: {fileID: 2710279023897069221}
+  m_Layer: 9
   m_Name: PaperWrapper
-  m_TagString: Untagged
+  m_TagString: JournalPage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5815,7 +5807,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36c1199434c163940ab4c0478c170b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  journalCamera: {fileID: 192535267}
+  pageCamera: {fileID: 192535267}
+--- !u!65 &2710279023897069221
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2710279023897069219}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.1032324, y: 1.9449188, z: 3.9525566}
+  m_Center: {x: -0.033136073, y: 5.835367e-10, z: 0.29919887}
 --- !u!223 &3359488831407298479
 Canvas:
   m_ObjectHideFlags: 0
@@ -5964,7 +5969,7 @@ GameObject:
   - component: {fileID: 8743434108135088381}
   - component: {fileID: 3806001584558104324}
   - component: {fileID: 8222792626007276102}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: paper_model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6071,7 +6076,7 @@ GameObject:
   - component: {fileID: 4259098490516067538}
   - component: {fileID: 498080412310831874}
   - component: {fileID: 8319177445170245844}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

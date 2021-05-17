@@ -305,9 +305,9 @@ MonoBehaviour:
   cam: {fileID: 0}
   mask:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 512
   collision: {x: 0, y: 0, z: 0}
-  rayDistance: 10
+  rayDistance: 20
 --- !u!114 &3099365582098886754
 MonoBehaviour:
   m_ObjectHideFlags: 0
