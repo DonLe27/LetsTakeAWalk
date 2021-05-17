@@ -10,12 +10,13 @@ public class PlayerInteract : NetworkBehaviour
     public Vector3 collision;
     public float rayDistance = 10;
     private Transform body;
+    private ManagePlayerData managePlayerData;
     public override void OnStartLocalPlayer()
-
     {
         base.OnStartLocalPlayer();
         GameObject cameraObj = GameObject.FindGameObjectWithTag("MainCamera");
         cam = cameraObj.GetComponent<Camera>();
+        managePlayerData = gameObject.GetComponent<ManagePlayerData>();
     }
 
     [Client]
@@ -53,6 +54,10 @@ public class PlayerInteract : NetworkBehaviour
                 {
                     TakeIngredient(target);
                 }
+                else if (target.tag == "JournalPage")
+                {
+                    TakeJournalPage(target);
+                }
             }
         }
     }
@@ -75,10 +80,14 @@ public class PlayerInteract : NetworkBehaviour
     {
         IngredientID id = target.GetComponent<IngredientInfo>().id;
         //Debug.Log("picked up ingredient of type: " + id);
-        ManagePlayerData managePlayerData = gameObject.GetComponent<ManagePlayerData>();
         managePlayerData.updateIngredients(id, true);
         Destroy(target);
     }
 
+    private void TakeJournalPage(GameObject target)
+    {
+        managePlayerData.receiveJournalPage(target);
+        target.SendMessage("RespondToInteraction", gameObject);
+    }
 
 }

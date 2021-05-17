@@ -31,8 +31,18 @@ public class ManagePlayerData : MonoBehaviour
     //the ingredient to be updated
     //isAdding is a bool to tell if the item is being added to players inventory
     //if !isAdded item is being removed from players inventory
-    public void updateIngredients(IngredientID id, bool isAdding){
-        playerData.ingredients[(int)id]+=1;
+    public void updateIngredients(IngredientID id, bool isAdding)
+    {
+        playerData.ingredients[(int)id] += 1;
     }
 
+    public void receiveJournalPage(GameObject target)
+    {
+        string content = target.GetComponentInChildren<TMPro.TextMeshProUGUI>().text;
+        foreach (Entry entry in playerData.journal.entries)
+        {
+            if (content == entry.content) return;
+        }
+        playerData.journal.entries.Add(new Entry("", content, "page"));
+    }
 }
