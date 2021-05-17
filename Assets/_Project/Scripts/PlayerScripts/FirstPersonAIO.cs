@@ -357,6 +357,7 @@ public class FirstPersonAIO : NetworkBehaviour
     [Client]
     private void Update()
     {
+        if (Input.GetButtonDown("Cancel")) { ControllerPause(); }
         if (!isLocalPlayer) return;
         #region Look Settings - Update
 
@@ -402,7 +403,6 @@ public class FirstPersonAIO : NetworkBehaviour
             else if (Input.GetKeyDown(_crouchModifiers.crouchKey)) { isCrouching = !isCrouching || _crouchModifiers.crouchOverride; }
         }
 
-        if (Input.GetButtonDown("Cancel")) { ControllerPause(); }
         #endregion
 
         #region Movement Settings - Update
@@ -840,8 +840,6 @@ public class FirstPersonAIO : NetworkBehaviour
         controllerPauseState = !controllerPauseState;
         if (lockAndHideCursor)
         {
-            Debug.Log("changed cursor");
-            Debug.Log(controllerPauseState);
             Cursor.lockState = controllerPauseState ? CursorLockMode.None : CursorLockMode.Locked;
             Cursor.visible = controllerPauseState;
         }

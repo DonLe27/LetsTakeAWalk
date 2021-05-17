@@ -208,7 +208,7 @@ MonoBehaviour:
   mouseSensitivity: 7
   fOVToMouseSensitivity: 1
   cameraSmoothing: 5
-  lockAndHideCursor: 0
+  lockAndHideCursor: 1
   playerCamera: {fileID: 0}
   enableCameraShake: 0
   autoCrosshair: 0
