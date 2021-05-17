@@ -5542,7 +5542,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spirits:
   - {fileID: 7741165688307316805, guid: 333ff99de5bb109419fdfbc5512c8fdb, type: 3}
-  - {fileID: 1522375440053901438, guid: 6576580b148400c4f9b48d1695135b57, type: 3}
   - {fileID: 6674210705162122331, guid: 0bf940354904e394ba0ce3d9ab8e5e62, type: 3}
   maxSpirits: 7
   spawnDelay: {x: 3, y: 5}

@@ -75,27 +75,32 @@ public class SpiritSpawner : MonoBehaviour
 
     void Update()
     {
-        if (spawnTimer <= 0) {
+        if (spawnTimer <= 0)
+        {
 
             // Despawn any spirits further than despawnRadius
             Vector3 playerLocation = ClientScene.localPlayer.gameObject.transform.position;
-            foreach (GameObject spirit in liveSpirits) {
+            foreach (GameObject spirit in liveSpirits)
+            {
                 Vector3 spiritLocation = spirit.transform.position;
                 float distance = Vector3.Distance(playerLocation, spiritLocation);
-                if (distance > despawnRadius) {
+                if (distance > despawnRadius)
+                {
                     DespawnSpirit(spirit);
                 }
             }
-
+            // TODO: Raycast downwards to make sure spirits are at a certain distance from the ground
             // If under maxSpirits, spawn a random spirit
-            if (GetSpiritCount() < maxSpirits) {
+            if (GetSpiritCount() < maxSpirits)
+            {
                 SpawnSpirit(spirits[Random.Range(0, spirits.Count)]);
                 spawnTimer = Random.Range(spawnDelay.x, spawnDelay.y);
             }
 
         }
         // Else count down spawn timer
-        else {
+        else
+        {
             spawnTimer -= Time.deltaTime;
         }
     }
@@ -104,7 +109,7 @@ public class SpiritSpawner : MonoBehaviour
     {
         Vector3 playerLocation = ClientScene.localPlayer.gameObject.transform.position;
         float radius = Random.Range(spawnRadius.x, spawnRadius.y);
-        float angle = Random.Range(0, 2*Mathf.PI);
+        float angle = Random.Range(0, 2 * Mathf.PI);
         Vector3 spawnLocation = playerLocation + new Vector3(radius * Mathf.Cos(angle), 100, radius * Mathf.Sin(angle));
         spawnLocation.y = Terrain.activeTerrain.SampleHeight(spawnLocation) + Random.Range(heightOffset.x, heightOffset.y);
 

@@ -9,6 +9,7 @@ public class ManageJournal : MonoBehaviour
     public TMPro.TextMeshProUGUI textMeshPro;
     public GameObject journalUI;
     private bool isOpen = false;
+    [SerializeField] GameObject journalCamera;
     void Start()
     {
         playerData = GetComponent<ManagePlayerData>().playerData;
@@ -22,11 +23,13 @@ public class ManageJournal : MonoBehaviour
         {
             if (isOpen)
             {
+
                 CloseJournal();
                 isOpen = false;
             }
             else
             {
+
                 OpenJournal();
                 isOpen = true;
             }
@@ -34,12 +37,14 @@ public class ManageJournal : MonoBehaviour
     }
     void OpenJournal()
     {
+        journalCamera.SetActive(true);
         journalUI.SetActive(true);
+        GetComponent<FirstPersonAIO>().enabled = false;
         playerData = GetComponent<ManagePlayerData>().playerData;
         string journalPage = "";
         foreach (Entry entry in playerData.journal.entries)
         {
-            journalPage += string.Format("{0}\n{1}\n\n ", entry.title, entry.content);
+            journalPage += string.Format("{0}\n{1}", entry.title, entry.content);
         }
         textMeshPro.text = journalPage;
 
@@ -47,6 +52,8 @@ public class ManageJournal : MonoBehaviour
 
     void CloseJournal()
     {
+        journalCamera.SetActive(false);
         journalUI.SetActive(false);
+        GetComponent<FirstPersonAIO>().enabled = true;
     }
 }
