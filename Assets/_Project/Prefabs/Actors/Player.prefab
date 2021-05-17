@@ -205,7 +205,7 @@ MonoBehaviour:
   mouseInputInversion: 0
   cameraInputMethod: 0
   verticalRotationRange: 170
-  mouseSensitivity: 10
+  mouseSensitivity: 7
   fOVToMouseSensitivity: 1
   cameraSmoothing: 5
   lockAndHideCursor: 0
@@ -213,7 +213,7 @@ MonoBehaviour:
   enableCameraShake: 0
   autoCrosshair: 0
   drawStaminaMeter: 1
-  Crosshair: {fileID: 0}
+  Crosshair: {fileID: 21300000, guid: 2c19e4cb225706240af7a8fbbf2ebfe2, type: 3}
   targetAngles: {x: 0, y: 0, z: 0}
   playerCanMove: 1
   walkByDefault: 1
