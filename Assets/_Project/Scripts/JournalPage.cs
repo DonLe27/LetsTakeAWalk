@@ -16,11 +16,11 @@ public class JournalPage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canDisable && Input.GetButton("Cancel"))
+        if (canDisable && (Input.GetButton("Cancel") || Input.GetMouseButtonDown(0)))
         {
-            pageCamera.SetActive(false);
             canDisable = false;
-            player.GetComponent<FirstPersonAIO>().enabled = true;
+            pageCamera.SetActive(false);
+            player.SetActive(true); ;
             Destroy(gameObject);
         }
 
@@ -31,6 +31,6 @@ public class JournalPage : MonoBehaviour
         player = p;
         pageCamera.SetActive(true);
         canDisable = true;
-        player.GetComponent<FirstPersonAIO>().enabled = false;
+        player.SetActive(false);
     }
 }

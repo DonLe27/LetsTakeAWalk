@@ -43,12 +43,14 @@ public class PlayerInteract : NetworkBehaviour
         if (Input.GetButton("Fire1"))
         {
             RaycastHit hit;
-            Debug.Log("fired raycast");
             if (Physics.Raycast(ray, out hit, rayDistance, mask))
             {
                 GameObject target = hit.transform.gameObject;
-                Debug.Log("hit target:" + target.name);
-                CmdInteract(target);
+                if (target.GetComponent<NetworkIdentity>())
+                {
+                    CmdInteract(target);
+                }
+
                 if (target.tag == "Ingredient")
                 {
                     TakeIngredient(target);
