@@ -9,6 +9,7 @@ public class CanoeInteractable : NetworkInteractable
     public override void RespondToInteraction(GameObject player)
     {
         // Mount the player to the canoe and position them
+        player.transform.parent = this.transform; // make this (canoe) the parent of player
         Debug.Log("lazered!");
         Vector3 velocity = gameObject.transform.position - player.transform.position;
         GetComponent<Rigidbody>().AddForce(velocity.normalized, ForceMode.Impulse);
@@ -18,6 +19,9 @@ public class CanoeInteractable : NetworkInteractable
     public void Row(GameObject player)
     {
         // Code for moving the canoe
+        float movementSpeed = 100f;
+        transform.position += transform.forward * Time.deltaTime * movementSpeed;
+        
     }
 
     // Can also use ClientRpc to broadcast changes to clients

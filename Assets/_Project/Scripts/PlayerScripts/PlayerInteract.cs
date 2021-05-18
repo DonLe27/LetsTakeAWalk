@@ -27,18 +27,22 @@ public class PlayerInteract : NetworkBehaviour
 
         // Get button for unmounting
         // Unparent the canoe
-
-        /*
-        if (player has mounted the canoe){
-            if (keyboard for row was pressed){
-                // Try other find functions for the name, etc
-                // OR you can do gameObject.parent ??
-                GameObject canoe = GameObject.FindObjectOfType<CanoeInteractable>(); 
-                CmdRow(canoe);
-            }   
+        if (Input.GetKeyDown("space")) // using space to unmount for now
+        {
+            // GameObject canoe = GameObject.FindObjectOfType<CanoeInteractable>(); 
+            // GameObject.FindObjectOfType<CanoeInteractable>().parent = null;
+            CanoeInteractable canoe = GameObject.FindObjectOfType<CanoeInteractable>();
+            canoe.transform.DetachChildren();
         }
 
-        */
+        if (this.transform.parent != null) { // if player has mounted canoe
+            if (Input.GetKeyDown("r")) // if keyboard for row was pressed
+            {
+                CanoeInteractable canoe = GameObject.FindObjectOfType<CanoeInteractable>();
+                CmdRow(canoe.transform.gameObject);
+            }
+        }
+
         if (Input.GetButton("Fire1"))
         {
             //Debug.Log("Fired Ray");
@@ -65,9 +69,9 @@ public class PlayerInteract : NetworkBehaviour
     }
 
     [Command]
-    private void CmdRow(GameObject target)
+    private void CmdRow(GameObject target1)
     {
-        target.SendMessage("Row", gameObject);
+        target1.SendMessage("Row", this.transform.gameObject);
     }
 
     //Player picks up an ingredient and adds it to inventory
