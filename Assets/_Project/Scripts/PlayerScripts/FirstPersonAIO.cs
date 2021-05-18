@@ -89,7 +89,7 @@ public class FirstPersonAIO : NetworkBehaviour
     public float mouseSensitivity = 10;
     public float fOVToMouseSensitivity = 1;
     public float cameraSmoothing = 5f;
-    public bool lockAndHideCursor = false;
+    public bool lockAndHideCursor = true;
     public Camera playerCamera;
     public bool enableCameraShake = false;
     internal Vector3 cameraStartingPosition;
@@ -284,6 +284,7 @@ public class FirstPersonAIO : NetworkBehaviour
         // Custom variables
         animator = GetComponent<Animator>();
         cameraOffset = new Vector3(-8, 5, 0);
+
         #region Look Settings - Start
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         head = gameObject.transform;
@@ -356,6 +357,7 @@ public class FirstPersonAIO : NetworkBehaviour
     [Client]
     private void Update()
     {
+        if (Input.GetButtonDown("Cancel")) { ControllerPause(); }
         if (!isLocalPlayer) return;
         #region Look Settings - Update
 
@@ -401,7 +403,6 @@ public class FirstPersonAIO : NetworkBehaviour
             else if (Input.GetKeyDown(_crouchModifiers.crouchKey)) { isCrouching = !isCrouching || _crouchModifiers.crouchOverride; }
         }
 
-        if (Input.GetButtonDown("Cancel")) { ControllerPause(); }
         #endregion
 
         #region Movement Settings - Update
@@ -804,7 +805,6 @@ public class FirstPersonAIO : NetworkBehaviour
         #endregion
         if (fps_Rigidbody.velocity != Vector3.zero)
         {
-            Debug.Log("Walking");
             animator.SetBool("walking", true);
         }
         else
