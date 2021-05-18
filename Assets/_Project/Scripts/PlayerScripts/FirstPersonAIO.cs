@@ -553,7 +553,16 @@ public class FirstPersonAIO : NetworkBehaviour
 
         }
         else { fps_Rigidbody.velocity = Vector3.zero; }
-
+        // Set walking or idle animation
+        if (fps_Rigidbody.velocity.magnitude > 0.2f)
+        {
+            Debug.Log("walking");
+            animator.SetBool("walking", true);
+        }
+        else
+        {
+            animator.SetBool("walking", false);
+        }
         if (inputXY.magnitude > 0 || !IsGrounded)
         {
             capsule.sharedMaterial = advanced.zeroFrictionMaterial;
@@ -803,14 +812,7 @@ public class FirstPersonAIO : NetworkBehaviour
             advanced.isTouchingFlat = false;
         }
         #endregion
-        if (fps_Rigidbody.velocity != Vector3.zero)
-        {
-            animator.SetBool("walking", true);
-        }
-        else
-        {
-            animator.SetBool("walking", false);
-        }
+
     }
 
 
