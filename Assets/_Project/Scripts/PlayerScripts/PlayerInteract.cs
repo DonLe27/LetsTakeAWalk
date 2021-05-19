@@ -10,6 +10,9 @@ public class PlayerInteract : NetworkBehaviour
     public Vector3 collision;
     public float rayDistance = 10;
     private Transform body;
+
+    private GameObject ingredientToBePickedUp=null; //ingredient to be picked up
+
     private ManagePlayerData managePlayerData;
     private bool mountedOnCanoe = false;
     [SerializeField] private Vector3 playerCanoeOffset = new Vector3(0, 1, 0);
@@ -51,6 +54,9 @@ public class PlayerInteract : NetworkBehaviour
                     CmdInteract(target);
                     TakeIngredient(target);
                 }
+                else if(target.tag == "CookingPot"){
+                    target.SendMessage("CreateMenu", gameObject); //if click on pot, pot creates cooking menu
+                }
                 else if (target.tag == "JournalPage")
                 {
                     TakeJournalPage(target);
@@ -73,6 +79,11 @@ public class PlayerInteract : NetworkBehaviour
                 }
             }
         }
+
+        //check for pickup
+        if(Input.GetKey("p") && ingredientToBePickedUp!=null){
+            TakeIngredient(ingredientToBePickedUp);
+        }
     }
 
     // This function is run by the server's player object
@@ -94,6 +105,7 @@ public class PlayerInteract : NetworkBehaviour
     }
 
     //Player picks up an ingredient and adds it to inventory
+    [Client]
     private void TakeIngredient(GameObject target)
     {
         IngredientID id = target.GetComponent<IngredientInfo>().id;
@@ -101,6 +113,22 @@ public class PlayerInteract : NetworkBehaviour
         managePlayerData.updateIngredients(id, true);
         Destroy(target);
     }
+
+    //sets item that player collided with to be picked up
+    [Client]
+    private void SetToPickUp(GameObject target){
+            ingredientToBePickedUp = target;
+    }
+
+    [Client]
+    private void ResetToPickUp(GameObject target){
+        if (ingredientToBePickedUp==target)
+        {
+            ingredientToBePickedUp = null;
+        }
+    }
+
+
 
 
     private void TakeJournalPage(GameObject target)

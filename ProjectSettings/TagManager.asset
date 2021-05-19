@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ingredient
   - Ground
+  - CookingPot
   - JournalPage
   - Canoe
   layers:
