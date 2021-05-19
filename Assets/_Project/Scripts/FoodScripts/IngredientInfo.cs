@@ -9,10 +9,13 @@ public enum IngredientID{
     Mushroom = 0, Fish = 1, Lettuce = 2, Potato = 3, Carrot = 4
 }
 
+// public int[,,] IngredientSpawnLocations = { { { 1, 2, 3 } }, //zone 1
+// { { 1, 2, 3 } }, //zone 2
+// { { 1, 2, 3 } } }; //zone 3
+
 
 public class IngredientInfo:MonoBehaviour
 {
     //Ingredient ID to specify which type of ingredient it is
     public IngredientID id;
-
 }
