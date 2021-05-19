@@ -61,7 +61,7 @@ public class AudioManager : MonoBehaviour
 
     void Start() 
     {
-        
+        Play("SpiritedAwayTheme");
     }
 
     public void Play(string name)
