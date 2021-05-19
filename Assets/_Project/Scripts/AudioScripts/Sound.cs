@@ -3,7 +3,7 @@ using UnityEngine;
 
 //display in Unity Editor
 [System.Serializable]
-public class Sound : MonoBehaviour
+public class Sound
 {
     public string name;
 
@@ -15,7 +15,7 @@ public class Sound : MonoBehaviour
     public float volume;
 
     //create slider for pitch
-    [Range(.1f, .3f)]
+    [Range(.1f, 3f)]
     public float pitch;
 
     public bool loop;
