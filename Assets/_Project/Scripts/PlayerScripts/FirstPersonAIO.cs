@@ -71,7 +71,9 @@ public class FirstPersonAIO : NetworkBehaviour
 
 
     #region Variables
-
+    // Custom variables
+    private Animator animator;
+    public Vector3 cameraOffset;
     #region Input Settings
     public bool controllerPauseState = false;
     #endregion
@@ -87,13 +89,13 @@ public class FirstPersonAIO : NetworkBehaviour
     public float mouseSensitivity = 10;
     public float fOVToMouseSensitivity = 1;
     public float cameraSmoothing = 5f;
-    public bool lockAndHideCursor = false;
+    public bool lockAndHideCursor = true;
     public Camera playerCamera;
     public bool enableCameraShake = false;
     internal Vector3 cameraStartingPosition;
     float baseCamFOV;
 
-
+    public bool mountCanoe = false;
     public bool autoCrosshair = false;
     public bool drawStaminaMeter = true;
     float smoothRef;
@@ -279,11 +281,16 @@ public class FirstPersonAIO : NetworkBehaviour
     [Client]
     public override void OnStartAuthority()
     {
+        // Custom variables
+        animator = GetComponent<Animator>();
+        cameraOffset = new Vector3(-8, 5, 0);
+
         #region Look Settings - Start
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         head = gameObject.transform;
         playerCamera.transform.SetPositionAndRotation(gameObject.transform.position, gameObject.transform.rotation);
         playerCamera.transform.SetParent(gameObject.transform);
+        playerCamera.transform.position += cameraOffset;
         if (autoCrosshair || drawStaminaMeter)
         {
             Canvas canvas = new GameObject("AutoCrosshair").AddComponent<Canvas>();
@@ -347,9 +354,11 @@ public class FirstPersonAIO : NetworkBehaviour
         audioSource = GetComponent<AudioSource>();
         #endregion
     }
+
     [Client]
     private void Update()
     {
+        if (Input.GetButtonDown("Cancel")) { ControllerPause(); }
         if (!isLocalPlayer) return;
         #region Look Settings - Update
 
@@ -395,7 +404,6 @@ public class FirstPersonAIO : NetworkBehaviour
             else if (Input.GetKeyDown(_crouchModifiers.crouchKey)) { isCrouching = !isCrouching || _crouchModifiers.crouchOverride; }
         }
 
-        if (Input.GetButtonDown("Cancel")) { ControllerPause(); }
         #endregion
 
         #region Movement Settings - Update
@@ -416,7 +424,7 @@ public class FirstPersonAIO : NetworkBehaviour
         #endregion
 
         #region Movement Settings - FixedUpdate
-
+        // Set animation
         if (useStamina)
         {
             isSprinting = Input.GetKey(sprintKey) && !isCrouching && staminaInternal > 0 && (Mathf.Abs(fps_Rigidbody.velocity.x) > 0.01f || Mathf.Abs(fps_Rigidbody.velocity.z) > 0.01f);
@@ -456,7 +464,7 @@ public class FirstPersonAIO : NetworkBehaviour
             if (advanced.isTouchingUpright && advanced.isTouchingWalkable)
             {
 
-                MoveDirection = (transform.forward * inputXY.y * speed + transform.right * inputXY.x * walkSpeedInternal);
+                inputXY = (transform.forward * inputXY.y * speed + transform.right * inputXY.x * walkSpeedInternal);
                 if (!didJump) { fps_Rigidbody.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation; }
             }
             else if (advanced.isTouchingUpright && !advanced.isTouchingWalkable)
@@ -546,7 +554,15 @@ public class FirstPersonAIO : NetworkBehaviour
 
         }
         else { fps_Rigidbody.velocity = Vector3.zero; }
-
+        // Set walking or idle animation
+        if (fps_Rigidbody.velocity.magnitude > 0.2f)
+        {
+            animator.SetBool("walking", true);
+        }
+        else
+        {
+            animator.SetBool("walking", false);
+        }
         if (inputXY.magnitude > 0 || !IsGrounded)
         {
             capsule.sharedMaterial = advanced.zeroFrictionMaterial;
@@ -796,6 +812,13 @@ public class FirstPersonAIO : NetworkBehaviour
             advanced.isTouchingFlat = false;
         }
         #endregion
+
+        // Freeze positions
+        if (mountCanoe)
+        {
+            fps_Rigidbody.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        }
+
     }
 
 

@@ -7,24 +7,6 @@ public class CustomNetworkManager : NetworkManager
     [SerializeField] private bool usingSteamworks = false;
     public override void Start()
     {
-
-        /* if (usingSteamworks)
-         {
-             Destroy(GetComponent<kcp2k.KcpTransport>());
-             Destroy(GetComponent<NetworkManagerHUD>());
-             GetComponent<SteamworksManager>().enabled = true;
-             GetComponent<Mirror.FizzySteam.FizzySteamworks>().enabled = true;
-             transform.Find("ConnectionUI").gameObject.SetActive(true);
-             transport = GetComponent<Mirror.FizzySteam.FizzySteamworks>();
-         }
-         else
-         {
-             GetComponent<kcp2k.KcpTransport>().enabled = true;
-             GetComponent<NetworkManagerHUD>().enabled = true;
-             Destroy(GetComponent<SteamworksManager>());
-             Destroy(GetComponent<Mirror.FizzySteam.FizzySteamworks>());
-             Destroy(transform.Find("ConnectionUI").gameObject);
-         }*/
         base.Start();
     }
     public override void OnStartServer()
@@ -37,7 +19,7 @@ public class CustomNetworkManager : NetworkManager
 
         //Spawn ingredient
         GameObject ingredient = Instantiate(spawnPrefabs.Find(prefab => prefab.name == "Ingredient"));
-        ingredient.transform.position = new Vector3(320,10,200);
+        ingredient.transform.position = new Vector3(320, 10, 200);
         NetworkServer.Spawn(ingredient);
     }
     public override void OnServerAddPlayer(NetworkConnection conn)

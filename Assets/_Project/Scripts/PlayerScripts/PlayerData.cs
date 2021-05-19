@@ -33,7 +33,7 @@ public class Entry
 {
     public string title;
     public string content;
-    public Entry(string t, string c = "")
+    public Entry(string t, string c = "", string type = "question")
     {
         title = t;
         content = c;

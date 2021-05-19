@@ -10,14 +10,18 @@ public class PlayerInteract : NetworkBehaviour
     public Vector3 collision;
     public float rayDistance = 10;
     private Transform body;
+
     private GameObject ingredientToBePickedUp=null; //ingredient to be picked up
 
+    private ManagePlayerData managePlayerData;
+    private bool mountedOnCanoe = false;
+    [SerializeField] private Vector3 playerCanoeOffset = new Vector3(0, 1, 0);
     public override void OnStartLocalPlayer()
-
     {
         base.OnStartLocalPlayer();
         GameObject cameraObj = GameObject.FindGameObjectWithTag("MainCamera");
         cam = cameraObj.GetComponent<Camera>();
+        managePlayerData = gameObject.GetComponent<ManagePlayerData>();
     }
 
     [Client]
@@ -30,33 +34,48 @@ public class PlayerInteract : NetworkBehaviour
         // Get button for unmounting
         // Unparent the canoe
 
-        /*
-        if (player has mounted the canoe){
-            if (keyboard for row was pressed){
-                // Try other find functions for the name, etc
-                // OR you can do gameObject.parent ??
-                GameObject canoe = GameObject.FindObjectOfType<CanoeInteractable>(); 
-                CmdRow(canoe);
-            }   
+        if (this.transform.parent != null)
+        { // if player has mounted canoe
+            if (Input.GetKeyDown("r")) // if keyboard for row was pressed
+            {
+                CanoeInteractable canoe = GameObject.FindObjectOfType<CanoeInteractable>();
+                CmdRow(canoe.transform.gameObject);
+            }
         }
 
-        */
-        if (Input.GetButton("Fire1"))
+        if (Input.GetMouseButtonDown(0))
         {
-            //Debug.Log("Fired Ray");
             RaycastHit hit;
-
             if (Physics.Raycast(ray, out hit, rayDistance, mask))
             {
                 GameObject target = hit.transform.gameObject;
-                //Debug.Log("hit target:" +target.name);
-                CmdInteract(target);
                 if (target.tag == "Ingredient")
                 {
+                    CmdInteract(target);
                     TakeIngredient(target);
                 }
                 else if(target.tag == "CookingPot"){
                     target.SendMessage("CreateMenu", gameObject); //if click on pot, pot creates cooking menu
+                }
+                else if (target.tag == "JournalPage")
+                {
+                    TakeJournalPage(target);
+                }
+                else if (target.tag == "Canoe")
+                {
+                    if (!mountedOnCanoe)
+                    {
+                        MountCanoe(target);
+                        CmdCanoeInteract(target, 1);
+                        mountedOnCanoe = !mountedOnCanoe;
+                    }
+                    else
+                    {
+                        UnmountCanoe(target);
+                        CmdCanoeInteract(target, -1);
+                        mountedOnCanoe = !mountedOnCanoe;
+                    }
+
                 }
             }
         }
@@ -69,15 +88,20 @@ public class PlayerInteract : NetworkBehaviour
 
     // This function is run by the server's player object
     [Command]
+    private void CmdCanoeInteract(GameObject target, int delta)
+    {
+        target.SendMessage("RespondToInteraction", delta, SendMessageOptions.DontRequireReceiver);
+    }
+    [Command]
     private void CmdInteract(GameObject target)
     {
-        target.SendMessage("RespondToInteraction", gameObject);
+        target.SendMessage("RespondToInteraction", gameObject, SendMessageOptions.DontRequireReceiver);
     }
 
     [Command]
-    private void CmdRow(GameObject target)
+    private void CmdRow(GameObject target1)
     {
-        target.SendMessage("Row", gameObject);
+        target1.SendMessage("Row", this.transform.gameObject);
     }
 
     //Player picks up an ingredient and adds it to inventory
@@ -86,7 +110,6 @@ public class PlayerInteract : NetworkBehaviour
     {
         IngredientID id = target.GetComponent<IngredientInfo>().id;
         //Debug.Log("picked up ingredient of type: " + id);
-        ManagePlayerData managePlayerData = gameObject.GetComponent<ManagePlayerData>();
         managePlayerData.updateIngredients(id, true);
         Destroy(target);
     }
@@ -107,5 +130,44 @@ public class PlayerInteract : NetworkBehaviour
 
 
 
+
+    private void TakeJournalPage(GameObject target)
+    {
+        managePlayerData.receiveJournalPage(target);
+        target.SendMessage("RespondToInteraction", gameObject);
+    }
+
+    [Client]
+    private void MountCanoe(GameObject target)
+    {
+        if (!isLocalPlayer) return;
+        Debug.Log("mounting canoe");
+        // Mount the player to the canoe and position them
+        transform.parent = target.transform; // make this (canoe) the parent of player
+        int canoeCount = target.GetComponent<CanoeInteractable>().GetCanoeCount();
+        Debug.Log(canoeCount);
+        if (canoeCount == 0)
+        {
+            Debug.Log("sit in front");
+            transform.localPosition = playerCanoeOffset;
+        }
+        else
+        {
+            Debug.Log("sit behind");
+            transform.localPosition = playerCanoeOffset + new Vector3(0, 0, 5);
+        }
+        Debug.Log(transform.position);
+        transform.localRotation = Quaternion.Euler(0, 180, 0);
+        GetComponent<FirstPersonAIO>().mountCanoe = true;
+    }
+
+    [Client]
+    private void UnmountCanoe(GameObject canoe)
+    {
+        // GameObject canoe = GameObject.FindObjectOfType<CanoeInteractable>(); 
+        // GameObject.FindObjectOfType<CanoeInteractable>().parent = null;
+        canoe.transform.DetachChildren();
+        GetComponent<FirstPersonAIO>().mountCanoe = false;
+    }
 
 }
