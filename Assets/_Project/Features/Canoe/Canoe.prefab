@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 8273100052052571907}
   m_Layer: 9
   m_Name: Canoe
-  m_TagString: Untagged
+  m_TagString: Canoe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -349,7 +349,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6809531062798149070}
   m_LocalRotation: {x: -0, y: -0.73173916, z: -0, w: 0.6815848}
-  m_LocalPosition: {x: 1129.4829, y: 0, z: 1220.047}
+  m_LocalPosition: {x: 1129, y: 0, z: 1220.047}
   m_LocalScale: {x: 2.825734, y: 2.4748063, z: 2.4748063}
   m_Children:
   - {fileID: 2164297213580611878}
@@ -428,7 +428,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  playerOffset: {x: 0, y: 1, z: 0}
 --- !u!65 &8273100052052571907
 BoxCollider:
   m_ObjectHideFlags: 0

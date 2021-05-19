@@ -3,38 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public class CanoeInteractable : NetworkInteractable
+public class CanoeInteractable : NetworkBehaviour
 {
-    [SerializeField] private Vector3 playerOffset = new Vector3(0, 0, 0);
+    [SyncVar]
+    public int canoeCount = 0;
     [Server]
-    public override void RespondToInteraction(GameObject player)
+    public void RespondToInteraction(int delta)
     {
-        // Mount the player to the canoe and position them
-        bool firstMounted = true;
-        foreach (GameObject playerObject in GameObject.FindGameObjectsWithTag("Player"))
-        {
-            Debug.Log(transform.gameObject.name);
-            // Other player was already mounted
-            if (playerObject.transform.parent != null)
-            {
-                Debug.Log("there was a plyaer");
-                firstMounted = false;
-            }
-        }
-        if (firstMounted)
-        {
-            player.transform.parent = this.transform; // make this (canoe) the parent of player
-            player.transform.localPosition = playerOffset;
-        }
-        else
-        {
-            player.transform.parent = this.transform; // make this (canoe) the parent of player
-            player.transform.localPosition = playerOffset - new Vector3(0, 0, 5);
-        }
+        canoeCount += delta;
+    }
 
-        player.transform.localRotation = Quaternion.Euler(0, 180, 0);
-        player.GetComponent<FirstPersonAIO>().enabled = false;
-        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+
+    public int GetCanoeCount()
+    {
+        return canoeCount;
     }
 
     // Use NetworkTransform component to sync

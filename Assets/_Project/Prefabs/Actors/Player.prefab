@@ -309,6 +309,7 @@ MonoBehaviour:
     m_Bits: 512
   collision: {x: 0, y: 0, z: 0}
   rayDistance: 20
+  playerCanoeOffset: {x: 0, y: 2, z: -1}
 --- !u!114 &3099365582098886754
 MonoBehaviour:
   m_ObjectHideFlags: 0

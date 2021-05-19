@@ -95,7 +95,7 @@ public class FirstPersonAIO : NetworkBehaviour
     internal Vector3 cameraStartingPosition;
     float baseCamFOV;
 
-
+    public bool mountCanoe = false;
     public bool autoCrosshair = false;
     public bool drawStaminaMeter = true;
     float smoothRef;
@@ -354,6 +354,7 @@ public class FirstPersonAIO : NetworkBehaviour
         audioSource = GetComponent<AudioSource>();
         #endregion
     }
+
     [Client]
     private void Update()
     {
@@ -811,6 +812,12 @@ public class FirstPersonAIO : NetworkBehaviour
             advanced.isTouchingFlat = false;
         }
         #endregion
+
+        // Freeze positions
+        if (mountCanoe)
+        {
+            fps_Rigidbody.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        }
 
     }
 
