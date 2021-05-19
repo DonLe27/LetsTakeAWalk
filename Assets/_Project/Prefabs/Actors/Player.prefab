@@ -212,6 +212,7 @@ MonoBehaviour:
   lockAndHideCursor: 1
   playerCamera: {fileID: 0}
   enableCameraShake: 0
+  mountCanoe: 0
   autoCrosshair: 0
   drawStaminaMeter: 1
   Crosshair: {fileID: 21300000, guid: 2c19e4cb225706240af7a8fbbf2ebfe2, type: 3}
@@ -385,7 +386,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1549911950783357011}
   - component: {fileID: 1533912091153323188}
-  - component: {fileID: 8899025413744662258}
   - component: {fileID: 4818913476904006729}
   m_Layer: 0
   m_Name: JournalCamera
@@ -451,14 +451,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &8899025413744662258
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7335646023975513539}
-  m_Enabled: 1
 --- !u!114 &4818913476904006729
 MonoBehaviour:
   m_ObjectHideFlags: 0
