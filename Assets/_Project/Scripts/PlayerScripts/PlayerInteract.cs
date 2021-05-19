@@ -36,7 +36,8 @@ public class PlayerInteract : NetworkBehaviour
             canoe.transform.DetachChildren();
         }
 
-        if (this.transform.parent != null) { // if player has mounted canoe
+        if (this.transform.parent != null)
+        { // if player has mounted canoe
             if (Input.GetKeyDown("r")) // if keyboard for row was pressed
             {
                 CanoeInteractable canoe = GameObject.FindObjectOfType<CanoeInteractable>();

@@ -64,7 +64,7 @@ MonoBehaviour:
   autoCreatePlayer: 1
   playerSpawnMethod: 1
   spawnPrefabs:
-  - {fileID: 140914797661223896, guid: f521b9a0eef524b478fa373d72252807, type: 3}
+  - {fileID: 6809531062798149070, guid: ebd0ce8caa2008d4680c0916ffce5b7f, type: 3}
   - {fileID: 6663204171934979890, guid: 53d0d38858060584e8599077d473073c, type: 3}
   usingSteamworks: 1
 --- !u!114 &3156456396096797453

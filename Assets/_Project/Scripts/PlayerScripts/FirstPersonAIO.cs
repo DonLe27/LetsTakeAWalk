@@ -556,7 +556,6 @@ public class FirstPersonAIO : NetworkBehaviour
         // Set walking or idle animation
         if (fps_Rigidbody.velocity.magnitude > 0.2f)
         {
-            Debug.Log("walking");
             animator.SetBool("walking", true);
         }
         else

@@ -97,8 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000004, guid: b5871040d5172fa4ba999baa7a4a3bf6,
-    type: 2}
+  m_LightingDataAsset: {fileID: 112000004, guid: b5871040d5172fa4ba999baa7a4a3bf6, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -635,63 +634,51 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
-        type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
-        type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
       propertyPath: m_LocalPosition.x
       value: 934.31
       objectReference: {fileID: 0}
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
-        type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
       propertyPath: m_LocalPosition.y
       value: 7.26
       objectReference: {fileID: 0}
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
-        type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
       propertyPath: m_LocalPosition.z
       value: 1014.41
       objectReference: {fileID: 0}
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
-        type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.6493873
       objectReference: {fileID: 0}
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
-        type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
-        type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0.76045793
       objectReference: {fileID: 0}
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
-        type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
-        type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
-        type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 99.009
       objectReference: {fileID: 0}
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
-        type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3474498585603651122, guid: babf338d980a4bf4b9b595b8b869fd93,
-        type: 3}
+    - target: {fileID: 3474498585603651122, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
       propertyPath: m_Name
       value: PlayerCamera
       objectReference: {fileID: 0}
@@ -5540,7 +5527,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1532712306}
   m_LocalRotation: {x: -0, y: 0.76045793, z: -0, w: 0.6493873}
-  m_LocalPosition: {x: 1132.12, y: 1.87, z: 1225.1}
+  m_LocalPosition: {x: 1132.12, y: 1.87, z: 1231.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5576,10 +5563,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   usingSteamworks: 0
-  networkManagerDev: {fileID: 3156456396096797454, guid: 4707872c45a3e3f4ca2675a3ea61569d,
-    type: 3}
-  networkManagerProd: {fileID: 3968906065015062342, guid: 6143507e9d474984493e16ad7d47a96d,
-    type: 3}
+  networkManagerDev: {fileID: 3156456396096797454, guid: 4707872c45a3e3f4ca2675a3ea61569d, type: 3}
+  networkManagerProd: {fileID: 3968906065015062342, guid: 6143507e9d474984493e16ad7d47a96d, type: 3}
 --- !u!4 &1713437209
 Transform:
   m_ObjectHideFlags: 0
@@ -6013,8 +5998,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Feb 25
 
-    Being out here has made it so much easier to think. Sometimes it feels like this
-    place helps me understand myself.'
+    Being out here has made it so much easier to think. Sometimes
+    it feels like this place helps me understand myself.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
