@@ -7,6 +7,7 @@ TagManager:
   - Ingredient
   - Ground
   - JournalPage
+  - Canoe
   layers:
   - Default
   - TransparentFX

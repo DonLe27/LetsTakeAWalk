@@ -20,7 +20,7 @@ public class JournalPage : MonoBehaviour
         {
             canDisable = false;
             pageCamera.SetActive(false);
-            player.SetActive(true); ;
+            player.SetActive(true);
             Destroy(gameObject);
         }
 
