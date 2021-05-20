@@ -8,6 +8,7 @@ public class SpiritBase : MonoBehaviour
     private DayCycleController dayCycleController;
     private SpiritQuestionDisplay spiritQuestionDisplay;
 
+
     void Start()
     {
         spiritQuestionDisplay = GameObject.Find("SpiritUI").GetComponent<SpiritQuestionDisplay>();
@@ -34,6 +35,11 @@ public class SpiritBase : MonoBehaviour
 
     public void RespondToInteraction(GameObject player)
     {
+        // Can only interact with on spirit at a time
+        if (spiritQuestionDisplay.isFading)
+        {
+            return;
+        }
         if (dayCycleController.GetTimeOfDay() < 12f)
         {
             List<string> easyQuestions = GetEasyQuestions();
@@ -50,18 +56,17 @@ public class SpiritBase : MonoBehaviour
         }
         // TODO: Change based off text size
         //spiritQuestionDisplay.SetImageRectTransform(spiritQuestionDisplay.textMesh.GetRenderedValues(true));
-        spiritQuestionDisplay.SetQuestionComponentActive(true);
+        spiritQuestionDisplay.SetQuestionComponentActive(2f);
         // TODO: let server know player found spirit!
 
-        StartCoroutine(RemoveUIAfterTime(5));
+        StartCoroutine(RemoveSpiritAndUIAfterTime());
 
 
     }
 
-    IEnumerator RemoveUIAfterTime(float time)
+    IEnumerator RemoveSpiritAndUIAfterTime()
     {
-        yield return new WaitForSeconds(time);
-        spiritQuestionDisplay.SetQuestionComponentActive(false);
-        spiritSpawner.DespawnSpirit(this.gameObject);
+        yield return new WaitForSeconds(5f);
+        spiritQuestionDisplay.SetQuestionComponentInactive(2f, gameObject);
     }
 }
