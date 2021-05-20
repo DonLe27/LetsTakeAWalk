@@ -501,6 +501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionComponent: {fileID: 555819113}
   textMesh: {fileID: 1045449779}
+  imageRectTransform: {fileID: 1556819870}
 --- !u!114 &437429785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -610,7 +611,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1556819870}
-  - {fileID: 1045449781}
   m_Father: {fileID: 437429788}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -820,8 +820,8 @@ MonoBehaviour:
   m_text: "\u201CIf you knew that in one year you would die suddenly, would you change
     anything about the way you are now living? Why?\u201D"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b265df977072d8d4bb3293984b580640, type: 2}
+  m_sharedMaterial: {fileID: -9053172325619451230, guid: b265df977072d8d4bb3293984b580640, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -845,8 +845,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -881,7 +881,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -117.1326, y: 0, z: -400.89575, w: 0}
+  m_margin: {x: -168.00203, y: 18.865528, z: -181.05453, w: 19.48368}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -904,14 +904,14 @@ RectTransform:
   m_GameObject: {fileID: 1045449778}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0027617, y: 1.176526, z: 1}
   m_Children: []
-  m_Father: {fileID: 555819114}
-  m_RootOrder: 1
+  m_Father: {fileID: 1556819870}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -139, y: 357.91138}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 400, y: -41.655396}
   m_SizeDelta: {x: 284.7407, y: 116.68921}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1001 &1102755015
@@ -5831,6 +5831,7 @@ GameObject:
   - component: {fileID: 1556819870}
   - component: {fileID: 1556819872}
   - component: {fileID: 1556819871}
+  - component: {fileID: 1556819873}
   m_Layer: 0
   m_Name: SpiritQuestionImage
   m_TagString: Untagged
@@ -5847,15 +5848,16 @@ RectTransform:
   m_GameObject: {fileID: 1556819869}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8.986781, y: 1.9143676, z: 1.0341}
-  m_Children: []
+  m_LocalScale: {x: 0.9972459, y: 0.84996, z: 1}
+  m_Children:
+  - {fileID: 1045449781}
   m_Father: {fileID: 555819114}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 6, y: 350}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 800, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1556819871
 MonoBehaviour:
@@ -5895,6 +5897,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1556819869}
   m_CullTransparentMesh: 1
+--- !u!114 &1556819873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556819869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &1713437207
 GameObject:
   m_ObjectHideFlags: 0
@@ -6020,7 +6048,7 @@ MonoBehaviour:
   maxSpirits: 7
   spawnDelay: {x: 3, y: 5}
   heightOffset: {x: 0, y: 0}
-  spawnRadius: {x: 2, y: 5}
+  spawnRadius: {x: 7.9, y: 0.32}
   despawnRadius: 10
   spawnTimer: 0
   liveSpirits: []

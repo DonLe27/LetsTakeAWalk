@@ -50,6 +50,8 @@ public class SpiritBase : MonoBehaviour
                 collisionInfo.SendMessage("ReceivePrompt", hardQuestions[i]);
                 spiritQuestionDisplay.textMesh.text = hardQuestions[i];
             }
+            // TODO: Change based off text size
+            //spiritQuestionDisplay.SetImageRectTransform(spiritQuestionDisplay.textMesh.GetRenderedValues(true));
             spiritQuestionDisplay.SetQuestionComponentActive(true);
             // TODO: let server know player found spirit!
 
