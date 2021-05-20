@@ -80,8 +80,9 @@ public class SpiritSpawner : MonoBehaviour
 
             // Despawn any spirits further than despawnRadius
             Vector3 playerLocation = ClientScene.localPlayer.gameObject.transform.position;
-            foreach (GameObject spirit in liveSpirits)
+            for (int i = liveSpirits.Count - 1; i > -0; i--)
             {
+                GameObject spirit = liveSpirits[i];
                 Vector3 spiritLocation = spirit.transform.position;
                 float distance = Vector3.Distance(playerLocation, spiritLocation);
                 if (distance > despawnRadius)

@@ -9,6 +9,7 @@ TagManager:
   - CookingPot
   - JournalPage
   - Canoe
+  - Spirit
   layers:
   - Default
   - TransparentFX

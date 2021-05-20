@@ -6,11 +6,14 @@ public class SpiritBase : MonoBehaviour
 {
     private SpiritSpawner spiritSpawner;
     private DayCycleController dayCycleController;
+    private SpiritQuestionDisplay spiritQuestionDisplay;
 
     void Start()
     {
+        spiritQuestionDisplay = GameObject.Find("SpiritUI").GetComponent<SpiritQuestionDisplay>();
         spiritSpawner = FindObjectOfType<SpiritSpawner>();
         dayCycleController = GameObject.Find("DayManager").GetComponent<DayCycleController>();
+
     }
 
     public virtual List<string> GetEasyQuestions()
@@ -29,23 +32,36 @@ public class SpiritBase : MonoBehaviour
         };
     }
 
-    void OnTriggerEnter(Collider collisionInfo)
+    public void RespondToInteraction(GameObject player)
     {
-        if (collisionInfo.tag == "Player")
+        if (dayCycleController.GetTimeOfDay() < 12f)
         {
-            if (dayCycleController.GetTimeOfDay() < 12f)
-            {
-                int i = Random.Range(0, GetEasyQuestions().Count);
-                collisionInfo.SendMessage("ReceivePrompt", GetEasyQuestions()[i]);
-            }
-            else
-            {
-                int i = Random.Range(0, GetHardQuestions().Count);
-                collisionInfo.SendMessage("ReceivePrompt", GetHardQuestions()[i]);
-            }
-
-            // TODO: let server know player found spirit!
-            spiritSpawner.DespawnSpirit(this.gameObject);
+            List<string> easyQuestions = GetEasyQuestions();
+            int i = Random.Range(0, easyQuestions.Count);
+            player.SendMessage("ReceivePrompt", easyQuestions[i]);
+            spiritQuestionDisplay.textMesh.text = easyQuestions[i];
         }
+        else
+        {
+            List<string> hardQuestions = GetHardQuestions();
+            int i = Random.Range(0, hardQuestions.Count);
+            player.SendMessage("ReceivePrompt", hardQuestions[i]);
+            spiritQuestionDisplay.textMesh.text = hardQuestions[i];
+        }
+        // TODO: Change based off text size
+        //spiritQuestionDisplay.SetImageRectTransform(spiritQuestionDisplay.textMesh.GetRenderedValues(true));
+        spiritQuestionDisplay.SetQuestionComponentActive(true);
+        // TODO: let server know player found spirit!
+
+        StartCoroutine(RemoveUIAfterTime(5));
+
+
+    }
+
+    IEnumerator RemoveUIAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        spiritQuestionDisplay.SetQuestionComponentActive(false);
+        spiritSpawner.DespawnSpirit(this.gameObject);
     }
 }

@@ -77,6 +77,10 @@ public class PlayerInteract : NetworkBehaviour
                     }
 
                 }
+                else if (target.tag == "Spirit")
+                {
+                    target.SendMessage("RespondToInteraction", gameObject);
+                }
             }
         }
 

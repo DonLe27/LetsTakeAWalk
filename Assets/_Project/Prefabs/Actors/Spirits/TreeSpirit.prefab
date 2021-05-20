@@ -17,9 +17,9 @@ GameObject:
   - component: {fileID: 6674210705069819123}
   - component: {fileID: 7768544310764280417}
   - component: {fileID: 2954346202107567228}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Spirit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,8 +99,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 13.01
+  m_Center: {x: 0, y: 0, z: 0.00004072984}
 --- !u!96 &6674210705069819118
 TrailRenderer:
   serializedVersion: 2
@@ -282,9 +282,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6674210705162122332}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TreeSpirit
-  m_TagString: Untagged
+  m_TagString: Spirit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
