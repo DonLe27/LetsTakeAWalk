@@ -4,5 +4,12 @@ using UnityEngine;
 
 public class SpiritQuestionDisplay : MonoBehaviour
 {
-    [SerializeField] private TMPro.TextMeshProUGUI text;
+    [SerializeField] private GameObject questionComponent;
+    public TMPro.TextMeshProUGUI textMesh;
+
+    public void SetQuestionComponentActive(bool val)
+    {
+        questionComponent.SetActive(val);
+    }
+
 }

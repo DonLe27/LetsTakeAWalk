@@ -6,11 +6,14 @@ public class SpiritBase : MonoBehaviour
 {
     private SpiritSpawner spiritSpawner;
     private DayCycleController dayCycleController;
+    private SpiritQuestionDisplay spiritQuestionDisplay;
 
     void Start()
     {
+        spiritQuestionDisplay = GameObject.Find("SpiritUI").GetComponent<SpiritQuestionDisplay>();
         spiritSpawner = FindObjectOfType<SpiritSpawner>();
         dayCycleController = GameObject.Find("DayManager").GetComponent<DayCycleController>();
+
     }
 
     public virtual List<string> GetEasyQuestions()
@@ -35,17 +38,30 @@ public class SpiritBase : MonoBehaviour
         {
             if (dayCycleController.GetTimeOfDay() < 12f)
             {
-                int i = Random.Range(0, GetEasyQuestions().Count);
-                collisionInfo.SendMessage("ReceivePrompt", GetEasyQuestions()[i]);
+                List<string> easyQuestions = GetEasyQuestions();
+                int i = Random.Range(0, easyQuestions.Count);
+                collisionInfo.SendMessage("ReceivePrompt", easyQuestions[i]);
+                spiritQuestionDisplay.textMesh.text = easyQuestions[i];
             }
             else
             {
-                int i = Random.Range(0, GetHardQuestions().Count);
-                collisionInfo.SendMessage("ReceivePrompt", GetHardQuestions()[i]);
+                List<string> hardQuestions = GetHardQuestions();
+                int i = Random.Range(0, hardQuestions.Count);
+                collisionInfo.SendMessage("ReceivePrompt", hardQuestions[i]);
+                spiritQuestionDisplay.textMesh.text = hardQuestions[i];
             }
-
+            spiritQuestionDisplay.SetQuestionComponentActive(true);
             // TODO: let server know player found spirit!
-            spiritSpawner.DespawnSpirit(this.gameObject);
+
+            StartCoroutine(RemoveUIAfterTime(5));
+
         }
+    }
+
+    IEnumerator RemoveUIAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        spiritQuestionDisplay.SetQuestionComponentActive(false);
+        spiritSpawner.DespawnSpirit(this.gameObject);
     }
 }
