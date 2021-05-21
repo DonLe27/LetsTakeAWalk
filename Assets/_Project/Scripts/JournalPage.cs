@@ -6,6 +6,11 @@ public class JournalPage : MonoBehaviour
 {
     private GameObject player;
     private bool canDisable = false;
+    [SerializeField]
+    private GameObject pageModel;
+    [SerializeField]
+    private GameObject pageUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +22,7 @@ public class JournalPage : MonoBehaviour
         if (canDisable && (Input.GetButton("Cancel") || Input.GetMouseButtonDown(0)))
         {
             canDisable = false;
-            player.SetActive(true);
+            player.GetComponent<FirstPersonAIO>().ControllerPause();
             Destroy(gameObject);
         }
 
@@ -27,6 +32,8 @@ public class JournalPage : MonoBehaviour
     {
         player = p;
         canDisable = true;
-        player.SetActive(false);
+        player.GetComponent<FirstPersonAIO>().ControllerPause();
+        pageModel.SetActive(false);
+        pageUI.SetActive(true);
     }
 }

@@ -11,7 +11,7 @@ public class PlayerInteract : NetworkBehaviour
     public float rayDistance = 10;
     private Transform body;
 
-    private GameObject ingredientToBePickedUp=null; //ingredient to be picked up
+    private GameObject ingredientToBePickedUp = null; //ingredient to be picked up
 
     private ManagePlayerData managePlayerData;
     private bool mountedOnCanoe = false;
@@ -21,7 +21,7 @@ public class PlayerInteract : NetworkBehaviour
         base.OnStartLocalPlayer();
         GameObject cameraObj = GameObject.FindGameObjectWithTag("MainCamera");
         cam = cameraObj.GetComponent<Camera>();
-        managePlayerData = gameObject.GetComponent<ManagePlayerData>();
+        managePlayerData = GameObject.Find("PlayerDataManager").GetComponent<ManagePlayerData>();
     }
 
     [Client]
@@ -48,13 +48,15 @@ public class PlayerInteract : NetworkBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, rayDistance, mask))
             {
+
                 GameObject target = hit.transform.gameObject;
                 if (target.tag == "Ingredient")
                 {
                     CmdInteract(target);
                     TakeIngredient(target);
                 }
-                else if(target.tag == "CookingPot"){
+                else if (target.tag == "CookingPot")
+                {
                     target.SendMessage("CreateMenu", gameObject); //if click on pot, pot creates cooking menu
                 }
                 else if (target.tag == "JournalPage")
@@ -85,7 +87,8 @@ public class PlayerInteract : NetworkBehaviour
         }
 
         //check for pickup
-        if(Input.GetKey("p") && ingredientToBePickedUp!=null){
+        if (Input.GetKey("p") && ingredientToBePickedUp != null)
+        {
             TakeIngredient(ingredientToBePickedUp);
         }
     }
@@ -120,13 +123,15 @@ public class PlayerInteract : NetworkBehaviour
 
     //sets item that player collided with to be picked up
     [Client]
-    private void SetToPickUp(GameObject target){
-            ingredientToBePickedUp = target;
+    private void SetToPickUp(GameObject target)
+    {
+        ingredientToBePickedUp = target;
     }
 
     [Client]
-    private void ResetToPickUp(GameObject target){
-        if (ingredientToBePickedUp==target)
+    private void ResetToPickUp(GameObject target)
+    {
+        if (ingredientToBePickedUp == target)
         {
             ingredientToBePickedUp = null;
         }
