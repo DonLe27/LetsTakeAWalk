@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 1287373021025632822}
   - component: {fileID: -3287954977109727240}
   - component: {fileID: 2196027400555651284}
-  - component: {fileID: 7669965122943959611}
   - component: {fileID: -6541318177828477018}
   - component: {fileID: 2115721128451150667}
   m_Layer: 8
@@ -290,21 +289,6 @@ MonoBehaviour:
   collision: {x: 0, y: 0, z: 0}
   rayDistance: 20
   playerCanoeOffset: {x: 0, y: 2, z: -1}
---- !u!114 &7669965122943959611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4236300209440405150}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15f3bf07d67f49247bb931d0647b0aff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  managePlayerData: {fileID: 0}
 --- !u!114 &-6541318177828477018
 MonoBehaviour:
   m_ObjectHideFlags: 0

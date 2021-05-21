@@ -7,6 +7,7 @@ public class SpiritBase : MonoBehaviour
     private SpiritSpawner spiritSpawner;
     private DayCycleController dayCycleController;
     private SpiritQuestionDisplay spiritQuestionDisplay;
+    private ManagePlayerData managePlayerData;
 
 
     void Start()
@@ -14,7 +15,7 @@ public class SpiritBase : MonoBehaviour
         spiritQuestionDisplay = GameObject.Find("SpiritUI").GetComponent<SpiritQuestionDisplay>();
         spiritSpawner = FindObjectOfType<SpiritSpawner>();
         dayCycleController = GameObject.Find("DayManager").GetComponent<DayCycleController>();
-
+        managePlayerData = GameObject.Find("PlayerDataManager").GetComponent<ManagePlayerData>();
     }
 
     public virtual List<string> GetEasyQuestions()
@@ -44,14 +45,14 @@ public class SpiritBase : MonoBehaviour
         {
             List<string> easyQuestions = GetEasyQuestions();
             int i = Random.Range(0, easyQuestions.Count);
-            player.SendMessage("ReceivePrompt", easyQuestions[i]);
+            managePlayerData.ReceivePrompt(easyQuestions[i]);
             spiritQuestionDisplay.textMesh.text = easyQuestions[i];
         }
         else
         {
             List<string> hardQuestions = GetHardQuestions();
             int i = Random.Range(0, hardQuestions.Count);
-            player.SendMessage("ReceivePrompt", hardQuestions[i]);
+            managePlayerData.ReceivePrompt(hardQuestions[i]);
             spiritQuestionDisplay.textMesh.text = hardQuestions[i];
         }
         // TODO: Change based off text size

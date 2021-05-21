@@ -60,4 +60,10 @@ public class ManagePlayerData : MonoBehaviour
         }
         playerData.journal.entries.Add(new Entry("", content, "page"));
     }
+
+    // Use for testing purposes
+    public void wipeData()
+    {
+        playerData = new PlayerData();
+    }
 }
