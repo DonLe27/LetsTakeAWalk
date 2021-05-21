@@ -358,7 +358,7 @@ public class FirstPersonAIO : NetworkBehaviour
     [Client]
     private void Update()
     {
-        if (Input.GetButtonDown("Cancel")) { ControllerPause(); }
+        if (Input.GetButtonDown("Cancel") || Input.GetKeyDown("n")) { ControllerPause(); }
         if (!isLocalPlayer) return;
         #region Look Settings - Update
 

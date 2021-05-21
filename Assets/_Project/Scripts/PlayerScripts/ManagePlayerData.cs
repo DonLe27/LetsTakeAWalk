@@ -32,17 +32,21 @@ public class ManagePlayerData : MonoBehaviour
     //isAdding is a bool to tell if the item is being added to players inventory
     //if !isAdded item is being removed from players inventory
 
-    public void updateIngredients(IngredientID id, bool isAdding){
-        if(isAdding){
-            playerData.ingredients[(int)id]+=1;
+    public void updateIngredients(IngredientID id, bool isAdding)
+    {
+        if (isAdding)
+        {
+            playerData.ingredients[(int)id] += 1;
         }
-        else{
-            playerData.ingredients[(int)id]-=1;
+        else
+        {
+            playerData.ingredients[(int)id] -= 1;
         }
     }
 
     //returns how many units of a given item the player has in their inventory based on the ingredient ID
-    public int getIngredientCount(int index){
+    public int getIngredientCount(int index)
+    {
         return playerData.ingredients[index];
 
     }
@@ -55,5 +59,11 @@ public class ManagePlayerData : MonoBehaviour
             if (content == entry.content) return;
         }
         playerData.journal.entries.Add(new Entry("", content, "page"));
+    }
+
+    // Use for testing purposes
+    public void wipeData()
+    {
+        playerData = new PlayerData();
     }
 }

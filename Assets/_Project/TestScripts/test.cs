@@ -4,13 +4,20 @@ using UnityEngine;
 using Mirror;
 public class test : NetworkBehaviour
 {
-    public ManagePlayerData managePlayerData;
-
+    private ManagePlayerData managePlayerData;
+    void Start()
+    {
+        managePlayerData = GameObject.Find("PlayerDataManager").GetComponent<ManagePlayerData>();
+    }
     void Update()
     {
         if (Input.GetKeyDown("t"))
         {
             managePlayerData.ReceivePrompt(Random.Range(0, 10).ToString());
+        }
+        if (Input.GetKeyDown("c"))
+        {
+            managePlayerData.wipeData();
         }
 
     }
