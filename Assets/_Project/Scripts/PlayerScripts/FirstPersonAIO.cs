@@ -731,7 +731,6 @@ public class FirstPersonAIO : NetworkBehaviour
                         }
                         previousGrounded = false;
                     }
-
                 }
                 else
                 {
