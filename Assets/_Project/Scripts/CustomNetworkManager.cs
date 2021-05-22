@@ -6,6 +6,8 @@ public class CustomNetworkManager : NetworkManager
 {
     [SerializeField] private bool usingSteamworks = false;
 
+    //Indicates the number of each ingredient to spawn onto the map
+    public int[] numToSpawn = { 3, 0, 0, 0, 0 };
 
     public override void Start()
     {
@@ -49,19 +51,48 @@ public class CustomNetworkManager : NetworkManager
 
 
     public void SpawnIngredients(){
+        //spawn each ingredient specifying ingredient name and number to spawn
+        SpawnSpecificIngredient("SmallMushroom", 3);
+        SpawnSpecificIngredient("BigMushroom", 0);
+        SpawnSpecificIngredient("GreenOnion", 0);
+        SpawnSpecificIngredient("BokChoy", 0);
+        SpawnSpecificIngredient("Dumpling", 0);
+    }
+
+    public void SpawnSpecificIngredient(string ingredientName, int n){
         Vector3 offset = new Vector3(-555, -169, -234);
-        GameObject[] smallMushroomSpawns;
-        GameObject[] bigMushroomSpawns;
-        Debug.Log("finding ingredint spawns");
-        smallMushroomSpawns = GameObject.FindGameObjectsWithTag("SmallMushroomSpawn");
-        foreach(GameObject spawn in smallMushroomSpawns){
-            Debug.Log("Making an ingredient");
-            GameObject ingredient = Instantiate(spawnPrefabs.Find(prefab => prefab.name == "Ingredient"));
+        GameObject[] ingredientSpawns;
+        HashSet<int> chosenIndices;
+        int length;
+        ingredientSpawns = GameObject.FindGameObjectsWithTag(ingredientName+"Spawn");
+        length = ingredientSpawns.Length;
+        chosenIndices = GenerateRandomNums(n, length);
+        foreach(int i in chosenIndices){
+            GameObject spawn = ingredientSpawns[i];
+            GameObject ingredient = Instantiate(spawnPrefabs.Find(prefab => prefab.name == ingredientName));
             ingredient.transform.position = spawn.GetComponent<Transform>().position;
             ingredient.transform.Translate(offset);
             NetworkServer.Spawn(ingredient);
-            Debug.Log(spawn.GetComponent<Transform>().position);
+            //Debug.Log(spawn.GetComponent<Transform>().position);
         }
+    }
+
+    //takes in number of random ints to generate as well as maxExclusive in range
+    //returns a HashSet of n unique randomly generated numbers
+    public HashSet<int> GenerateRandomNums(int n, int maxExclusive){
+        HashSet<int> result = new HashSet<int>();
+        
+        int num;
+        if(n>maxExclusive){
+            return null;
+        }
+        while(result.Count<n){
+            num = Random.Range(0, maxExclusive);
+            if(!result.Contains(num)){
+                result.Add(num);
+            }
+        }
+        return result;
     }
 
 

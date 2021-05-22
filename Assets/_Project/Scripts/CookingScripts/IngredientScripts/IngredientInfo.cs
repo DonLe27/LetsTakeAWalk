@@ -6,7 +6,7 @@ using UnityEngine;
 //     0 : Mushrooms,    1 : Fish,   2 : Lettuce, 
 //     3 : Potatoes,     4 : Carrots 
 public enum IngredientID{
-    Small_Mushroom = 0, Big_Mushroom = 1, Green_Onion = 2, Bok_Chou = 3, Dumplings = 4
+    SmallMushroom = 0, BigMushroom = 1, GreenOnion = 2, BokChou = 3, Dumpling = 4
 }
 
 
