@@ -85,6 +85,7 @@ public class SpiritSpawner : NetworkBehaviour
     }
     */
     
+    /*
     public override void OnStartServer()
     {
         //CmdActivateSpawnSpirit();
@@ -99,6 +100,7 @@ public class SpiritSpawner : NetworkBehaviour
         }
         //TargetUpdateSpirits(connectionToClient);
     }
+    */
     
     /*
     void Update()
@@ -172,6 +174,7 @@ public class SpiritSpawner : NetworkBehaviour
     }
     */
 
+    /*
     [TargetRpc]
     private void TargetUpdateSpirits(NetworkConnection target)
     {
@@ -183,6 +186,7 @@ public class SpiritSpawner : NetworkBehaviour
     {
         SpawnSpirits();
     }
+    */
 
     [ClientRpc]
     private void RpcSpawnSpirit(int i)

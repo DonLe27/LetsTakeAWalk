@@ -5,6 +5,7 @@ using Mirror;
 public class CustomNetworkManager : NetworkManager
 {
     [SerializeField] private bool usingSteamworks = false;
+    [SerializeField] private int numberOfPlayers = 0;
 
     public override void Start()
     {
@@ -22,11 +23,13 @@ public class CustomNetworkManager : NetworkManager
         // GameObject ingredient = Instantiate(spawnPrefabs.Find(prefab => prefab.name == "Ingredient"));
         // ingredient.transform.position = new Vector3(320, 10, 200);
         // NetworkServer.Spawn(ingredient);
-    SpawnIngredients();
+        SpawnIngredients();
 
     }
     public override void OnServerAddPlayer(NetworkConnection conn)
     {
+        numberOfPlayers++;
+
         // Add player at spawn position
         Transform startPos = GetStartPosition();
         GameObject player = startPos != null
@@ -37,15 +40,16 @@ public class CustomNetworkManager : NetworkManager
         // => appending the connectionId is WAY more useful for debugging!
         player.name = $"{playerPrefab.name} [connId={conn.connectionId}]";
         NetworkServer.AddPlayerForConnection(conn, player);
+
+        // Spawn Spirits
+        if (numberOfPlayers > 1)
+            FindObjectOfType<SpiritSpawner>().SpawnSpirits();
     }
-
-
+    
     public override void OnClientConnect(NetworkConnection conn)
     {
         base.OnClientConnect(conn);
     }
-
-
 
     public void SpawnIngredients(){
         //spawn each ingredient specifying ingredient name and number to spawn

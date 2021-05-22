@@ -997,7 +997,7 @@ MonoBehaviour:
   PeriodOfDay: 60
   RotationAngle: 0
   MaxFogDensity: 0
-  Speedup: 12
+  Speedup: 5
   DirectionalLight: {fileID: 132744026}
   StarSystem: {fileID: 1375716110}
   Preset: {fileID: 11400000, guid: 68d49e9ad3f1ba94a8f45039ccb5fc44, type: 2}
@@ -1197,7 +1197,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940408568}
   m_LocalRotation: {x: -0, y: 0.76045793, z: -0, w: 0.6493873}
-  m_LocalPosition: {x: 376, y: 7.3613567, z: 224.88495}
+  m_LocalPosition: {x: 450, y: 6, z: 1530}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
