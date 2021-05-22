@@ -9,7 +9,7 @@ public class AudioManager : MonoBehaviour
     public string defaultSound;
     private string currentSound;
 
-    public static Audiomanager instance;
+    public static AudioManager instance;
 
     void Awake() {
 
@@ -20,15 +20,16 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        DontDestroyOnLoad(gameObject)
+        DontDestroyOnLoad(gameObject);
 
         foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
             s.source.volume = s.volume;
-            s.sourve.pitch = s.pitch;
+            s.source.pitch = s.pitch;
         }
+        defaultSound = "arpeggios";
     }
     void Start()
     {
