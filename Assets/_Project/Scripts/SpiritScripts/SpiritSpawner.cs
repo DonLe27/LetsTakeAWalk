@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public class SpiritSpawner : MonoBehaviour
+public class SpiritSpawner : NetworkBehaviour
 {
 
     /* =========================================================================================================== *
@@ -63,11 +63,15 @@ public class SpiritSpawner : MonoBehaviour
     public Vector2 spawnRadius;     // Min/Max spawn radius for spirits
     public float despawnRadius;     // Despawn radius for spirits
 
+    [SyncVar]
     [SerializeField] private float spawnTimer;  // Time til next spirit spawn
+
+    [SyncVar]
+    [SerializeField] private int spiritType;
 
     [SerializeField]
     private List<GameObject> liveSpirits = new List<GameObject>();
-
+    
     void Start()
     {
         spawnTimer = Random.Range(spawnDelay.x, spawnDelay.y);  // Initialize spawn timer
@@ -79,24 +83,14 @@ public class SpiritSpawner : MonoBehaviour
         {
 
             // Despawn any spirits further than despawnRadius
-            Vector3 playerLocation = ClientScene.localPlayer.gameObject.transform.position;
-            for (int i = liveSpirits.Count - 1; i > -0; i--)
-            {
-                GameObject spirit = liveSpirits[i];
-                Vector3 spiritLocation = spirit.transform.position;
-                float distance = Vector3.Distance(playerLocation, spiritLocation);
-                if (distance > despawnRadius)
-                {
-                    DespawnSpirit(spirit);
-                }
-            }
-            // TODO: Raycast downwards to make sure spirits are at a certain distance from the ground
+            AttemptDespawns();
+
             // If under maxSpirits, spawn a random spirit
-            if (GetSpiritCount() < maxSpirits)
-            {
-                SpawnSpirit(spirits[Random.Range(0, spirits.Count)]);
-                spawnTimer = Random.Range(spawnDelay.x, spawnDelay.y);
-            }
+            spiritType = Random.Range(0, spirits.Count);
+            RpcAttemptSpawns(spiritType);
+
+            // Reset the spawn timer (regardless of whether a spirit was spawned for this client)
+            spawnTimer = Random.Range(spawnDelay.x, spawnDelay.y);
 
         }
         // Else count down spawn timer
@@ -105,10 +99,38 @@ public class SpiritSpawner : MonoBehaviour
             spawnTimer -= Time.deltaTime;
         }
     }
+    
+
+    // Despawn any spirits further than despawnRadius
+    private void AttemptDespawns()
+    {
+        Vector3 playerLocation = ClientScene.localPlayer.gameObject.transform.position;
+        for (int i = liveSpirits.Count - 1; i >= -0; i--)
+        {
+            GameObject spirit = liveSpirits[i];
+            Vector3 spiritLocation = spirit.transform.position;
+            float distance = Vector3.Distance(playerLocation, spiritLocation);
+            if (distance > despawnRadius)
+            {
+                DespawnSpirit(spirit);
+            }
+        }
+    }
+
+    // Spawns a spirit of newSpiritType
+    [ClientRpc]
+    private void RpcAttemptSpawns(int type)
+    {
+        if (GetSpiritCount() < maxSpirits)
+        {
+            SpawnSpirit(spirits[type]);
+        }
+    }
 
     public void SpawnSpirit(GameObject spirit)
     {
         Vector3 playerLocation = ClientScene.localPlayer.gameObject.transform.position;
+        
         float radius = Random.Range(spawnRadius.x, spawnRadius.y);
         float angle = Random.Range(0, 2 * Mathf.PI);
         Vector3 spawnLocation = playerLocation + new Vector3(radius * Mathf.Cos(angle), 100, radius * Mathf.Sin(angle));
