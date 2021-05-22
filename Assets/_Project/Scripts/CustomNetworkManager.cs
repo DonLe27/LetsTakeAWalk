@@ -6,9 +6,6 @@ public class CustomNetworkManager : NetworkManager
 {
     [SerializeField] private bool usingSteamworks = false;
 
-    //Indicates the number of each ingredient to spawn onto the map
-    public int[] numToSpawn = { 3, 0, 0, 0, 0 };
-
     public override void Start()
     {
         base.Start();
@@ -52,11 +49,13 @@ public class CustomNetworkManager : NetworkManager
 
     public void SpawnIngredients(){
         //spawn each ingredient specifying ingredient name and number to spawn
-        SpawnSpecificIngredient("SmallMushroom", 3);
-        SpawnSpecificIngredient("BigMushroom", 1);
-        SpawnSpecificIngredient("LotusRoot", 1);
-        SpawnSpecificIngredient("BokChoy", 1);
-        SpawnSpecificIngredient("Gyoza", 1);
+        SpawnSpecificIngredient("SmallMushroom", 300);
+        SpawnSpecificIngredient("BigMushroom", 100);
+        SpawnSpecificIngredient("LotusRoot", 100);
+        SpawnSpecificIngredient("BokChoy", 100);
+        SpawnSpecificIngredient("Gyoza", 100);
+        SpawnSpecificIngredient("NormalSoupBase", 100);
+        SpawnSpecificIngredient("SpicySoupBase", 100);
     }
 
     public void SpawnSpecificIngredient(string ingredientName, int n){
@@ -83,13 +82,20 @@ public class CustomNetworkManager : NetworkManager
         HashSet<int> result = new HashSet<int>();
         
         int num;
-        if(n>maxExclusive){
-            return null;
+        if(n>=maxExclusive){ //if n>= the max, create a set of all numbers up to maxExclusive
+            for (int i = 0; i < maxExclusive; i++){
+                result.Add(i);
+            }
         }
-        while(result.Count<n){
-            num = Random.Range(0, maxExclusive);
-            if(!result.Contains(num)){
-                result.Add(num);
+        else
+        { //otherwise randomly choose n unique numbers from 0 to maxExclusive-1
+            while (result.Count < n)
+            {
+                num = Random.Range(0, maxExclusive);
+                if (!result.Contains(num))
+                {
+                    result.Add(num);
+                }
             }
         }
         return result;
