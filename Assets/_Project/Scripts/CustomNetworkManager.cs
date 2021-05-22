@@ -25,7 +25,7 @@ public class CustomNetworkManager : NetworkManager
         // GameObject ingredient = Instantiate(spawnPrefabs.Find(prefab => prefab.name == "Ingredient"));
         // ingredient.transform.position = new Vector3(320, 10, 200);
         // NetworkServer.Spawn(ingredient);
-        SpawnIngredients();
+    SpawnIngredients();
 
     }
     public override void OnServerAddPlayer(NetworkConnection conn)
@@ -53,10 +53,10 @@ public class CustomNetworkManager : NetworkManager
     public void SpawnIngredients(){
         //spawn each ingredient specifying ingredient name and number to spawn
         SpawnSpecificIngredient("SmallMushroom", 3);
-        SpawnSpecificIngredient("BigMushroom", 0);
-        SpawnSpecificIngredient("GreenOnion", 0);
-        SpawnSpecificIngredient("BokChoy", 0);
-        SpawnSpecificIngredient("Dumpling", 0);
+        SpawnSpecificIngredient("BigMushroom", 1);
+        SpawnSpecificIngredient("LotusRoot", 1);
+        SpawnSpecificIngredient("BokChoy", 1);
+        SpawnSpecificIngredient("Gyoza", 1);
     }
 
     public void SpawnSpecificIngredient(string ingredientName, int n){

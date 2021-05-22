@@ -10,12 +10,11 @@ TagManager:
   - JournalPage
   - Canoe
   - Spirit
-  - Small_Mushroom
   - SmallMushroomSpawn
   - BigMushroomSpawn
-  - GreenOnionSpawn
   - BokChoySpawn
-  - DumplingSpawn
+  - LotusRootSpawn
+  - GyozaSpawn
   layers:
   - Default
   - TransparentFX

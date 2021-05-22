@@ -680,8 +680,8 @@ GameObject:
   m_Component:
   - component: {fileID: 293983306}
   m_Layer: 0
-  m_Name: DumplingSpawns
-  m_TagString: DumplingSpawn
+  m_Name: GyozaSpawn
+  m_TagString: GyozaSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -694,7 +694,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 293983305}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 380, y: 4.5, z: 230}
+  m_LocalPosition: {x: 380, y: 4.5, z: 238}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 500234893}
@@ -724,7 +724,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 389503251}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 380, y: 4.5, z: 230}
+  m_LocalPosition: {x: 380, y: 6, z: 234}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1245204942}
@@ -859,7 +859,7 @@ GameObject:
   m_Component:
   - component: {fileID: 500234893}
   m_Layer: 0
-  m_Name: Dumpling_Spawns
+  m_Name: Gyoza_Spawns
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -879,36 +879,6 @@ Transform:
   - {fileID: 293983306}
   m_Father: {fileID: 13728277}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &512898589
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 512898590}
-  m_Layer: 0
-  m_Name: BigMushroomSpawn (1)
-  m_TagString: BigMushroomSpawn
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &512898590
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 512898589}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 380, y: 4.5, z: 230}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 961187611}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &555819113
 GameObject:
@@ -1140,8 +1110,8 @@ GameObject:
   m_Component:
   - component: {fileID: 816581468}
   m_Layer: 0
-  m_Name: GreenOnionSpawn
-  m_TagString: GreenOnionSpawn
+  m_Name: LotusRootSpawn
+  m_TagString: LotusRootSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1154,7 +1124,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816581467}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 380, y: 4.5, z: 230}
+  m_LocalPosition: {x: 380, y: 6, z: 236}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1593621761}
@@ -1261,8 +1231,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2135633113}
-  - {fileID: 512898590}
-  - {fileID: 1652116653}
   m_Father: {fileID: 13728277}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6513,7 +6481,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1593621761}
   m_Layer: 0
-  m_Name: Green_Onion_Spawns
+  m_Name: Lotus_Root_Spawns
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6564,36 +6532,6 @@ Transform:
   - {fileID: 110726744}
   m_Father: {fileID: 6385317454057679973}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1652116652
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1652116653}
-  m_Layer: 0
-  m_Name: BigMushroomSpawn (2)
-  m_TagString: BigMushroomSpawn
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1652116653
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1652116652}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 380, y: 4.5, z: 230}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 961187611}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1713437207
 GameObject:
@@ -6937,7 +6875,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2135633112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 380, y: 4.5, z: 230}
+  m_LocalPosition: {x: 380, y: 4.5, z: 228}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 961187611}
