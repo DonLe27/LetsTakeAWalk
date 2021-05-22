@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4503864939921170366}
   - component: {fileID: 4503864939921170364}
   - component: {fileID: 4503864939921170365}
-  - component: {fileID: 4909741958972248332}
   m_Layer: 12
   m_Name: FireflyParticles
   m_TagString: Untagged
@@ -3789,19 +3788,20 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
     enabled: 0
     serializedVersion: 2
-    inside: 1
+    inside: 2
     outside: 0
     enter: 0
     exit: 0
     colliderQueryMode: 0
     radiusScale: 1
-    primitives: []
+    primitives:
+    - {fileID: 8443768292572229512, guid: 990bf979d07092d42b905aebcb69115d, type: 3}
   SubModule:
     serializedVersion: 2
     enabled: 0
@@ -4807,15 +4807,3 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &4909741958972248332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4503864939921170367}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcd68891c0432a04d854eeeffec9e055, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
