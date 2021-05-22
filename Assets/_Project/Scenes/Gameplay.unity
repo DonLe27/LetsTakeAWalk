@@ -1164,6 +1164,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1454522290549331392, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1454522290549331392, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.31764707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1454522290549331392, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.31764707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1454522290549331392, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.31764707
+      objectReference: {fileID: 0}
     - target: {fileID: 3474498585603651122, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
       propertyPath: m_Name
       value: PlayerCamera
@@ -6248,6 +6264,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1714790536
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1714790538}
+  - component: {fileID: 1714790537}
+  m_Layer: 0
+  m_Name: IntitialTests
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1714790537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714790536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8daea735f997c214b848792ade646521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1714790538
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714790536}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1763689368
 GameObject:
   m_ObjectHideFlags: 0
@@ -6340,6 +6399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7774e85827a6efb4095689f714796c2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadScenes: 1
 --- !u!4 &1791402089
 Transform:
   m_ObjectHideFlags: 0

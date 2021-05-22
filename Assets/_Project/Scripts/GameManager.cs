@@ -1,19 +1,25 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
+using System.Collections.Generic;
 public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
+    [SerializeField] private bool loadScenes = true;
     void Start()
     {
-        SceneManager.LoadScene("Part01", LoadSceneMode.Additive);
-        SceneManager.LoadScene("Part04", LoadSceneMode.Additive);
-        SceneManager.LoadScene("Part02", LoadSceneMode.Additive);
-        SceneManager.LoadScene("Part05", LoadSceneMode.Additive);
+        if (!loadScenes) return;
+        List<string> scenes = new List<string> {
+            "Part01",
+            "Part02",
+            "Part04",
+            "Part05"
+        };
+        for (int i = 0; i < scenes.Count; i++)
+        {
+            SceneManager.LoadScene(scenes[i], LoadSceneMode.Additive);
+
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }
