@@ -1,6 +1,7 @@
 using UnityEngine;
+using Mirror;
 
-public class DayCycleController : MonoBehaviour
+public class DayCycleController : NetworkBehaviour
 {
     /* old version
     // Note: values need to be changed in both the sun and moon objects individually
@@ -23,6 +24,7 @@ public class DayCycleController : MonoBehaviour
                                 // 180 -> sun rises from the -z
                                 // 270 -> sun rises from the +x
     public float MaxFogDensity; // Maximum fog density
+    public float Speedup = 1;
 
     // References
     [SerializeField] private Light DirectionalLight;
@@ -31,6 +33,7 @@ public class DayCycleController : MonoBehaviour
     [SerializeField] private bool FreezeTime = false;
 
     // Variables
+    [SyncVar]
     [SerializeField, Range(0, 24)] private float TimeOfDay;  // Time of Day 0 to 24
 
     private void Update()
@@ -43,7 +46,7 @@ public class DayCycleController : MonoBehaviour
         if (Application.isPlaying)
         {
             if (!FreezeTime)
-                TimeOfDay += (Time.deltaTime * 24f / PeriodOfDay);
+                TimeOfDay += (Time.deltaTime * 24f / PeriodOfDay) * Speedup;
             TimeOfDay %= 24;
             UpdateLighting(TimeOfDay / 24f);
         }
@@ -65,4 +68,5 @@ public class DayCycleController : MonoBehaviour
     public float GetTimeOfDay() { return TimeOfDay; }
     public float GetCurrentHour() { return (int)TimeOfDay; }
     public float GetCurrentMinute() { return TimeOfDay % 1 * 60; }
+    public void SetCurrentTime(int hour, int minute) { TimeOfDay = hour + (minute / 60); }
 }

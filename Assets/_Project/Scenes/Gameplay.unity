@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000004, guid: b5871040d5172fa4ba999baa7a4a3bf6, type: 2}
+  m_LightingDataAsset: {fileID: 112000004, guid: b5871040d5172fa4ba999baa7a4a3bf6,
+    type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -1002,6 +1003,7 @@ GameObject:
   m_Component:
   - component: {fileID: 750497465}
   - component: {fileID: 750497464}
+  - component: {fileID: 750497466}
   m_Layer: 0
   m_Name: DayManager
   m_TagString: Untagged
@@ -1021,6 +1023,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72de4ec50306cc34d9a45bdd4861be91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   PeriodOfDay: 60
   RotationAngle: 0
   MaxFogDensity: 0.01
@@ -1043,6 +1047,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &750497466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750497463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 1326105598
+  serverOnly: 0
+  visible: 0
+  m_AssetId: 
+  hasSpawned: 0
 --- !u!1 &758115071
 GameObject:
   m_ObjectHideFlags: 0
@@ -1287,7 +1308,8 @@ MonoBehaviour:
     anything about the way you are now living? Why?\u201D"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b265df977072d8d4bb3293984b580640, type: 2}
-  m_sharedMaterial: {fileID: -9053172325619451230, guid: b265df977072d8d4bb3293984b580640, type: 2}
+  m_sharedMaterial: {fileID: -9053172325619451230, guid: b265df977072d8d4bb3293984b580640,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1387,51 +1409,63 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
+        type: 3}
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 934.31
       objectReference: {fileID: 0}
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
+        type: 3}
       propertyPath: m_LocalPosition.y
       value: 7.26
       objectReference: {fileID: 0}
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
+        type: 3}
       propertyPath: m_LocalPosition.z
       value: 1014.41
       objectReference: {fileID: 0}
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
+        type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.6493873
       objectReference: {fileID: 0}
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
+        type: 3}
       propertyPath: m_LocalRotation.y
       value: 0.76045793
       objectReference: {fileID: 0}
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
+        type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 99.009
       objectReference: {fileID: 0}
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3474498585603651122, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
+    - target: {fileID: 3474498585603651122, guid: babf338d980a4bf4b9b595b8b869fd93,
+        type: 3}
       propertyPath: m_Name
       value: PlayerCamera
       objectReference: {fileID: 0}
@@ -6591,8 +6625,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   usingSteamworks: 0
-  networkManagerDev: {fileID: 3156456396096797454, guid: 4707872c45a3e3f4ca2675a3ea61569d, type: 3}
-  networkManagerProd: {fileID: 3968906065015062342, guid: 6143507e9d474984493e16ad7d47a96d, type: 3}
+  networkManagerDev: {fileID: 3156456396096797454, guid: 4707872c45a3e3f4ca2675a3ea61569d,
+    type: 3}
+  networkManagerProd: {fileID: 3968906065015062342, guid: 6143507e9d474984493e16ad7d47a96d,
+    type: 3}
 --- !u!4 &1713437209
 Transform:
   m_ObjectHideFlags: 0
