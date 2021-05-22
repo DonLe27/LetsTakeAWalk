@@ -84,7 +84,7 @@ public class ManageJournal : MonoBehaviour
         else
         {
             leftPage.text = string.Format("entry {0}\n{1}", curLeftPage, entries[curLeftPage - 1].title);
-            rightPage.text = curLeftPage == entries.Count ? "" : string.Format("entry {0}\n{1}", curLeftPage, entries[curLeftPage].title);
+            rightPage.text = curLeftPage == entries.Count ? "" : string.Format("entry {0}\n{1}", curLeftPage + 1, entries[curLeftPage].title);
         }
 
     }
@@ -92,9 +92,9 @@ public class ManageJournal : MonoBehaviour
     void TurnPageLeft()
     {
         curLeftPage -= 2;
-        if (curLeftPage < 0)
+        if (curLeftPage < 1)
         {
-            curLeftPage = 0;
+            curLeftPage = 1;
         }
         ShowQuestions();
     }

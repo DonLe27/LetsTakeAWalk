@@ -7713,8 +7713,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   managePlayerData: {fileID: 1391062996}
-  leftPage: {fileID: 9177355856703857282}
-  rightPage: {fileID: 1411614204}
+  leftPage: {fileID: 1411614204}
+  rightPage: {fileID: 9177355856703857282}
   contentsComponent: {fileID: 3210328281147609925}
 --- !u!222 &7841724844700678769
 CanvasRenderer:
