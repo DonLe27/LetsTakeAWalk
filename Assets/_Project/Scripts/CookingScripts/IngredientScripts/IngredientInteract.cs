@@ -21,7 +21,7 @@ public class IngredientInteract: NetworkInteractable
         // Vector3 velocity = gameObject.transform.position - player.transform.position;
         // GetComponent<Rigidbody>().AddForce(velocity.normalized, ForceMode.Impulse);
         transform.Translate(Vector3.up * 2, Space.World);
-        GameObject newCanvas = Instantiate(canvas);
+        //GameObject newCanvas = Instantiate(canvas);
         //Debug.Log("Picked up Ingredient");
     }
 
