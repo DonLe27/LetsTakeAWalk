@@ -6,8 +6,9 @@ using UnityEngine;
 //     0 : Mushrooms,    1 : Fish,   2 : Lettuce, 
 //     3 : Potatoes,     4 : Carrots 
 public enum IngredientID{
-    Mushroom = 0, Fish = 1, Lettuce = 2, Potato = 3, Carrot = 4
+    Small_Mushroom = 0, Big_Mushroom = 1, Green_Onion = 2, Bok_Chou = 3, Dumplings = 4
 }
+
 
 
 // public int[,,] IngredientSpawnLocations = { { { 1, 2, 3 } }, //zone 1

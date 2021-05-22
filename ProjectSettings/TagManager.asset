@@ -10,6 +10,8 @@ TagManager:
   - JournalPage
   - Canoe
   - Spirit
+  - Small_Mushroom
+  - SmallMushroomSpawn
   layers:
   - Default
   - TransparentFX
