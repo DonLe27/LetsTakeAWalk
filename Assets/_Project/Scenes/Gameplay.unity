@@ -997,7 +997,7 @@ MonoBehaviour:
   PeriodOfDay: 60
   RotationAngle: 0
   MaxFogDensity: 0
-  Speedup: 1
+  Speedup: 12
   DirectionalLight: {fileID: 132744026}
   StarSystem: {fileID: 1375716110}
   Preset: {fileID: 11400000, guid: 68d49e9ad3f1ba94a8f45039ccb5fc44, type: 2}
@@ -6688,7 +6688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7774e85827a6efb4095689f714796c2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadScenes: 0
+  loadScenes: 1
 --- !u!4 &1791402089
 Transform:
   m_ObjectHideFlags: 0
@@ -6735,16 +6735,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  spirits:
-  - {fileID: 7741165688307316805, guid: 333ff99de5bb109419fdfbc5512c8fdb, type: 3}
-  - {fileID: 6674210705162122331, guid: 0bf940354904e394ba0ce3d9ab8e5e62, type: 3}
-  maxSpirits: 10
-  spawnDelay: {x: 2, y: 5}
-  heightOffset: {x: 0, y: 0}
-  spawnRadius: {x: 5, y: 15}
-  despawnRadius: 50
-  spawnTimer: 0
-  spiritType: 0
+  spawnChance: 0.5
   liveSpirits: []
 --- !u!4 &1792564443
 Transform:

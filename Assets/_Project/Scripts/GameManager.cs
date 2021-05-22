@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
             "Part01",
             "Part02",
             "Part04",
-            "Part05"
+            "Part05",
+            "Spirits"
         };
         for (int i = 0; i < scenes.Count; i++)
         {

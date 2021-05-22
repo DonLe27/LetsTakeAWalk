@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 using Mirror;
 
 public class DayCycleController : NetworkBehaviour
@@ -35,8 +37,13 @@ public class DayCycleController : NetworkBehaviour
     // Variables
     [SyncVar]
     [SerializeField, Range(0, 24)] private float TimeOfDay;  // Time of Day 0 to 24
+    
+    public override void OnStartServer()
+    {
+        StartNewDay();
+    }
 
-    private void Update()
+    void Update()
     {
         if (Preset == null || PeriodOfDay == 0)
         {
@@ -47,9 +54,17 @@ public class DayCycleController : NetworkBehaviour
         {
             if (!FreezeTime)
                 TimeOfDay += (Time.deltaTime * 24f / PeriodOfDay) * Speedup;
-            TimeOfDay %= 24;
+            if (isServer && TimeOfDay > 24)
+                StartNewDay();
             UpdateLighting(TimeOfDay / 24f);
         }
+    }
+
+    public void StartNewDay()
+    {
+        Debug.Log("good morning");
+        TimeOfDay = 0f;
+        FindObjectOfType<SpiritSpawner>().SpawnSpirits();
     }
 
     private void UpdateLighting(float time)
@@ -69,4 +84,5 @@ public class DayCycleController : NetworkBehaviour
     public float GetCurrentHour() { return (int)TimeOfDay; }
     public float GetCurrentMinute() { return TimeOfDay % 1 * 60; }
     public void SetCurrentTime(int hour, int minute) { TimeOfDay = hour + (minute / 60); }
+    public void SetSpeedup(float s) { Speedup = s; }
 }

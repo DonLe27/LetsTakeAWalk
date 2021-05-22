@@ -1,6 +1,7 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using Mirror;
 
 public class SpiritSpawner : NetworkBehaviour
@@ -56,27 +57,50 @@ public class SpiritSpawner : NetworkBehaviour
 
     private GameObject Player;
 
+    /*
     public List<GameObject> spirits = new List<GameObject>();   // List of possible spirits to spawn 
     public int maxSpirits;          // maximum spirits at a given time
     public Vector2 spawnDelay;      // Min/Max time in between spirit spawns
     public Vector2 heightOffset;    // Min/Max height offset from ground for spirit spawn
     public Vector2 spawnRadius;     // Min/Max spawn radius for spirits
     public float despawnRadius;     // Despawn radius for spirits
+    */
+    public float spawnChance;       // Chance of spawning a spirit
 
+    /*
     [SyncVar]
     [SerializeField] private float spawnTimer;  // Time til next spirit spawn
 
     [SyncVar]
     [SerializeField] private int spiritType;
+    */
 
     [SerializeField]
     private List<GameObject> liveSpirits = new List<GameObject>();
     
+    /*
     void Start()
     {
         spawnTimer = Random.Range(spawnDelay.x, spawnDelay.y);  // Initialize spawn timer
     }
+    */
+    
+    public override void OnStartServer()
+    {
+        //CmdActivateSpawnSpirit();
+    }
 
+    public override void OnStartClient()
+    {
+        if (!isServer) {
+            Debug.Log("welcome1");
+            CmdActivateSpawnSpirit();
+            //SpawnSpirits();
+        }
+        //TargetUpdateSpirits(connectionToClient);
+    }
+    
+    /*
     void Update()
     {
         if (spawnTimer <= 0)
@@ -99,8 +123,9 @@ public class SpiritSpawner : NetworkBehaviour
             spawnTimer -= Time.deltaTime;
         }
     }
-    
+    */
 
+    /*
     // Despawn any spirits further than despawnRadius
     private void AttemptDespawns()
     {
@@ -116,7 +141,9 @@ public class SpiritSpawner : NetworkBehaviour
             }
         }
     }
+    */
 
+    /*
     // Spawns a spirit of newSpiritType
     [ClientRpc]
     private void RpcAttemptSpawns(int type)
@@ -126,11 +153,13 @@ public class SpiritSpawner : NetworkBehaviour
             SpawnSpirit(spirits[type]);
         }
     }
+    */
 
+    /*
     public void SpawnSpirit(GameObject spirit)
     {
         Vector3 playerLocation = ClientScene.localPlayer.gameObject.transform.position;
-        
+
         float radius = Random.Range(spawnRadius.x, spawnRadius.y);
         float angle = Random.Range(0, 2 * Mathf.PI);
         Vector3 spawnLocation = playerLocation + new Vector3(radius * Mathf.Cos(angle), 100, radius * Mathf.Sin(angle));
@@ -141,6 +170,34 @@ public class SpiritSpawner : NetworkBehaviour
 
         liveSpirits.Add(newSpirit);
     }
+    */
+
+    [TargetRpc]
+    private void TargetUpdateSpirits(NetworkConnection target)
+    {
+        Debug.Log("welcome3");
+    }
+
+    [Command]
+    void CmdActivateSpawnSpirit()
+    {
+        SpawnSpirits();
+    }
+
+    [ClientRpc]
+    private void RpcSpawnSpirit(int i)
+    {
+        Debug.Log("rpc called");
+        List<GameObject> rootObjects = new List<GameObject>();
+        Scene scene = SceneManager.GetSceneByName("Spirits");
+        scene.GetRootGameObjects( rootObjects );
+
+        GameObject spirit = rootObjects[i];
+        if (!spirit.activeInHierarchy) {
+            spirit.SetActive(true);
+            liveSpirits.Add(spirit);
+        }
+    }
 
     public void DespawnSpirit(GameObject spirit)
     {
@@ -148,5 +205,28 @@ public class SpiritSpawner : NetworkBehaviour
         Destroy(spirit);
     }
 
+    public void SpawnSpirits()
+    {
+        Debug.Log("spawning spirits");
+        // Find Spirit Scene
+        List<GameObject> rootObjects = new List<GameObject>();
+        Scene scene = SceneManager.GetSceneByName("Spirits");
+        scene.GetRootGameObjects( rootObjects );
+        
+        // Iterate through all objects in spirit scene
+        for (int i = 0; i < rootObjects.Count; ++i)
+        {
+            GameObject spirit = rootObjects[i];
+            if (spirit.tag == "Spirit") {
+                if (Random.Range(0f,1f) < spawnChance) {
+                    Debug.Log("calling rpc");
+                    RpcSpawnSpirit(i);  // cant pass the spirit gameobject??
+                }
+            }
+        }
+    }
+
     public int GetSpiritCount() { return liveSpirits.Count; }
+
+    public List<GameObject> GetLiveSpirits() { return liveSpirits; }
 }
