@@ -11,7 +11,7 @@ public class PotInteract: NetworkInteractable
 
     private bool displayingMenu = false; //true if menu is currently being displayed
 
-    private int numIngredients = 5; //the total number of ingredients in the game
+    private int numIngredients = 7; //the total number of ingredients in the game
 
     private GameObject newCanvas;
 
