@@ -97,8 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000004, guid: b5871040d5172fa4ba999baa7a4a3bf6,
-    type: 2}
+  m_LightingDataAsset: {fileID: 112000004, guid: b5871040d5172fa4ba999baa7a4a3bf6, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -914,7 +913,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -486}
+  m_AnchoredPosition: {x: 0, y: -306}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &555819115
@@ -997,7 +996,8 @@ MonoBehaviour:
   syncInterval: 0.1
   PeriodOfDay: 60
   RotationAngle: 0
-  MaxFogDensity: 0.01
+  MaxFogDensity: 0
+  Speedup: 1
   DirectionalLight: {fileID: 132744026}
   StarSystem: {fileID: 1375716110}
   Preset: {fileID: 11400000, guid: 68d49e9ad3f1ba94a8f45039ccb5fc44, type: 2}
@@ -1276,8 +1276,7 @@ MonoBehaviour:
     anything about the way you are now living? Why?\u201D"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b265df977072d8d4bb3293984b580640, type: 2}
-  m_sharedMaterial: {fileID: -9053172325619451230, guid: b265df977072d8d4bb3293984b580640,
-    type: 2}
+  m_sharedMaterial: {fileID: -9053172325619451230, guid: b265df977072d8d4bb3293984b580640, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1377,63 +1376,51 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
-        type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
-        type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
       propertyPath: m_LocalPosition.x
       value: 934.31
       objectReference: {fileID: 0}
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
-        type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
       propertyPath: m_LocalPosition.y
       value: 7.26
       objectReference: {fileID: 0}
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
-        type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
       propertyPath: m_LocalPosition.z
       value: 1014.41
       objectReference: {fileID: 0}
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
-        type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.6493873
       objectReference: {fileID: 0}
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
-        type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
-        type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0.76045793
       objectReference: {fileID: 0}
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
-        type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
-        type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
-        type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 99.009
       objectReference: {fileID: 0}
-    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93,
-        type: 3}
+    - target: {fileID: 700925522718687933, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3474498585603651122, guid: babf338d980a4bf4b9b595b8b869fd93,
-        type: 3}
+    - target: {fileID: 3474498585603651122, guid: babf338d980a4bf4b9b595b8b869fd93, type: 3}
       propertyPath: m_Name
       value: PlayerCamera
       objectReference: {fileID: 0}
@@ -6362,7 +6349,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1532712306}
   m_LocalRotation: {x: -0, y: 0.76045793, z: -0, w: 0.6493873}
-  m_LocalPosition: {x: 376, y: 7.3613567, z: 228.94}
+  m_LocalPosition: {x: 452.24603, y: 5.2625904, z: 1511.1375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6427,7 +6414,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c98aeac928b98f149a1aeaf10b77e2e1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 82a85bec2e1649945801530604f3325d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6563,10 +6550,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   usingSteamworks: 0
-  networkManagerDev: {fileID: 3156456396096797454, guid: 4707872c45a3e3f4ca2675a3ea61569d,
-    type: 3}
-  networkManagerProd: {fileID: 3968906065015062342, guid: 6143507e9d474984493e16ad7d47a96d,
-    type: 3}
+  networkManagerDev: {fileID: 3156456396096797454, guid: 4707872c45a3e3f4ca2675a3ea61569d, type: 3}
+  networkManagerProd: {fileID: 3968906065015062342, guid: 6143507e9d474984493e16ad7d47a96d, type: 3}
 --- !u!4 &1713437209
 Transform:
   m_ObjectHideFlags: 0
@@ -6703,6 +6688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7774e85827a6efb4095689f714796c2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadScenes: 0
 --- !u!4 &1791402089
 Transform:
   m_ObjectHideFlags: 0
