@@ -5,6 +5,8 @@ using Mirror;
 public class CustomNetworkManager : NetworkManager
 {
     [SerializeField] private bool usingSteamworks = false;
+
+
     public override void Start()
     {
         base.Start();
@@ -18,9 +20,11 @@ public class CustomNetworkManager : NetworkManager
         NetworkServer.Spawn(canoe);
 
         //Spawn ingredient
-        GameObject ingredient = Instantiate(spawnPrefabs.Find(prefab => prefab.name == "Ingredient"));
-        ingredient.transform.position = new Vector3(320, 10, 200);
-        NetworkServer.Spawn(ingredient);
+        // GameObject ingredient = Instantiate(spawnPrefabs.Find(prefab => prefab.name == "Ingredient"));
+        // ingredient.transform.position = new Vector3(320, 10, 200);
+        // NetworkServer.Spawn(ingredient);
+        SpawnIngredients();
+
     }
     public override void OnServerAddPlayer(NetworkConnection conn)
     {
@@ -40,6 +44,24 @@ public class CustomNetworkManager : NetworkManager
     public override void OnClientConnect(NetworkConnection conn)
     {
         base.OnClientConnect(conn);
+    }
+
+
+
+    public void SpawnIngredients(){
+        Vector3 offset = new Vector3(-555, -169, -234);
+        GameObject[] smallMushroomSpawns;
+        GameObject[] bigMushroomSpawns;
+        Debug.Log("finding ingredint spawns");
+        smallMushroomSpawns = GameObject.FindGameObjectsWithTag("SmallMushroomSpawn");
+        foreach(GameObject spawn in smallMushroomSpawns){
+            Debug.Log("Making an ingredient");
+            GameObject ingredient = Instantiate(spawnPrefabs.Find(prefab => prefab.name == "Ingredient"));
+            ingredient.transform.position = spawn.GetComponent<Transform>().position;
+            ingredient.transform.Translate(offset);
+            NetworkServer.Spawn(ingredient);
+            Debug.Log(spawn.GetComponent<Transform>().position);
+        }
     }
 
 
