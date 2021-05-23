@@ -77,14 +77,14 @@ public class SpiritSpawner : NetworkBehaviour
 
     [SerializeField]
     private List<GameObject> liveSpirits = new List<GameObject>();
-    
+
     /*
     void Start()
     {
         spawnTimer = Random.Range(spawnDelay.x, spawnDelay.y);  // Initialize spawn timer
     }
     */
-    
+
     /*
     public override void OnStartServer()
     {
@@ -101,7 +101,7 @@ public class SpiritSpawner : NetworkBehaviour
         //TargetUpdateSpirits(connectionToClient);
     }
     */
-    
+
     /*
     void Update()
     {
@@ -191,13 +191,14 @@ public class SpiritSpawner : NetworkBehaviour
     [ClientRpc]
     private void RpcSpawnSpirit(int i)
     {
-        Debug.Log("rpc called");
+        //Debug.Log("rpc called");
         List<GameObject> rootObjects = new List<GameObject>();
         Scene scene = SceneManager.GetSceneByName("Spirits");
-        scene.GetRootGameObjects( rootObjects );
+        scene.GetRootGameObjects(rootObjects);
 
         GameObject spirit = rootObjects[i];
-        if (!spirit.activeInHierarchy) {
+        if (!spirit.activeInHierarchy)
+        {
             spirit.SetActive(true);
             liveSpirits.Add(spirit);
         }
@@ -211,18 +212,20 @@ public class SpiritSpawner : NetworkBehaviour
 
     public void SpawnSpirits()
     {
-        Debug.Log("spawning spirits");
+        //Debug.Log("spawning spirits");
         // Find Spirit Scene
         List<GameObject> rootObjects = new List<GameObject>();
         Scene scene = SceneManager.GetSceneByName("Spirits");
-        scene.GetRootGameObjects( rootObjects );
-        
+        scene.GetRootGameObjects(rootObjects);
+
         // Iterate through all objects in spirit scene
         for (int i = 0; i < rootObjects.Count; ++i)
         {
             GameObject spirit = rootObjects[i];
-            if (spirit.tag == "Spirit") {
-                if (Random.Range(0f,1f) < spawnChance) {
+            if (spirit.tag == "Spirit")
+            {
+                if (Random.Range(0f, 1f) < spawnChance)
+                {
                     Debug.Log("calling rpc");
                     RpcSpawnSpirit(i);  // cant pass the spirit gameobject??
                 }

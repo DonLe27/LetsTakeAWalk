@@ -6,6 +6,7 @@ public class ChooseNetworkHandler : MonoBehaviour
 {
     // Start is called before the first frame update
     public bool usingSteamworks = false;
+    public bool singlePlayerMode = false;
     [SerializeField] GameObject networkManagerDev;
     [SerializeField] GameObject networkManagerProd;
 
@@ -13,11 +14,13 @@ public class ChooseNetworkHandler : MonoBehaviour
     {
         if (usingSteamworks)
         {
-            Instantiate(networkManagerProd, new Vector3(0, 0, 0), Quaternion.identity);
+            GameObject networkManager = Instantiate(networkManagerProd, new Vector3(0, 0, 0), Quaternion.identity);
+            networkManager.GetComponent<CustomNetworkManager>().singlePlayerMode = singlePlayerMode;
         }
         else
         {
-            Instantiate(networkManagerDev, new Vector3(0, 0, 0), Quaternion.identity);
+            GameObject networkManager = Instantiate(networkManagerDev, new Vector3(0, 0, 0), Quaternion.identity);
+            networkManager.GetComponent<CustomNetworkManager>().singlePlayerMode = singlePlayerMode;
 
         }
 

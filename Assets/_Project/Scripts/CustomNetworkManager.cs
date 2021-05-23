@@ -6,6 +6,7 @@ public class CustomNetworkManager : NetworkManager
 {
     [SerializeField] private bool usingSteamworks = false;
     [SerializeField] private int numberOfPlayers = 0;
+    public bool singlePlayerMode = true;
 
     public override void Start()
     {
@@ -42,16 +43,20 @@ public class CustomNetworkManager : NetworkManager
         NetworkServer.AddPlayerForConnection(conn, player);
 
         // Spawn Spirits
-        if (numberOfPlayers > 1)
+        if (numberOfPlayers > 1 || singlePlayerMode)
+        {
             FindObjectOfType<SpiritSpawner>().SpawnSpirits();
+        }
+
     }
-    
+
     public override void OnClientConnect(NetworkConnection conn)
     {
         base.OnClientConnect(conn);
     }
 
-    public void SpawnIngredients(){
+    public void SpawnIngredients()
+    {
         //spawn each ingredient specifying ingredient name and number to spawn
         SpawnSpecificIngredient("SmallMushroom", 300);
         SpawnSpecificIngredient("BigMushroom", 100);
@@ -62,15 +67,17 @@ public class CustomNetworkManager : NetworkManager
         SpawnSpecificIngredient("SpicySoupBase", 100);
     }
 
-    public void SpawnSpecificIngredient(string ingredientName, int n){
+    public void SpawnSpecificIngredient(string ingredientName, int n)
+    {
         Vector3 offset = new Vector3(-555, -169, -234);
         GameObject[] ingredientSpawns;
         HashSet<int> chosenIndices;
         int length;
-        ingredientSpawns = GameObject.FindGameObjectsWithTag(ingredientName+"Spawn");
+        ingredientSpawns = GameObject.FindGameObjectsWithTag(ingredientName + "Spawn");
         length = ingredientSpawns.Length;
         chosenIndices = GenerateRandomNums(n, length);
-        foreach(int i in chosenIndices){
+        foreach (int i in chosenIndices)
+        {
             GameObject spawn = ingredientSpawns[i];
             GameObject ingredient = Instantiate(spawnPrefabs.Find(prefab => prefab.name == ingredientName));
             ingredient.transform.position = spawn.GetComponent<Transform>().position;
@@ -82,12 +89,15 @@ public class CustomNetworkManager : NetworkManager
 
     //takes in number of random ints to generate as well as maxExclusive in range
     //returns a HashSet of n unique randomly generated numbers
-    public HashSet<int> GenerateRandomNums(int n, int maxExclusive){
+    public HashSet<int> GenerateRandomNums(int n, int maxExclusive)
+    {
         HashSet<int> result = new HashSet<int>();
-        
+
         int num;
-        if(n>=maxExclusive){ //if n>= the max, create a set of all numbers up to maxExclusive
-            for (int i = 0; i < maxExclusive; i++){
+        if (n >= maxExclusive)
+        { //if n>= the max, create a set of all numbers up to maxExclusive
+            for (int i = 0; i < maxExclusive; i++)
+            {
                 result.Add(i);
             }
         }
