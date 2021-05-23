@@ -37,10 +37,20 @@ public class AudioManager : MonoBehaviour
     private string currentSound;
 
     public static AudioManager instance;
+    private DayCycleController dayCycleController = null;
 
-    void Awake() {
+    public bool inSpecialArea = false;
+    private string curSong = "arpeggios";
+
+    private string arpSong = "arpeggios";
+    private string restSong = "rests";
+    [SerializeField] private float morningStart = 0;
+    [SerializeField] private float morningEnd = 12;
+
+    void Awake()
+    {
         //check if an AudioManager is in the current scene, if so then destroy the current one
-        if(instance == null)
+        if (instance == null)
             instance = this;
         else
         {
@@ -59,7 +69,7 @@ public class AudioManager : MonoBehaviour
             s.source.loop = s.loop;
         }
         //song that will play first
-        defaultSound = "arpeggios";
+        defaultSound = arpSong;
     }
     void Start()
     {
@@ -67,15 +77,40 @@ public class AudioManager : MonoBehaviour
         Play(defaultSound);
     }
 
+    public void StartGame()
+    {
+        dayCycleController = GameObject.Find("DayManager").GetComponent<DayCycleController>();
+    }
+
+    void PlayTimeBasedSong()
+    {
+        if (dayCycleController == null) return;
+        if (!inSpecialArea)
+        {
+
+            float currentTime = dayCycleController.GetTimeOfDay();
+            if (currentTime >= morningStart && currentTime <= morningEnd && curSong != arpSong) // Using currentSong didn't work because of fading?
+            {
+                curSong = arpSong;
+                SwapTrack(arpSong);
+            }
+            else if ((currentTime >= morningEnd || currentTime <= morningStart) && curSong != restSong)
+            {
+                curSong = restSong;
+                SwapTrack(restSong);
+            }
+        }
+    }
     // Update is called once per frame
     void Update()
     {
-        
+        PlayTimeBasedSong();
     }
     //play song given name
-    public void Play(string name) {
+    public void Play(string name)
+    {
         Sound s = Array.Find(sounds, sound => sound.name == name);
-        if(s == null)
+        if (s == null)
         {
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
@@ -88,20 +123,22 @@ public class AudioManager : MonoBehaviour
     //switch the current song to something else; fade out the old one
     public void SwapTrack(string newSound)
     {
-        if(currentSound != newSound)
+        if (currentSound != newSound)
         {
+            // Debug.Log("swapping tracks");
             StopAllCoroutines();
             StartCoroutine(FadeToTrack(newSound));
         }
     }
 
+
     //play default song
     public void ReturnToDefault()
     {
-        SwapTrack(defaultSound);
+        PlayTimeBasedSong();
     }
 
-    private IEnumerator FadeToTrack(string newSong) 
+    private IEnumerator FadeToTrack(string newSong)
     {
         float timeToFade = 2f;
         float timeElapsed = 0;
@@ -109,17 +146,17 @@ public class AudioManager : MonoBehaviour
         Sound oldSong = Array.Find(sounds, sound => sound.name == currentSound);
         float oldVol = oldSong.source.volume;
 
-        if(oldSong == null)
+        if (oldSong == null)
         {
             Debug.LogWarning("Sound: " + currentSound + " not found!");
             yield return null;
         }
-        Debug.Log("Sound: " + currentSound + " fading");
+        // Debug.Log("Sound: " + currentSound + " fading");
 
-        
-        
+
+
         //fade old song out
-        while(timeElapsed < timeToFade)
+        while (timeElapsed < timeToFade)
         {
             oldSong.source.volume = Mathf.Lerp(oldVol, 0, timeElapsed / timeToFade);
             timeElapsed += Time.deltaTime;
@@ -130,17 +167,17 @@ public class AudioManager : MonoBehaviour
         //reset oldSong's volume for the next time it plays
         oldSong.source.volume = .1f;
 
-        //wait for 3 seconds before playing the next song
-        yield return new WaitForSeconds(3);
+        //wait for 1 seconds before playing the next song
+        yield return new WaitForSeconds(2);
         Play(newSong);
 
         //fade in the new song in the same way
         Sound song = Array.Find(sounds, sound => sound.name == newSong);
         float newVol = song.source.volume;
         timeElapsed = 0;
-        while(timeElapsed < timeToFade)
+        while (timeElapsed < timeToFade)
         {
-            song.source.volume = Mathf.Lerp(0, newVol, timeElapsed/timeToFade);
+            song.source.volume = Mathf.Lerp(0, newVol, timeElapsed / timeToFade);
             timeElapsed += Time.deltaTime;
             yield return null;
         }

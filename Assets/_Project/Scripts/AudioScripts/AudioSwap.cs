@@ -6,18 +6,23 @@ using UnityEngine;
 public class AudioSwap : MonoBehaviour
 {
     public string newTrack;
-    private void OnTriggerEnter(Collider other) 
+
+    private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            FindObjectOfType<AudioManager>().SwapTrack(newTrack);
+            AudioManager audioManager = FindObjectOfType<AudioManager>();
+            audioManager.SwapTrack(newTrack);
+            audioManager.inSpecialArea = true;
         }
     }
 
-    private void OnTriggerExit(Collider other) {
-        if(other.CompareTag("Player"))
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
         {
             AudioManager.instance.ReturnToDefault();
+            AudioManager.instance.inSpecialArea = false;
         }
     }
 }

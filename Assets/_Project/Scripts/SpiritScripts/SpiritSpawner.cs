@@ -226,7 +226,7 @@ public class SpiritSpawner : NetworkBehaviour
             {
                 if (Random.Range(0f, 1f) < spawnChance)
                 {
-                    Debug.Log("calling rpc");
+                    // Debug.Log("calling rpc");
                     RpcSpawnSpirit(i);  // cant pass the spirit gameobject??
                 }
             }
