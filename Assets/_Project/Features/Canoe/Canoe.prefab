@@ -428,6 +428,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  canoeCount: 0
+  rb: {fileID: 0}
 --- !u!65 &8273100052052571907
 BoxCollider:
   m_ObjectHideFlags: 0
