@@ -74,7 +74,7 @@ public class ManageJournal : MonoBehaviour
         }
     }
 
-    void ShowQuestions()
+    public void ShowQuestions()
     {
         List<Entry> entries = playerData.journal.entries;
         if (curLeftPage < 1)
@@ -89,7 +89,7 @@ public class ManageJournal : MonoBehaviour
 
     }
 
-    void TurnPageLeft()
+    public void TurnPageLeft()
     {
         curLeftPage -= 2;
         if (curLeftPage < 1)
@@ -98,7 +98,7 @@ public class ManageJournal : MonoBehaviour
         }
         ShowQuestions();
     }
-    void TurnPageRight()
+    public void TurnPageRight()
     {
         curLeftPage += 2;
         if (curLeftPage > playerData.journal.entries.Count)
