@@ -74,8 +74,10 @@ public class FirstPersonAIO : NetworkBehaviour
     // Custom variables
     private Animator animator;
     public Vector3 cameraOffset;
+    private bool toggleFirstPerson = true;
     #region Input Settings
     public bool controllerPauseState = false;
+    private GameObject crossHairObj;
     #endregion
 
     #region Look Settings
@@ -283,14 +285,14 @@ public class FirstPersonAIO : NetworkBehaviour
     {
         // Custom variables
         animator = GetComponent<Animator>();
-        cameraOffset = new Vector3(-8, 5, 0);
 
         #region Look Settings - Start
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         head = gameObject.transform;
         playerCamera.transform.SetPositionAndRotation(gameObject.transform.position, gameObject.transform.rotation);
         playerCamera.transform.SetParent(gameObject.transform);
-        playerCamera.transform.position += cameraOffset;
+        cameraOffset = new Vector3(0, 5, -8);
+        playerCamera.transform.localPosition = cameraOffset;
         if (autoCrosshair || drawStaminaMeter)
         {
             Canvas canvas = new GameObject("AutoCrosshair").AddComponent<Canvas>();
@@ -304,7 +306,7 @@ public class FirstPersonAIO : NetworkBehaviour
             {
                 Image crossHair = new GameObject("Crosshair").AddComponent<Image>();
                 crossHair.sprite = Crosshair;
-                crossHair.rectTransform.sizeDelta = new Vector2(25, 25);
+                crossHair.rectTransform.sizeDelta = new Vector2(5, 5);
                 crossHair.transform.SetParent(canvas.transform);
                 crossHair.transform.position = Vector3.zero;
             }
@@ -361,7 +363,42 @@ public class FirstPersonAIO : NetworkBehaviour
         if (Input.GetButtonDown("Cancel") || Input.GetKeyDown("n")) { ControllerPause(); }
         if (!isLocalPlayer) return;
         #region Look Settings - Update
+        if (Input.GetKeyDown("1"))
+        {
+            if (toggleFirstPerson)
+            {
+                playerCamera.transform.localPosition = new Vector3(0, 2.91f, 0.76f);
+            }
+            else
+            {
+                playerCamera.transform.localPosition = cameraOffset;
+            }
+            toggleFirstPerson = !toggleFirstPerson;
+        }
+        if (Input.GetKeyDown("2"))
+        {
+            autoCrosshair = !autoCrosshair;
+            if (autoCrosshair)
+            {
+                crossHairObj = new GameObject("AutoCrosshair");
+                Canvas canvas = crossHairObj.AddComponent<Canvas>();
+                canvas.gameObject.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+                canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+                canvas.pixelPerfect = true;
+                canvas.transform.SetParent(playerCamera.transform);
+                canvas.transform.position = Vector3.zero;
+                Image crossHair = new GameObject("Crosshair").AddComponent<Image>();
+                crossHair.sprite = Crosshair;
+                crossHair.rectTransform.sizeDelta = new Vector2(8, 8);
+                crossHair.transform.SetParent(canvas.transform);
+                crossHair.transform.position = Vector3.zero;
 
+            }
+            else
+            {
+                Destroy(crossHairObj);
+            }
+        }
         if (enableCameraMovement && !controllerPauseState)
         {
             float mouseYInput = 0;

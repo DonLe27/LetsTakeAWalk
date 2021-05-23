@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+// Questions about passions ?
 public class OrangeSpiritBase : SpiritBase
 {
     public override List<string> GetEasyQuestions()
@@ -18,8 +18,6 @@ public class OrangeSpiritBase : SpiritBase
     {
         return new List<string>(){
             "If money wasn't relevant, what would you do for the rest of your life?",
-            "I know I'm in love when _____________.",
-            "What's the best lesson an ex has ever taught you?"
         };
     }
 }

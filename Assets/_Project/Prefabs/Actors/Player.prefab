@@ -181,12 +181,13 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   cameraOffset: {x: 0, y: 0, z: 0}
+  cameraRotationOffset: {x: 0, y: 0, z: 0}
   controllerPauseState: 0
   enableCameraMovement: 1
   mouseInputInversion: 0
   cameraInputMethod: 0
   verticalRotationRange: 170
-  mouseSensitivity: 7
+  mouseSensitivity: 5
   fOVToMouseSensitivity: 1
   cameraSmoothing: 5
   lockAndHideCursor: 1
@@ -195,7 +196,7 @@ MonoBehaviour:
   mountCanoe: 0
   autoCrosshair: 0
   drawStaminaMeter: 1
-  Crosshair: {fileID: 21300000, guid: 2c19e4cb225706240af7a8fbbf2ebfe2, type: 3}
+  Crosshair: {fileID: 21300000, guid: b51447249ad244a4290115d358b4bb60, type: 3}
   targetAngles: {x: 0, y: 0, z: 0}
   playerCanMove: 1
   walkByDefault: 1
@@ -353,7 +354,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 41b975e693999f942b5755a8f054c4ce, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
