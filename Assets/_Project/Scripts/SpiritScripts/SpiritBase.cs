@@ -15,7 +15,6 @@ public class SpiritBase : MonoBehaviour
         spiritQuestionDisplay = GameObject.Find("SpiritUI").GetComponent<SpiritQuestionDisplay>();
         spiritSpawner = FindObjectOfType<SpiritSpawner>();
         dayCycleController = GameObject.Find("DayManager").GetComponent<DayCycleController>();
-        Debug.Log(dayCycleController);
         managePlayerData = GameObject.Find("PlayerDataManager").GetComponent<ManagePlayerData>();
     }
 
@@ -37,7 +36,7 @@ public class SpiritBase : MonoBehaviour
 
     public void RespondToInteraction(GameObject player)
     {
-        Debug.Log("Respond to interaction");
+        // Debug.Log("Respond to interaction");
         // Can only interact with on spirit at a time
         if (spiritQuestionDisplay.isFading)
         {

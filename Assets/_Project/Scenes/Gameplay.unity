@@ -1342,11 +1342,12 @@ MonoBehaviour:
   PeriodOfDay: 60
   RotationAngle: 0
   MaxFogDensity: 0
-  Speedup: 5
+  Speedup: 2
   DirectionalLight: {fileID: 132744026}
   StarSystem: {fileID: 1375716110}
   Preset: {fileID: 11400000, guid: 1a93744e4e4c82748ac8b303ab79a726, type: 2}
   FreezeTime: 0
+  audioManager: {fileID: 980439213}
   TimeOfDay: 0
 --- !u!4 &750497465
 Transform:
@@ -1542,7 +1543,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940408568}
   m_LocalRotation: {x: -0, y: 0.76045793, z: -0, w: 0.6493873}
-  m_LocalPosition: {x: 450, y: 6, z: 1530}
+  m_LocalPosition: {x: 343.14, y: 1.02, z: 284.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1642,6 +1643,9 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
   defaultSound: 
+  inSpecialArea: 0
+  morningStart: 6
+  morningEnd: 17
 --- !u!1 &1045449778
 GameObject:
   m_ObjectHideFlags: 0
@@ -7023,7 +7027,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1532712306}
   m_LocalRotation: {x: -0, y: 0.76045793, z: -0, w: 0.6493873}
-  m_LocalPosition: {x: 948.32, y: 1.96, z: 1009.95}
+  m_LocalPosition: {x: 885.8, y: 29.7, z: 1137.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
