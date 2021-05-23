@@ -79,7 +79,8 @@ public class ManageJournal : MonoBehaviour
         List<Entry> entries = playerData.journal.entries;
         if (curLeftPage < 1)
         {
-            leftPage.text = "maybe I should interact with some spirits...";
+            leftPage.text = "entry 0\nmaybe I should interact with some spirits...";
+            rightPage.text = "";
         }
         else
         {
