@@ -1279,21 +1279,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: arpeggios
-    clip: {fileID: 8300000, guid: 4a802f9b3ed9549819beb696e392dab5, type: 3}
-    volume: 0.3
-    pitch: 0
+    clip: {fileID: 8300000, guid: fe8143ced32324efaa5266cfa6a0e5ca, type: 3}
+    volume: 0.1
+    pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: bass_and_piano
-    clip: {fileID: 8300000, guid: 22f46f4b6793b4b3391a617761fd47c9, type: 3}
-    volume: 0.3
-    pitch: 0
+    clip: {fileID: 8300000, guid: 40b2ae89373a74012b45f29a450bce74, type: 3}
+    volume: 0.1
+    pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: rests
-    clip: {fileID: 8300000, guid: ae416588710d640598ef9a618043d1bb, type: 3}
-    volume: 0.3
-    pitch: 0
+    clip: {fileID: 8300000, guid: 499b4529a66564b318529c62f80a1adb, type: 3}
+    volume: 0.1
+    pitch: 1
     loop: 1
     source: {fileID: 0}
   defaultSound: 
