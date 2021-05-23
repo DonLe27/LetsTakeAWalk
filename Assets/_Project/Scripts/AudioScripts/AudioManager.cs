@@ -28,6 +28,7 @@ public class AudioManager : MonoBehaviour
             s.source.clip = s.clip;
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
         }
         defaultSound = "arpeggios";
     }
@@ -48,6 +49,7 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
+        Debug.Log("Sound: " + name + " playing");
         s.source.Play();
     }
 
