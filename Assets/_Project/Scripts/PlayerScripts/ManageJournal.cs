@@ -37,11 +37,11 @@ public class ManageJournal : MonoBehaviour
                 isOpen = true;
             }
         }
-        if (Input.GetKeyDown("a"))
+        if (isOpen && Input.GetKeyDown("a"))
         {
             TurnPageLeft();
         }
-        if (Input.GetKeyDown("d"))
+        if (isOpen && Input.GetKeyDown("d"))
         {
             TurnPageRight();
         }
