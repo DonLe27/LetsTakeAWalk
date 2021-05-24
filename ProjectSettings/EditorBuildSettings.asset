@@ -18,17 +18,20 @@ EditorBuildSettings:
     path: Assets/_Project/Scenes/Part02.unity
     guid: e5c479ada38f9d346a4f445c3e537f57
   - enabled: 0
-    path: Assets/_Project/Scenes/Part03.unity
-    guid: 40bf9b39a84da3e43813394aa2776106
-  - enabled: 1
-    path: Assets/_Project/Scenes/Part04.unity
-    guid: 70b701d81e7f5944abfe9d77102507b7
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/_Project/Scenes/Part05.unity
     guid: 4b7700cbddafa8a47a82ee20fda66d64
+  - enabled: 1
+    path: Assets/_Project/Scenes/Part04.unity
+    guid: e47379b743ba6a243962181b6c5dccd0
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/_Project/Scenes/Fireflies.unity
+    guid: a7f25893fb01fa045979ba18b6d47966
   - enabled: 0
     path: Assets/_Project/Scenes/Part06.unity
     guid: 82eca28d0b67772409236c3cf2fb5fcb
