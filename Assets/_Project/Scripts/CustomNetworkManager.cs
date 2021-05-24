@@ -87,7 +87,7 @@ public class CustomNetworkManager : NetworkManager
             GameObject spawn = ingredientSpawns[i];
             GameObject ingredient = Instantiate(spawnPrefabs.Find(prefab => prefab.name == ingredientName));
             ingredient.transform.position = spawn.GetComponent<Transform>().position;
-            ingredient.transform.Translate(offset);
+            //ingredient.transform.Translate(offset);
             NetworkServer.Spawn(ingredient);
             //Debug.Log(spawn.GetComponent<Transform>().position);
         }
