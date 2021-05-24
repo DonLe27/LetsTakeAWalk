@@ -181,7 +181,6 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   cameraOffset: {x: 0, y: 0, z: 0}
-  cameraRotationOffset: {x: 0, y: 0, z: 0}
   controllerPauseState: 0
   enableCameraMovement: 1
   mouseInputInversion: 0
@@ -203,7 +202,7 @@ MonoBehaviour:
   walkSpeed: 6
   sprintKey: 304
   sprintSpeed: 8
-  jumpPower: 5
+  jumpPower: 4.76
   canJump: 1
   canHoldJump: 0
   useStamina: 0

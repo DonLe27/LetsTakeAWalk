@@ -428,11 +428,12 @@ public class FirstPersonAIO : NetworkBehaviour
         #endregion
 
         #region Input Settings - Update
-        if (canHoldJump ? (canJump && Input.GetButton("Jump")) : (Input.GetButtonDown("Jump") && canJump))
+        if (Input.GetKeyDown("space"))
         {
+            Debug.Log("pressed jump");
             jumpInput = true;
         }
-        else if (Input.GetButtonUp("Jump")) { jumpInput = false; }
+
 
 
         if (_crouchModifiers.useCrouch)
@@ -544,12 +545,13 @@ public class FirstPersonAIO : NetworkBehaviour
         #region Jump
         yVelocity = fps_Rigidbody.velocity.y;
 
-        if (IsGrounded && jumpInput && jumpPowerInternal > 0 && !didJump)
+        if (jumpInput)// (IsGrounded && jumpInput && jumpPowerInternal > 0 && !didJump)
         {
-            if (advanced.maxSlopeAngle > 0)
+            if (true)//(advanced.maxSlopeAngle > 0)
             {
-                if (advanced.isTouchingFlat || advanced.isTouchingWalkable)
+                if (true)// (advanced.isTouchingFlat || advanced.isTouchingWalkable)
                 {
+                    Debug.Log("jump");
                     didJump = true;
                     jumpInput = false;
                     yVelocity += fps_Rigidbody.velocity.y < 0.01f ? jumpPowerInternal : jumpPowerInternal / 3;
