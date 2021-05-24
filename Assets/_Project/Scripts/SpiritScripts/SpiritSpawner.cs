@@ -206,8 +206,8 @@ public class SpiritSpawner : NetworkBehaviour
 
     public void DespawnSpirit(GameObject spirit)
     {
-        liveSpirits.Remove(spirit);
-        Destroy(spirit);
+        // liveSpirits.Remove(spirit);
+        // Destroy(spirit);
     }
 
     public void SpawnSpirits()
