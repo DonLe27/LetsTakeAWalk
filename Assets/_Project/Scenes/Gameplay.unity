@@ -1418,7 +1418,7 @@ MonoBehaviour:
   PeriodOfDay: 60
   RotationAngle: 0
   MaxFogDensity: 0
-  Speedup: 1
+  Speedup: 0.5
   DirectionalLight: {fileID: 132744026}
   StarSystem: {fileID: 1375716110}
   Preset: {fileID: 11400000, guid: 1a93744e4e4c82748ac8b303ab79a726, type: 2}
