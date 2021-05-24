@@ -7339,8 +7339,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2c2e49a052d4da4cb086b94332e2dbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usingSteamworks: 1
-  singlePlayerMode: 0
+  usingSteamworks: 0
+  singlePlayerMode: 1
   networkManagerDev: {fileID: 3156456396096797454, guid: 4707872c45a3e3f4ca2675a3ea61569d, type: 3}
   networkManagerProd: {fileID: 3968906065015062342, guid: 6143507e9d474984493e16ad7d47a96d, type: 3}
 --- !u!4 &1713437209
