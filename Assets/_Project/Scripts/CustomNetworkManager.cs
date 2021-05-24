@@ -6,11 +6,17 @@ public class CustomNetworkManager : NetworkManager
 {
     [SerializeField] private bool usingSteamworks = false;
     [SerializeField] private int numberOfPlayers = 0;
-    public bool singlePlayerMode = true;
+    public bool singlePlayerMode = false;
 
     public override void Start()
     {
         base.Start();
+    }
+
+    public void StartSoloHost()
+    {
+        singlePlayerMode = true;
+        StartHost();
     }
     public override void OnStartServer()
     {
