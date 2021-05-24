@@ -29,6 +29,14 @@ public class SteamworksManager : MonoBehaviour
         SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypeFriendsOnly, networkManager.maxConnections);
     }
 
+    public void HostSingleLobby()
+    {
+        Debug.Log(networkManager.maxConnections);
+        connectionUI.SetActive(false);
+        networkManager.singlePlayerMode = true;
+        SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypeFriendsOnly, networkManager.maxConnections);
+    }
+
     private void OnLobbyCreated(LobbyCreated_t callback)
     {
         if (callback.m_eResult != EResult.k_EResultOK)
