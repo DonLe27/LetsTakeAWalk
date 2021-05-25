@@ -6836,7 +6836,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1532712306}
   m_LocalRotation: {x: -0, y: 0.76045793, z: -0, w: 0.6493873}
-  m_LocalPosition: {x: 949.26, y: 1.3, z: 1007.65}
+  m_LocalPosition: {x: 343.24, y: 15.26, z: 1918.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6933,7 +6933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2c2e49a052d4da4cb086b94332e2dbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usingSteamworks: 1
+  usingSteamworks: 0
   singlePlayerMode: 1
   networkManagerDev: {fileID: 3156456396096797454, guid: 4707872c45a3e3f4ca2675a3ea61569d, type: 3}
   networkManagerProd: {fileID: 3968906065015062342, guid: 6143507e9d474984493e16ad7d47a96d, type: 3}
