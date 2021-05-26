@@ -1212,6 +1212,7 @@ GameObject:
   m_Component:
   - component: {fileID: 786314496}
   - component: {fileID: 786314495}
+  - component: {fileID: 786314497}
   m_Layer: 0
   m_Name: Spot Light (1)
   m_TagString: Untagged
@@ -1288,13 +1289,32 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 786314494}
-  m_LocalRotation: {x: 0.23891854, y: -0.083032295, z: 0.09679624, w: 0.9626288}
+  m_LocalRotation: {x: 0.24688107, y: 0.0067986324, z: 0.07417093, w: 0.96617913}
   m_LocalPosition: {x: 1708.8, y: 41.4, z: 155.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 36
-  m_LocalEulerAnglesHint: {x: 28.428, y: -7.422, z: 9.602}
+  m_LocalEulerAnglesHint: {x: 28.428, y: 3.244, z: 9.602}
+--- !u!95 &786314497
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786314494}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5c85ae0d5e9d63f41bd95f8b34cc3775, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &876225868
 PrefabInstance:
   m_ObjectHideFlags: 0
