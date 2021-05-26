@@ -8,14 +8,19 @@ public class Footsteps : MonoBehaviour
     [SerializeField]
     private AudioClip clip;
     private AudioSource audioSource;
+    private GameObject bridgeMiddle;
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        bridgeMiddle = GameObject.Find("bridge_middle");
     }
 
-    // Update is called once per frame
+
+    // Step is called everytime a player steps
     private void Step()
     {
+       // bridgeMiddle.transform.velocity = new Vector3(1, 3, 0);
+
         audioSource.PlayOneShot(clip);
     }
 }
