@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7609562700182035378, guid: b58e8c733fb56dc419ce28c49718e874, type: 3}
+  - {fileID: 2100000, guid: 6dc5faaa8f5360741806553572dd76f8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 365624837294961426}
   - component: {fileID: 1028308074709675141}
   m_Layer: 0
-  m_Name: Tree_flower_M_new_collider 1
+  m_Name: Tree_flower_M_new_collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -213,7 +213,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7609562700182035378, guid: b58e8c733fb56dc419ce28c49718e874, type: 3}
+  - {fileID: 2100000, guid: 6dc5faaa8f5360741806553572dd76f8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
