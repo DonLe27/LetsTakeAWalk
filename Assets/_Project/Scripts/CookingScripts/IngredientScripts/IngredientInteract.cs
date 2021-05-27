@@ -18,11 +18,7 @@ public class IngredientInteract: NetworkInteractable
     // Use NetworkTransform component to sync
     private void Respond(GameObject player)
     {
-        // Vector3 velocity = gameObject.transform.position - player.transform.position;
-        // GetComponent<Rigidbody>().AddForce(velocity.normalized, ForceMode.Impulse);
-        transform.Translate(Vector3.up * 2, Space.World);
-        //GameObject newCanvas = Instantiate(canvas);
-        //Debug.Log("Picked up Ingredient");
+        
     }
 
     // Can also use ClientRpc to broadcast changes to clients

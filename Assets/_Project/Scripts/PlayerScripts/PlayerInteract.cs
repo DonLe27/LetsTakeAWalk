@@ -54,6 +54,7 @@ public class PlayerInteract : NetworkBehaviour
                 {
                     CmdInteract(target);
                     TakeIngredient(target);
+                    destroyIngredient(target);
                 }
                 else if (target.tag == "CookingPot")
                 {
@@ -111,6 +112,11 @@ public class PlayerInteract : NetworkBehaviour
         target1.SendMessage("Row", this.transform.gameObject);
     }
 
+    [Command]
+    private void destroyIngredient(GameObject target){
+        Destroy(target);
+    }
+
     //Player picks up an ingredient and adds it to inventory
     [Client]
     private void TakeIngredient(GameObject target)
@@ -118,7 +124,7 @@ public class PlayerInteract : NetworkBehaviour
         IngredientID id = target.GetComponent<IngredientInfo>().id;
         //Debug.Log("picked up ingredient of type: " + id);
         managePlayerData.updateIngredients(id, true);
-        Destroy(target);
+        //Destroy(target);
     }
 
     //sets item that player collided with to be picked up
