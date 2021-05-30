@@ -72,7 +72,7 @@ public class CustomNetworkManager : NetworkManager
         SpawnSpecificIngredient("NormalSoupBase", 100);
         SpawnSpecificIngredient("SpicySoupBase", 100);
     }
-
+    
     public void SpawnSpecificIngredient(string ingredientName, int n)
     {
         Vector3 offset = new Vector3(-555, -169, -234);
