@@ -20,13 +20,33 @@ public class CanoeInteractable : NetworkBehaviour
     }
 
     // Use NetworkTransform component to sync
-    public void Row(GameObject player)
+
+    public Rigidbody rb;
+    
+    public void Row(args arg)
     {
+        /*if (isInFront) {
+            Debug.Log("im in front");
+        }
+        else {
+            Debug.Log("back");
+        }*/
+        rb = arg.obj.GetComponent<Rigidbody>();
+        Debug.Log(transform.forward);
         Debug.Log("row");
         // Code for moving the canoe
-        float movementSpeed = 100f;
-        transform.position += -transform.forward * Time.deltaTime * movementSpeed;
+        float movementSpeed = 10f;
+        if (arg.inFront) {
+            Debug.Log("Front player.");
+            // row to the right
+        }
+        else {
+            Debug.Log("Back player");
+            // row to the left
+        }
 
+        // transform.position += -transform.forward * Time.deltaTime * movementSpeed;
+        rb.AddForce(-transform.forward * movementSpeed); // once i figure this out, move them to the if-else with corresponding directions
     }
 
     // Can also use ClientRpc to broadcast changes to clients

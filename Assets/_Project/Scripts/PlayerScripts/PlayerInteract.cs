@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+
+public struct args {
+    public bool inFront;
+    public GameObject obj;
+};
 public class PlayerInteract : NetworkBehaviour
 {
     // Start is called before the first frame update
@@ -9,12 +14,14 @@ public class PlayerInteract : NetworkBehaviour
     public LayerMask mask;
     public Vector3 collision;
     public float rayDistance = 10;
+
     private Transform body;
 
     private GameObject ingredientToBePickedUp = null; //ingredient to be picked up
 
     private ManagePlayerData managePlayerData;
     private bool mountedOnCanoe = false;
+    private bool isInFront = false;
     [SerializeField] private Vector3 playerCanoeOffset = new Vector3(0, 1, 0);
     public override void OnStartLocalPlayer()
     {
@@ -69,6 +76,7 @@ public class PlayerInteract : NetworkBehaviour
                     if (!mountedOnCanoe)
                     {
                         MountCanoe(target);
+                        //Debug.Log(isInFront);
                         CmdCanoeInteract(target, 1);
                         mountedOnCanoe = !mountedOnCanoe;
                     }
@@ -109,7 +117,7 @@ public class PlayerInteract : NetworkBehaviour
     [Command]
     private void CmdRow(GameObject target1)
     {
-        target1.SendMessage("Row", this.transform.gameObject);
+        target1.SendMessage("Row", new args{inFront = isInFront, obj = this.transform.gameObject}); // since i used new, where to delete?
     }
 
     [Command]
@@ -165,6 +173,7 @@ public class PlayerInteract : NetworkBehaviour
         {
             Debug.Log("sit in front");
             transform.localPosition = playerCanoeOffset;
+            isInFront = true;
         }
         else
         {
