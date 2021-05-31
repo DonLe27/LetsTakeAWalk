@@ -5,6 +5,7 @@ using Mirror;
 
 public class CanoeInteractable : NetworkBehaviour
 {
+    [SerializeField] private Rigidbody rb;
     [SyncVar]
     public int canoeCount = 0;
     [Server]
@@ -20,9 +21,18 @@ public class CanoeInteractable : NetworkBehaviour
     }
 
     // Use NetworkTransform component to sync
-    public void Row(GameObject player)
+    public void RowLeft(GameObject player)
     {
-        Debug.Log("row");
+        Debug.Log("row left");
+        // Code for moving the canoe
+        float movementSpeed = 100f;
+        transform.position += -transform.forward * Time.deltaTime * movementSpeed;
+
+    }
+
+    public void RowRight(GameObject player)
+    {
+        Debug.Log("row right");
         // Code for moving the canoe
         float movementSpeed = 100f;
         transform.position += -transform.forward * Time.deltaTime * movementSpeed;

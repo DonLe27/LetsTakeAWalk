@@ -36,10 +36,15 @@ public class PlayerInteract : NetworkBehaviour
 
         if (this.transform.parent != null)
         { // if player has mounted canoe
-            if (Input.GetKeyDown("r")) // if keyboard for row was pressed
+            if (Input.GetKeyDown("q")) // if keyboard for row was pressed
             {
                 CanoeInteractable canoe = GameObject.FindObjectOfType<CanoeInteractable>();
-                CmdRow(canoe.transform.gameObject);
+                CmdRowLeft(canoe.transform.gameObject);
+            }
+            else if (Input.GetKeyDown("e"))
+            {
+                CanoeInteractable canoe = GameObject.FindObjectOfType<CanoeInteractable>();
+                CmdRowRight(canoe.transform.gameObject);
             }
         }
 
@@ -107,13 +112,18 @@ public class PlayerInteract : NetworkBehaviour
     }
 
     [Command]
-    private void CmdRow(GameObject target1)
+    private void CmdRowLeft(GameObject target1)
     {
-        target1.SendMessage("Row", this.transform.gameObject);
+        target1.SendMessage("RowLeft", this.transform.gameObject);
+    }
+    private void CmdRowRight(GameObject target1)
+    {
+        target1.SendMessage("RowRight", this.transform.gameObject);
     }
 
     [Command]
-    private void destroyIngredient(GameObject target){
+    private void destroyIngredient(GameObject target)
+    {
         Destroy(target);
     }
 
