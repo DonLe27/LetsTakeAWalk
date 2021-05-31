@@ -19,7 +19,6 @@ public class LighthouseManager : MonoBehaviour
     void Update()
     {
         float currentTime = dayCycleController.GetTimeOfDay();
-        Debug.Log(currentTime);
         if (currentTime >= morningStart && currentTime <= dayEnd)
         {
             bloom.active = false;

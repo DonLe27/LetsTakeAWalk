@@ -1003,9 +1003,9 @@ MonoBehaviour:
   DirectionalLight: {fileID: 127781989}
   StarSystem: {fileID: 1375716110}
   Preset: {fileID: 11400000, guid: 1a93744e4e4c82748ac8b303ab79a726, type: 2}
-  FreezeTime: 0
+  FreezeTime: 1
   audioManager: {fileID: 980439213}
-  TimeOfDay: 0
+  TimeOfDay: 18.3
 --- !u!4 &750497465
 Transform:
   m_ObjectHideFlags: 0
@@ -1198,7 +1198,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &980439212
 Transform:
   m_ObjectHideFlags: 0
@@ -6519,7 +6519,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1532712306}
   m_LocalRotation: {x: -0.0023540633, y: 0.9286206, z: -0.3709344, w: -0.008123995}
-  m_LocalPosition: {x: 1770.69, y: 14.269556, z: 404.97}
+  m_LocalPosition: {x: 1118.06, y: 10, z: 1214.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6915,7 +6915,7 @@ MonoBehaviour:
   dayCycleController: {fileID: 750497464}
   bloom: {fileID: 0}
   morningStart: 0
-  morningEnd: 12
+  dayEnd: 20
 --- !u!4 &312726337637534266
 Transform:
   m_ObjectHideFlags: 0
