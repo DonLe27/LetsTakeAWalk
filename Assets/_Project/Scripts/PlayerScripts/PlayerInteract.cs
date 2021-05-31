@@ -183,12 +183,12 @@ public class PlayerInteract : NetworkBehaviour
         if (canoeCount == 0)
         {
             Debug.Log("sit in front");
-            transform.localPosition = playerCanoeOffset;
+            transform.localPosition = playerCanoeOffset + new Vector3(0, -1, 2);
         }
         else
         {
             Debug.Log("sit behind");
-            transform.localPosition = playerCanoeOffset + new Vector3(0, 0, 5);
+            transform.localPosition = playerCanoeOffset + new Vector3(0, -1, 5);
         }
         Debug.Log(transform.position);
         transform.localRotation = Quaternion.Euler(0, 180, 0);
