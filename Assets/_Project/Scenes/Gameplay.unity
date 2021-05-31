@@ -6519,7 +6519,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1532712306}
   m_LocalRotation: {x: -0.0023540633, y: 0.9286206, z: -0.3709344, w: -0.008123995}
-  m_LocalPosition: {x: 1439, y: 1.87, z: 1672}
+  m_LocalPosition: {x: 1770.69, y: 14.269556, z: 404.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6848,6 +6848,7 @@ GameObject:
   - component: {fileID: 2144090725}
   - component: {fileID: 2144090724}
   - component: {fileID: 2144090723}
+  - component: {fileID: 2144090726}
   m_Layer: 0
   m_Name: LighthousePostProcessing
   m_TagString: Untagged
@@ -6899,6 +6900,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: -36.809, z: 0}
+--- !u!114 &2144090726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144090722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2b6a7e36d0ef8140bfb2cf847bd5f00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dayCycleController: {fileID: 750497464}
+  bloom: {fileID: 0}
+  morningStart: 0
+  morningEnd: 12
 --- !u!4 &312726337637534266
 Transform:
   m_ObjectHideFlags: 0

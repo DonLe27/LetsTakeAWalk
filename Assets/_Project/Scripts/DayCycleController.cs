@@ -35,6 +35,7 @@ public class DayCycleController : NetworkBehaviour
     [SerializeField] private bool FreezeTime = false;
     [SerializeField] private AudioManager audioManager;
 
+
     // Variables
     [SyncVar]
     [SerializeField, Range(0, 24)] private float TimeOfDay;  // Time of Day 0 to 24
