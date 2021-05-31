@@ -36,10 +36,20 @@ public class PlayerInteract : NetworkBehaviour
 
         if (this.transform.parent != null)
         { // if player has mounted canoe
-            if (Input.GetKeyDown("r")) // if keyboard for row was pressed
+            if (Input.GetKeyDown("q")) // if keyboard for row was pressed
             {
                 CanoeInteractable canoe = GameObject.FindObjectOfType<CanoeInteractable>();
-                CmdRow(canoe.transform.gameObject);
+                CmdRowLeft(canoe.transform.gameObject);
+            }
+            else if (Input.GetKeyDown("e"))
+            {
+                CanoeInteractable canoe = GameObject.FindObjectOfType<CanoeInteractable>();
+                CmdRowRight(canoe.transform.gameObject);
+            }
+            else if (Input.GetKeyDown(KeyCode.Space))
+            {
+                CanoeInteractable canoe = GameObject.FindObjectOfType<CanoeInteractable>();
+                CmdRowForward(canoe.transform.gameObject);
             }
         }
 
@@ -54,6 +64,7 @@ public class PlayerInteract : NetworkBehaviour
                 {
                     CmdInteract(target);
                     TakeIngredient(target);
+                    destroyIngredient(target);
                 }
                 else if (target.tag == "CookingPot")
                 {
@@ -106,9 +117,23 @@ public class PlayerInteract : NetworkBehaviour
     }
 
     [Command]
-    private void CmdRow(GameObject target1)
+    private void CmdRowLeft(GameObject target1)
     {
-        target1.SendMessage("Row", this.transform.gameObject);
+        target1.SendMessage("RowLeft", this.transform.gameObject);
+    }
+    private void CmdRowRight(GameObject target1)
+    {
+        target1.SendMessage("RowRight", this.transform.gameObject);
+    }
+    private void CmdRowForward(GameObject target1)
+    {
+        target1.SendMessage("RowForward", this.transform.gameObject);
+    }
+
+    [Command]
+    private void destroyIngredient(GameObject target)
+    {
+        Destroy(target);
     }
 
     //Player picks up an ingredient and adds it to inventory
@@ -118,7 +143,7 @@ public class PlayerInteract : NetworkBehaviour
         IngredientID id = target.GetComponent<IngredientInfo>().id;
         //Debug.Log("picked up ingredient of type: " + id);
         managePlayerData.updateIngredients(id, true);
-        Destroy(target);
+        //Destroy(target);
     }
 
     //sets item that player collided with to be picked up

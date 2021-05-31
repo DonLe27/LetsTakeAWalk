@@ -5,6 +5,10 @@ using Mirror;
 
 public class CanoeInteractable : NetworkBehaviour
 {
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] private float torque = 8;
+    [SerializeField] private float rowForce = 2;
+    [SerializeField] Transform boatTransform;
     [SyncVar]
     public int canoeCount = 0;
     [Server]
@@ -20,13 +24,21 @@ public class CanoeInteractable : NetworkBehaviour
     }
 
     // Use NetworkTransform component to sync
-    public void Row(GameObject player)
+    public void RowForward(GameObject player)
     {
-        Debug.Log("row");
-        // Code for moving the canoe
-        float movementSpeed = 100f;
-        transform.position += -transform.forward * Time.deltaTime * movementSpeed;
+        Vector3 dir = (-boatTransform.forward);
+        rb.AddForce(dir.normalized * rowForce, ForceMode.VelocityChange);
+    }
+    public void RowLeft(GameObject player)
+    {
+        float turn = Input.GetAxis("Horizontal");
+        rb.AddRelativeTorque(0, torque, 0, ForceMode.Impulse);
+    }
 
+    public void RowRight(GameObject player)
+    {
+        float turn = Input.GetAxis("Horizontal");
+        rb.AddRelativeTorque(0, -torque, 0, ForceMode.Impulse);
     }
 
     // Can also use ClientRpc to broadcast changes to clients

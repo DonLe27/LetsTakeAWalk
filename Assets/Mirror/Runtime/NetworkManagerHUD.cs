@@ -14,7 +14,6 @@ namespace Mirror
     {
         NetworkManager manager;
 
-        [Obsolete("showGUI will be removed unless someone has a valid use case. Simply use or don't use the HUD component.")]
         public bool showGUI = true;
 
         public int offsetX;
