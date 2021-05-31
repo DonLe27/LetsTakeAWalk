@@ -46,6 +46,11 @@ public class PlayerInteract : NetworkBehaviour
                 CanoeInteractable canoe = GameObject.FindObjectOfType<CanoeInteractable>();
                 CmdRowRight(canoe.transform.gameObject);
             }
+            else if (Input.GetKeyDown(KeyCode.Space))
+            {
+                CanoeInteractable canoe = GameObject.FindObjectOfType<CanoeInteractable>();
+                CmdRowForward(canoe.transform.gameObject);
+            }
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -119,6 +124,10 @@ public class PlayerInteract : NetworkBehaviour
     private void CmdRowRight(GameObject target1)
     {
         target1.SendMessage("RowRight", this.transform.gameObject);
+    }
+    private void CmdRowForward(GameObject target1)
+    {
+        target1.SendMessage("RowForward", this.transform.gameObject);
     }
 
     [Command]
