@@ -14,10 +14,11 @@ public class PotInteract: NetworkInteractable
     private int numIngredients = 7; //the total number of ingredients in the game
 
     private GameObject newCanvas;
+    private GameObject player;
 
-    [Server]
-    public override void RespondToInteraction(GameObject player)
+    public override void RespondToInteraction(GameObject Gameplayer)
     {
+        player = Gameplayer;
         //Debug.Log("About to create menu");
         //CreateMenu(player);
     }
@@ -29,6 +30,7 @@ public class PotInteract: NetworkInteractable
         }
         //create Menu
         displayingMenu = true;
+        player.GetComponent<FirstPersonAIO>().ControllerPause();
         ///Debug.Log("Creating Menu Now");
         newCanvas = Instantiate(MenuCanvas);
         GameObject newButton;
@@ -57,6 +59,7 @@ public class PotInteract: NetworkInteractable
                 buttonIndex++;
             }
         }
+        
         ///Debug.Log("Created Menu");
 
         // newButton = Instantiate(ingredientButton); 
@@ -78,6 +81,7 @@ public class PotInteract: NetworkInteractable
         //remove menu and set displaying menu to false
         Destroy(newCanvas);
         displayingMenu = false;
+        player.GetComponent<FirstPersonAIO>().ControllerPause();
 
     }
 

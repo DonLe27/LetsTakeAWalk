@@ -941,7 +941,7 @@ MonoBehaviour:
   DirectionalLight: {fileID: 127781989}
   StarSystem: {fileID: 1375716110}
   Preset: {fileID: 11400000, guid: 1a93744e4e4c82748ac8b303ab79a726, type: 2}
-  FreezeTime: 0
+  FreezeTime: 1
   audioManager: {fileID: 980439213}
   TimeOfDay: 0
 --- !u!4 &750497465
