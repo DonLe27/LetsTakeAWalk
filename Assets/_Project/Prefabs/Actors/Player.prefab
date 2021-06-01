@@ -188,7 +188,7 @@ MonoBehaviour:
   verticalRotationRange: 170
   mouseSensitivity: 2.5
   fOVToMouseSensitivity: 1
-  cameraSmoothing: 5
+  cameraSmoothing: 25
   lockAndHideCursor: 1
   playerCamera: {fileID: 0}
   enableCameraShake: 0
