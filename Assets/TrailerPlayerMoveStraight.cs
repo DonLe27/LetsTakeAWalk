@@ -10,7 +10,7 @@ public class TrailerPlayerMoveStraight : MonoBehaviour
     private bool start = false;
     void Start()
     {
-        StartCoroutine(Delay());
+        //StartCoroutine(Delay());
     }
 
     IEnumerator Delay()
@@ -22,6 +22,10 @@ public class TrailerPlayerMoveStraight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown("o"))
+        {
+            start = true;
+        }
         if (!start) return;
         if (speed == 0)
         {
