@@ -14,32 +14,34 @@ public class PotInteract: NetworkInteractable
     private int numIngredients = 7; //the total number of ingredients in the game
 
     private GameObject newCanvas;
+    private GameObject player;
 
-    [Server]
-    public override void RespondToInteraction(GameObject player)
+    public override void RespondToInteraction(GameObject Gameplayer)
     {
+        player = Gameplayer;
         //Debug.Log("About to create menu");
         //CreateMenu(player);
     }
 
-    public void CreateMenu(GameObject player){
+    public void CreateMenu(ManagePlayerData managePlayerData){
         //if menu is already being displayed don't redisplay
         if(displayingMenu){
             return;
         }
         //create Menu
         displayingMenu = true;
-        Debug.Log("Creating Menu Now");
+        player.GetComponent<FirstPersonAIO>().ControllerPause();
+        ///Debug.Log("Creating Menu Now");
         newCanvas = Instantiate(MenuCanvas);
         GameObject newButton;
         EventSystem eventSystem = EventSystem.current; //get current eventsystem
-        ManagePlayerData managePlayerData = player.GetComponent<ManagePlayerData>();
+        //ManagePlayerData managePlayerData = player.GetComponent<ManagePlayerData>();
         //Loop through players Items to check what items they have
         int buttonIndex = 0;
         int buttonHeight = (int)ingredientButton.GetComponent<RectTransform>().rect.height;
         for (int i = 0; i < numIngredients; i++){
             if(managePlayerData.getIngredientCount(i)>0){ //if the player has at least one of this ingredient make a button for it
-               newButton = Instantiate(ingredientButton); 
+               newButton = Instantiate(ingredientButton);
                newButton.transform.SetParent(newCanvas.transform, false);
                 //newButton.GetComponent<RectTransform>().position.Set(20, 100 - 30 * buttonIndex, 0);
                 newButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(20, 100 - buttonHeight * buttonIndex);
@@ -57,7 +59,8 @@ public class PotInteract: NetworkInteractable
                 buttonIndex++;
             }
         }
-        Debug.Log("Created Menu");
+        
+        ///Debug.Log("Created Menu");
 
         // newButton = Instantiate(ingredientButton); 
         // newButton.transform.SetParent(newCanvas.transform, false);
@@ -70,7 +73,7 @@ public class PotInteract: NetworkInteractable
     //called on press of menu button
     //removes selected item from the player and adds it to the pot
     void MenuButtonPressed(int index, ManagePlayerData managePlayerData){
-        Debug.Log("Pressed button: " + ((IngredientID)index).ToString());
+        //Debug.Log("Pressed button: " + ((IngredientID)index).ToString());
         managePlayerData.updateIngredients((IngredientID)index, false); //remove item from players inventory
         CookFood cookFood = gameObject.GetComponent<CookFood>();
         cookFood.AddIngredient((IngredientID)index); //add item to pot
@@ -78,6 +81,7 @@ public class PotInteract: NetworkInteractable
         //remove menu and set displaying menu to false
         Destroy(newCanvas);
         displayingMenu = false;
+        player.GetComponent<FirstPersonAIO>().ControllerPause();
 
     }
 

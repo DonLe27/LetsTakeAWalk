@@ -69,8 +69,8 @@ public class PlayerInteract : NetworkBehaviour
                 }
                 else if (target.tag == "CookingPot")
                 {
-                    Debug.Log("pot: clicked on pot");
-                    target.SendMessage("CreateMenu", gameObject); //if click on pot, pot creates cooking menu
+                    target.SendMessage("RespondToInteraction", gameObject);
+                    target.SendMessage("CreateMenu", managePlayerData); //if click on pot, pot creates cooking menu
                 }
                 else if (target.tag == "JournalPage")
                 {
