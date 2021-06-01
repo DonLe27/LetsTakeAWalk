@@ -26,14 +26,23 @@ public class CanoeInteractable : NetworkBehaviour
     {
         Vector3 dir = (-boatTransform.forward);
         float angle = Vector2.Angle(new Vector2(rb.velocity.x, rb.velocity.z), new Vector2(dir.x, dir.z));
-        return -Mathf.Abs((angle - 90) / 90) + 1;
+        return -Mathf.Abs((angle - 90) / 90) + 1.3f;
     }
     // Use NetworkTransform component to sync
     public void RowForward(GameObject player)
     {
-        Vector3 dir = (-boatTransform.forward);
-        rb.AddForce(dir.normalized * rowForce, ForceMode.VelocityChange);
-        rb.drag = GetDragValue();
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            rb.angularVelocity = Vector3.zero;
+            rb.velocity = Vector3.zero;
+        }
+        else
+        {
+            Vector3 dir = (-boatTransform.forward);
+            rb.AddForce(dir.normalized * rowForce, ForceMode.VelocityChange);
+            rb.drag = GetDragValue();
+        }
+
     }
     public void RowLeft(GameObject player)
     {
