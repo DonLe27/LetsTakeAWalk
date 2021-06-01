@@ -16,6 +16,7 @@ public class PlayerInteract : NetworkBehaviour
     private ManagePlayerData managePlayerData;
     private bool mountedOnCanoe = false;
     [SerializeField] private Vector3 playerCanoeOffset = new Vector3(0, 1, 0);
+    [SerializeField] private float canoeRotationY = 0;
     public override void OnStartLocalPlayer()
     {
         base.OnStartLocalPlayer();
@@ -36,10 +37,20 @@ public class PlayerInteract : NetworkBehaviour
 
         if (this.transform.parent != null)
         { // if player has mounted canoe
-            if (Input.GetKeyDown("r")) // if keyboard for row was pressed
+            if (Input.GetKeyDown("q")) // if keyboard for row was pressed
             {
                 CanoeInteractable canoe = GameObject.FindObjectOfType<CanoeInteractable>();
-                CmdRow(canoe.transform.gameObject);
+                CmdRowLeft(canoe.transform.gameObject);
+            }
+            else if (Input.GetKeyDown("e"))
+            {
+                CanoeInteractable canoe = GameObject.FindObjectOfType<CanoeInteractable>();
+                CmdRowRight(canoe.transform.gameObject);
+            }
+            else if (Input.GetKeyDown(KeyCode.Space))
+            {
+                CanoeInteractable canoe = GameObject.FindObjectOfType<CanoeInteractable>();
+                CmdRowForward(canoe.transform.gameObject);
             }
         }
 
@@ -58,8 +69,13 @@ public class PlayerInteract : NetworkBehaviour
                 }
                 else if (target.tag == "CookingPot")
                 {
+<<<<<<< HEAD
                     target.SendMessage("RespondToInteraction", gameObject);
                     target.SendMessage("CreateMenu", managePlayerData); //if click on pot, pot creates cooking menu
+=======
+                    Debug.Log("pot: clicked on pot");
+                    target.SendMessage("CreateMenu", gameObject); //if click on pot, pot creates cooking menu
+>>>>>>> main
                 }
                 else if (target.tag == "JournalPage")
                 {
@@ -108,13 +124,22 @@ public class PlayerInteract : NetworkBehaviour
     }
 
     [Command]
-    private void CmdRow(GameObject target1)
+    private void CmdRowLeft(GameObject target1)
     {
-        target1.SendMessage("Row", this.transform.gameObject);
+        target1.SendMessage("RowLeft", this.transform.gameObject);
+    }
+    private void CmdRowRight(GameObject target1)
+    {
+        target1.SendMessage("RowRight", this.transform.gameObject);
+    }
+    private void CmdRowForward(GameObject target1)
+    {
+        target1.SendMessage("RowForward", this.transform.gameObject);
     }
 
     [Command]
-    private void destroyIngredient(GameObject target){
+    private void destroyIngredient(GameObject target)
+    {
         Destroy(target);
     }
 
@@ -165,16 +190,16 @@ public class PlayerInteract : NetworkBehaviour
         if (canoeCount == 0)
         {
             Debug.Log("sit in front");
-            transform.localPosition = playerCanoeOffset;
+            transform.localPosition = playerCanoeOffset + new Vector3(0, -1.5f, 2.5f);
         }
         else
         {
             Debug.Log("sit behind");
-            transform.localPosition = playerCanoeOffset + new Vector3(0, 0, 5);
+            transform.localPosition = playerCanoeOffset + new Vector3(0, -1.5f, 5);
         }
         Debug.Log(transform.position);
-        transform.localRotation = Quaternion.Euler(0, 180, 0);
         GetComponent<FirstPersonAIO>().mountCanoe = true;
+        transform.rotation = Quaternion.Euler(0, canoeRotationY, 0);
     }
 
     [Client]

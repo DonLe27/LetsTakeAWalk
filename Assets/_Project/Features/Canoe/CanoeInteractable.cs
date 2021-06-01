@@ -5,6 +5,10 @@ using Mirror;
 
 public class CanoeInteractable : NetworkBehaviour
 {
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] private float torque = 8;
+    [SerializeField] private float rowForce = 2;
+    [SerializeField] Transform boatTransform;
     [SyncVar]
     public int canoeCount = 0;
     [Server]
@@ -18,15 +22,40 @@ public class CanoeInteractable : NetworkBehaviour
     {
         return canoeCount;
     }
-
-    // Use NetworkTransform component to sync
-    public void Row(GameObject player)
+    float GetDragValue()
     {
-        Debug.Log("row");
-        // Code for moving the canoe
-        float movementSpeed = 100f;
-        transform.position += -transform.forward * Time.deltaTime * movementSpeed;
+        Vector3 dir = (-boatTransform.forward);
+        float angle = Vector2.Angle(new Vector2(rb.velocity.x, rb.velocity.z), new Vector2(dir.x, dir.z));
+        return -Mathf.Abs((angle - 90) / 90) + 1.3f;
+    }
+    // Use NetworkTransform component to sync
+    public void RowForward(GameObject player)
+    {
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            rb.angularVelocity = Vector3.zero;
+            rb.velocity = Vector3.zero;
+        }
+        else
+        {
+            Vector3 dir = (-boatTransform.forward);
+            rb.AddForce(dir.normalized * rowForce, ForceMode.VelocityChange);
+            rb.drag = GetDragValue();
+        }
 
+    }
+    public void RowLeft(GameObject player)
+    {
+        float turn = Input.GetAxis("Horizontal");
+        rb.AddRelativeTorque(0, torque, 0, ForceMode.Impulse);
+        rb.drag = GetDragValue();
+    }
+
+    public void RowRight(GameObject player)
+    {
+        float turn = Input.GetAxis("Horizontal");
+        rb.AddRelativeTorque(0, -torque, 0, ForceMode.Impulse);
+        rb.drag = GetDragValue();
     }
 
     // Can also use ClientRpc to broadcast changes to clients

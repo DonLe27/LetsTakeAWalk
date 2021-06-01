@@ -10,6 +10,7 @@ public class PaperFlyVariation : MonoBehaviour
     [SerializeField] private float delay;
     private Animator animator;
     private bool start;
+    private float curLerp = 0;
     void Start()
     {
         animator = gameObject.GetComponentsInChildren<Animator>()[0];
@@ -30,6 +31,14 @@ public class PaperFlyVariation : MonoBehaviour
     void Update()
     {
         if (!start) return;
-        transform.position += speed * direction.normalized * Time.deltaTime;
+        float curSpeed = Mathf.Lerp(0, speed, curLerp);
+        if (curLerp < 1.0f)
+        {
+            curLerp += 0.5f * Time.deltaTime; // Controls initial acceleration
+            curSpeed = Mathf.Lerp(0, speed, curLerp);
+        }
+
+
+        transform.position += curSpeed * direction.normalized * Time.deltaTime;
     }
 }
