@@ -1232,7 +1232,7 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
   - name: bass_and_piano
-    clip: {fileID: 8300000, guid: 40b2ae89373a74012b45f29a450bce74, type: 3}
+    clip: {fileID: 8300000, guid: e73842c56e87a473e912bdcd300918cc, type: 3}
     volume: 0.1
     pitch: 1
     loop: 1
