@@ -7,8 +7,7 @@ public class GreenSpiritBase : SpiritBase
     public override List<string> GetEasyQuestions()
     {
         return new List<string>(){
-            "Who are you closest to in your family?",
-            "What are some family traditions you want to keep alive?"
+            "What is a music track or a scene from a film that made you tear up?"
 
         };
     }
@@ -16,7 +15,7 @@ public class GreenSpiritBase : SpiritBase
     {
         return new List<string>()
         {
-            "What are some ways you want to be like your parents? What would you want to avoid?"
+            "What event from the past do you most want to see a recording of?"
         };
     }
 }
