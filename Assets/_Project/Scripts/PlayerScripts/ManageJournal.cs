@@ -11,9 +11,13 @@ public class ManageJournal : MonoBehaviour
     public TMPro.TextMeshProUGUI rightPage;
     [SerializeField]
     private GameObject contentsComponent;
+    [SerializeField]
+    private GameObject sketchComponent;
     private bool isOpen = false;
     private int curLeftPage = 0;
     private PlayerData playerData;
+    [SerializeField] private CanvasGroup paintingCanvasGroup;
+    [SerializeField] private float paintingFadeDuration = 3;
     void Start()
     {
         contentsComponent.SetActive(false);
@@ -74,6 +78,21 @@ public class ManageJournal : MonoBehaviour
         }
     }
 
+    public void TurnSketchToPainting()
+    {
+        isOpen = true;
+        sketchComponent.SetActive(true);
+        StartCoroutine(DoPaintingFadeIn());
+
+    }
+
+    public void OpenSketchComponent()
+    {
+        isOpen = true;
+        sketchComponent.SetActive(true);
+        Debug.Log("sketch: opened");
+    }
+
     public void ShowQuestions()
     {
         List<Entry> entries = playerData.journal.entries;
@@ -112,5 +131,18 @@ public class ManageJournal : MonoBehaviour
     void CloseJournal()
     {
         contentsComponent.SetActive(false);
+        sketchComponent.SetActive(false);
+        isOpen = false;
+    }
+
+    public IEnumerator DoPaintingFadeIn()
+    {
+        float counter = 0f;
+        while (counter < paintingFadeDuration)
+        {
+            counter += Time.deltaTime;
+            paintingCanvasGroup.alpha = Mathf.Lerp(0, 1, counter / paintingFadeDuration);
+            yield return null;
+        }
     }
 }
